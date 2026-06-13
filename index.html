@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VZH 2026 — Herní karty</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app"></div>
+
+  <dialog id="confirm-dialog">
+    <div class="dialog-content">
+      <p id="dialog-message"></p>
+      <div class="dialog-actions">
+        <button class="btn btn-ghost" data-action="cancel-delete">Zrušit</button>
+        <button class="btn btn-danger" data-action="confirm-delete">Smazat</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
