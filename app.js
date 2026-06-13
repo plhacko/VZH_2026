@@ -43,7 +43,9 @@ function renderCardTile(card) {
     ? `<span class="badge badge-utocna">útočná</span>` : '';
   const badgeObsazujici = card.obsazujici
     ? `<span class="badge badge-obsazujici">obsazující</span>` : '';
-  const hasBadges = card.utocna || card.obsazujici;
+  const badgeObranna = card.obranna
+    ? `<span class="badge badge-obranna">obranná</span>` : '';
+  const hasBadges = card.utocna || card.obsazujici || card.obranna;
 
   return `
     <div class="card-tile">
@@ -57,6 +59,7 @@ function renderCardTile(card) {
       <div class="card-tile-meta">
         ${badgeUtocna}
         ${badgeObsazujici}
+        ${badgeObranna}
         ${!hasBadges ? '<span style="font-size:.82rem;color:var(--color-text-muted)">—</span>' : ''}
         <span class="card-ukol-count">${formatUkolyCount(card.ukoly.length)}</span>
       </div>
@@ -124,6 +127,7 @@ function renderFormView(card) {
   const name = isEdit ? card.name : '';
   const utocna = isEdit ? card.utocna : false;
   const obsazujici = isEdit ? card.obsazujici : false;
+  const obranna = isEdit ? card.obranna : false;
   const ukoly = isEdit ? card.ukoly : [{ id: generateId(), name: '' }];
   const canAddUkol = ukoly.length < 5;
 
@@ -163,6 +167,10 @@ function renderFormView(card) {
           <label class="checkbox-label">
             <input type="checkbox" id="field-obsazujici" name="obsazujici" ${obsazujici ? 'checked' : ''} />
             obsazující
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="field-obranna" name="obranna" ${obranna ? 'checked' : ''} />
+            obranná
           </label>
         </div>
       </div>
@@ -274,10 +282,12 @@ function handleFormSubmit(e) {
   const nameInput = document.getElementById('field-name');
   const utocnaInput = document.getElementById('field-utocna');
   const obsazujiciInput = document.getElementById('field-obsazujici');
+  const obrannaInput = document.getElementById('field-obranna');
 
   const name = nameInput ? nameInput.value : '';
   const utocna = utocnaInput ? utocnaInput.checked : false;
   const obsazujici = obsazujiciInput ? obsazujiciInput.checked : false;
+  const obranna = obrannaInput ? obrannaInput.checked : false;
   const ukoly = getFormUkoly();
 
   const errors = validateCardForm(name, ukoly);
@@ -296,6 +306,7 @@ function handleFormSubmit(e) {
         name: name.trim(),
         utocna,
         obsazujici,
+        obranna,
         ukoly: ukoly.map(u => ({ ...u, name: u.name.trim() })),
         updatedAt: now,
       };
@@ -306,6 +317,7 @@ function handleFormSubmit(e) {
       name: name.trim(),
       utocna,
       obsazujici,
+      obranna,
       ukoly: ukoly.map(u => ({ id: u.id || generateId(), name: u.name.trim() })),
       createdAt: now,
       updatedAt: now,

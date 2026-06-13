@@ -20,6 +20,8 @@
   --color-badge-utocna-text: #92400e;
   --color-badge-obsazujici-bg: #dbeafe;
   --color-badge-obsazujici-text: #1e40af;
+  --color-badge-obranna-bg: #dcfce7;
+  --color-badge-obranna-text: #166534;
 
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -235,6 +237,11 @@ body {
 .badge-obsazujici {
   background: var(--color-badge-obsazujici-bg);
   color: var(--color-badge-obsazujici-text);
+}
+
+.badge-obranna {
+  background: var(--color-badge-obranna-bg);
+  color: var(--color-badge-obranna-text);
 }
 
 .card-ukol-count {
