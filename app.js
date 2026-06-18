@@ -37,6 +37,8 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+const CENA_LABELS = { '1': 'lehká', '2': 'střední', '3': 'těžká', 'X': 'nepřeskočitelná' };
+
 // ===== Rendering — List View =====
 function renderCardTile(card) {
   const badgeUtocna = card.utocna
@@ -61,8 +63,13 @@ function renderCardTile(card) {
         ${badgeObsazujici}
         ${badgeObranna}
         ${!hasBadges ? '<span style="font-size:.82rem;color:var(--color-text-muted)">—</span>' : ''}
-        <span class="card-ukol-count">${formatUkolyCount(card.ukoly.length)}</span>
       </div>
+      <ul class="ukol-list">
+        ${card.ukoly.map(u => {
+          const cena = u.cena || '1';
+          return `<li class="ukol-list-item"><span class="ukol-cena ukol-cena--${cena}" title="${CENA_LABELS[cena] || ''}">${cena}</span>${escapeHtml(u.name)}</li>`;
+        }).join('')}
+      </ul>
     </div>`;
 }
 
@@ -99,26 +106,38 @@ function renderListView() {
 // ===== Rendering — Form View =====
 function renderUkolRow(ukol, index, total) {
   const canRemove = total > 1;
+  const cena = ukol.cena || '1';
+  const cenaButtons = ['1', '2', '3', 'X'].map(v =>
+    `<button type="button" class="cena-btn${cena === v ? ` cena-btn--active cena-btn--${v}` : ''}"
+      data-action="set-cena" data-ukol-index="${index}" data-cena="${v}"
+      title="${CENA_LABELS[v]}">${v}</button>`
+  ).join('');
   return `
     <div class="ukol-row" data-ukol-index="${index}">
-      <span class="ukol-row-num">${index + 1}.</span>
-      <input
-        class="form-input ukol-input"
-        type="text"
-        placeholder="Název úkolu"
-        value="${escapeHtml(ukol.name)}"
-        data-ukol-index="${index}"
-        maxlength="200"
-        aria-label="Úkol ${index + 1}"
-      />
-      <button
-        class="btn btn-ghost btn-icon btn-sm"
-        data-action="remove-ukol"
-        data-ukol-index="${index}"
-        title="Odebrat úkol"
-        aria-label="Odebrat úkol ${index + 1}"
-        ${canRemove ? '' : 'disabled'}
-      >×</button>
+      <div class="ukol-row-top">
+        <span class="ukol-row-num">${index + 1}.</span>
+        <input
+          class="form-input ukol-input"
+          type="text"
+          placeholder="Název úkolu"
+          value="${escapeHtml(ukol.name)}"
+          data-ukol-index="${index}"
+          maxlength="200"
+          aria-label="Úkol ${index + 1}"
+        />
+        <button
+          class="btn btn-ghost btn-icon btn-sm"
+          data-action="remove-ukol"
+          data-ukol-index="${index}"
+          title="Odebrat úkol"
+          aria-label="Odebrat úkol ${index + 1}"
+          ${canRemove ? '' : 'disabled'}
+        >×</button>
+      </div>
+      <div class="cena-group">
+        <span class="cena-label">Cena přeskočení:</span>
+        ${cenaButtons}
+      </div>
     </div>`;
 }
 
@@ -128,7 +147,7 @@ function renderFormView(card) {
   const utocna = isEdit ? card.utocna : false;
   const obsazujici = isEdit ? card.obsazujici : false;
   const obranna = isEdit ? card.obranna : false;
-  const ukoly = isEdit ? card.ukoly : [{ id: generateId(), name: '' }];
+  const ukoly = isEdit ? card.ukoly : [{ id: generateId(), name: '', cena: '1' }];
   const canAddUkol = ukoly.length < 5;
 
   document.getElementById('app').innerHTML = `
@@ -231,7 +250,7 @@ function handleAddUkol() {
   syncUkolyFromDOM();
   const ukoly = getFormUkoly();
   if (ukoly.length >= 5) return;
-  ukoly.push({ id: generateId(), name: '' });
+  ukoly.push({ id: generateId(), name: '', cena: '1' });
   refreshUkolyList();
   // focus the new input
   const inputs = document.querySelectorAll('.ukol-input');
@@ -408,6 +427,14 @@ document.addEventListener('click', function (e) {
 
     case 'remove-ukol':
       if (ukolIndex !== null) handleRemoveUkol(ukolIndex);
+      break;
+
+    case 'set-cena':
+      syncUkolyFromDOM();
+      if (ukolIndex !== null && window._formUkoly[ukolIndex]) {
+        window._formUkoly[ukolIndex].cena = target.dataset.cena;
+      }
+      refreshUkolyList();
       break;
 
     case 'back-to-list':
