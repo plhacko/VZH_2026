@@ -43,7 +43,7 @@ const THEME_NAMES = ['noc', 'pergamen', 'sklo', 'tucny', 'retro'];
 const THEME_LABELS = ['Noc', 'Pergamen', 'Sklo', 'Tučný', 'Retro'];
 
 function renderThemePicker() {
-  const active = localStorage.getItem('vzh-theme') || '1';
+  const active = localStorage.getItem('vzh-theme') || '4';
   const buttons = THEME_NAMES.map((name, i) => {
     const id = String(i + 1);
     return `<button class="theme-btn${active === id ? ' theme-btn--active' : ''}" data-action="set-theme" data-theme-id="${id}" title="${THEME_LABELS[i]}">${id}</button>`;
