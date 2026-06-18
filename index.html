@@ -4,7 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VZH 2026 — Herní karty</title>
-  <link rel="stylesheet" href="style.css" />
+  <link id="theme-css" rel="stylesheet" href="theme-1-noc.css" />
+  <script>
+    (function() {
+      var themes = ['noc','pergamen','sklo','tucny','retro'];
+      var t = localStorage.getItem('vzh-theme') || '1';
+      document.getElementById('theme-css').href = 'theme-' + t + '-' + themes[+t - 1] + '.css';
+    })();
+  </script>
 </head>
 <body>
   <div id="app"></div>
