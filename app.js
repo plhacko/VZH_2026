@@ -51,6 +51,12 @@ function renderThemePicker() {
   return `<div class="theme-picker"><span class="theme-picker-label">Téma:</span>${buttons}</div>`;
 }
 
+// ===== Auto-grow textareas =====
+function autoGrow(el) {
+  el.style.height = 'auto';
+  el.style.height = el.scrollHeight + 'px';
+}
+
 // ===== Rendering — List View =====
 function renderCardTile(card) {
   const badgeUtocna = card.utocna
@@ -129,15 +135,14 @@ function renderUkolRow(ukol, index, total) {
     <div class="ukol-row" data-ukol-index="${index}">
       <div class="ukol-row-top">
         <span class="ukol-row-num">${index + 1}.</span>
-        <input
+        <textarea
           class="form-input ukol-input"
-          type="text"
           placeholder="Název úkolu"
-          value="${escapeHtml(ukol.name)}"
           data-ukol-index="${index}"
           maxlength="200"
           aria-label="Úkol ${index + 1}"
-        />
+          rows="1"
+        >${escapeHtml(ukol.name)}</textarea>
         <button
           class="btn btn-ghost btn-icon btn-sm"
           data-action="remove-ukol"
@@ -177,16 +182,15 @@ function renderFormView(card) {
     <form class="form-card" id="card-form" novalidate>
       <div class="form-group">
         <label class="form-label" for="field-name">Název karty</label>
-        <input
+        <textarea
           class="form-input"
           id="field-name"
-          type="text"
           name="name"
-          value="${escapeHtml(name)}"
           placeholder="Zadejte název karty"
           maxlength="200"
           autocomplete="off"
-        />
+          rows="1"
+        >${escapeHtml(name)}</textarea>
         <span class="form-error" id="error-name">Název karty nesmí být prázdný.</span>
       </div>
 
@@ -229,6 +233,8 @@ function renderFormView(card) {
       </div>
     </form>`;
 
+  document.querySelectorAll('textarea.form-input').forEach(autoGrow);
+
   // store current ukoly in a JS-accessible form for dynamic operations
   window._formUkoly = ukoly.map(u => ({ ...u }));
 }
@@ -258,6 +264,7 @@ function refreshUkolyList() {
   }
   const addBtn = document.querySelector('[data-action="add-ukol"]');
   if (addBtn) addBtn.disabled = ukoly.length >= 5;
+  document.querySelectorAll('#ukoly-list textarea.form-input').forEach(autoGrow);
 }
 
 function handleAddUkol() {
@@ -404,6 +411,18 @@ function handleExport() {
 }
 
 // ===== Event Delegation =====
+document.addEventListener('input', function (e) {
+  if (e.target.tagName === 'TEXTAREA' && e.target.classList.contains('form-input')) {
+    autoGrow(e.target);
+  }
+});
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter' && e.target.tagName === 'TEXTAREA' && e.target.classList.contains('form-input')) {
+    e.preventDefault();
+  }
+});
+
 document.addEventListener('click', function (e) {
   const target = e.target.closest('[data-action]');
   if (!target) return;
