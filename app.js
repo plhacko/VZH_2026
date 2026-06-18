@@ -39,17 +39,6 @@ function escapeHtml(str) {
 
 const CENA_LABELS = { '1': 'lehká', '2': 'střední', '3': 'těžká', 'X': 'nepřeskočitelná' };
 
-const THEME_NAMES = ['noc', 'pergamen', 'sklo', 'tucny', 'retro'];
-const THEME_LABELS = ['Noc', 'Pergamen', 'Sklo', 'Tučný', 'Retro'];
-
-function renderThemePicker() {
-  const active = localStorage.getItem('vzh-theme') || '4';
-  const buttons = THEME_NAMES.map((name, i) => {
-    const id = String(i + 1);
-    return `<button class="theme-btn${active === id ? ' theme-btn--active' : ''}" data-action="set-theme" data-theme-id="${id}" title="${THEME_LABELS[i]}">${id}</button>`;
-  }).join('');
-  return `<div class="theme-picker"><span class="theme-picker-label">Téma:</span>${buttons}</div>`;
-}
 
 // ===== Auto-grow textareas =====
 function autoGrow(el) {
@@ -108,7 +97,6 @@ function renderListView() {
       <div class="app-header-inner">
         <h1 class="app-title">VZH 2026 — Herní karty</h1>
         <div class="header-actions">
-          ${renderThemePicker()}
           ${cards.length > 0
             ? `<button class="btn btn-ghost btn-sm" data-action="export">Exportovat JSON</button>`
             : ''}
@@ -172,7 +160,6 @@ function renderFormView(card) {
     <header class="app-header">
       <div class="app-header-inner">
         <h1 class="app-title">VZH 2026 — Herní karty</h1>
-        <div class="header-actions">${renderThemePicker()}</div>
       </div>
     </header>
     <div class="form-header">
@@ -479,16 +466,6 @@ document.addEventListener('click', function (e) {
       handleExport();
       break;
 
-    case 'set-theme': {
-      const themeId = target.dataset.themeId;
-      localStorage.setItem('vzh-theme', themeId);
-      const link = document.getElementById('theme-css');
-      if (link) link.href = `theme-${themeId}-${THEME_NAMES[+themeId - 1]}.css`;
-      document.querySelectorAll('.theme-btn').forEach(btn => {
-        btn.classList.toggle('theme-btn--active', btn.dataset.themeId === themeId);
-      });
-      break;
-    }
   }
 });
 
