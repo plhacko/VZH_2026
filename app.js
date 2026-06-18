@@ -39,6 +39,101 @@ function escapeHtml(str) {
 
 const CENA_LABELS = { '1': 'lehká', '2': 'střední', '3': 'těžká', 'X': 'nepřeskočitelná' };
 
+const NARNIA_NAMES = {
+  'Postavy': [
+    { name: 'Aslan',             tag: 'lev, pán Narnie' },
+    { name: 'Petr',              tag: 'Nejvyšší král' },
+    { name: 'Zuzana',            tag: 'královna, střelkyně' },
+    { name: 'Edmund',            tag: 'král' },
+    { name: 'Lucinka',           tag: 'královna' },
+    { name: 'Kaspian',           tag: 'princ, budoucí král Narnie' },
+    { name: 'Miraz',             tag: 'uzurpátor, Kaspianův strýc' },
+    { name: 'Prunaprismia',      tag: 'rudovlasá teta Miraze' },
+    { name: 'Kornélius',         tag: 'profesor, Kaspianův vychovatel' },
+    { name: 'Trumpkin',          tag: 'skřítek, skeptický vyslanec' },
+    { name: 'Čuchomech',         tag: 'skřítek, Kaspianův věrný přítel' },
+    { name: 'Nikabrik',          tag: 'černý skřítek, zrádce' },
+    { name: 'Rípčíp',            tag: 'velitel myšího oddílu' },
+    { name: 'Pípsík',            tag: 'druhý nejvyšší myšák' },
+    { name: 'Horský Víchr',      tag: 'kentaur' },
+    { name: 'Mrakotřas',         tag: 'obr' },
+    { name: 'Břicháč',           tag: 'medvěd, správce kolbiště' },
+    { name: 'Březolezová',       tag: 'veverka' },
+    { name: 'Švihlík Lopatička', tag: 'krtek' },
+    { name: 'Tlaptaftík',        tag: 'krtek' },
+    { name: 'Kamil',             tag: 'zajíc' },
+    { name: 'Ředkvička',         tag: 'ježek' },
+    { name: 'Bakchus',           tag: 'bůh veselí' },
+    { name: 'Silénus',           tag: 'děda na oslu' },
+    { name: 'pan Tumnus',        tag: 'faun (zmíněn)' },
+    { name: 'Nain',              tag: 'král Arkénie' },
+    { name: 'Bohatýr',           tag: 'Kaspianův kůň' },
+  ],
+  'Šlechtici': [
+    { name: 'Podlštejn',   tag: 'telmarský šlechtic, zrádce' },
+    { name: 'Lichometník', tag: 'telmarský šlechtic, zrádce' },
+  ],
+  'Fauni': [
+    { name: 'Mentius',  tag: 'faun' },
+    { name: 'Obentius', tag: 'faun' },
+    { name: 'Dumnus',   tag: 'faun' },
+    { name: 'Voluns',   tag: 'faun' },
+    { name: 'Voltinus', tag: 'faun' },
+    { name: 'Girbius',  tag: 'faun' },
+    { name: 'Nimienus', tag: 'faun' },
+    { name: 'Nausus',   tag: 'faun' },
+    { name: 'Oscuns',   tag: 'faun' },
+  ],
+  'Místa': [
+    { name: 'Cair Paravel',    tag: 'starý narnijský hrad' },
+    { name: 'Aslanova stráž', tag: 'pevnost u Kamenného stolu' },
+    { name: 'Kamenný stůl',   tag: 'starověký stůl, pevnost' },
+    { name: 'Taneční palouk', tag: 'místo setkání Narnijců' },
+    { name: 'Beruna',         tag: 'řeka, brod, most' },
+    { name: 'Narnie',         tag: 'kouzelná země' },
+    { name: 'Telmár',         tag: 'země Telmarínů' },
+    { name: 'Arkénie',        tag: 'sousední království' },
+    { name: 'Osamělé ostrovy', tag: 'souostroví' },
+  ],
+  'Souhvězdí': [
+    { name: 'Koráb',   tag: 'souhvězdí' },
+    { name: 'Kladivo', tag: 'souhvězdí' },
+    { name: 'Leopard', tag: 'souhvězdí' },
+  ],
+  'Planety': [
+    { name: 'Tarva',   tag: 'Pán vítězství' },
+    { name: 'Almabil', tag: 'Paní míru' },
+  ],
+  'Ostatní': [
+    { name: 'Mořská Krasavice', tag: 'loď z doby vlády Pevensových' },
+    { name: 'říčka Bystrá',     tag: 'říčka na ostrově' },
+  ],
+};
+
+function handleOpenNames() {
+  const dialog = document.getElementById('names-dialog');
+  dialog.innerHTML = `
+    <div class="names-dialog-header">
+      <h2 class="names-dialog-title">Narnijská jména</h2>
+      <button class="btn btn-ghost btn-sm" data-action="close-names">✕</button>
+    </div>
+    <div class="names-dialog-body">
+      ${Object.entries(NARNIA_NAMES).map(([group, entries]) => `
+        <div class="names-group">
+          <div class="names-group-title">${group}</div>
+          <div class="names-list">
+            ${entries.map(e => `
+              <div class="name-entry">
+                <span class="name-entry-name">${e.name}</span>
+                <span class="name-entry-tag">${e.tag}</span>
+              </div>`).join('')}
+          </div>
+        </div>`).join('')}
+    </div>`;
+  dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); }, { once: true });
+  dialog.showModal();
+}
+
 
 // ===== Auto-grow textareas =====
 function autoGrow(el) {
@@ -97,6 +192,7 @@ function renderListView() {
       <div class="app-header-inner">
         <h1 class="app-title">VZH 2026 — Herní karty</h1>
         <div class="header-actions">
+          <button class="btn btn-ghost btn-sm" data-action="open-names">Jména</button>
           ${cards.length > 0
             ? `<button class="btn btn-ghost btn-sm" data-action="export">Exportovat JSON</button>`
             : ''}
@@ -160,6 +256,9 @@ function renderFormView(card) {
     <header class="app-header">
       <div class="app-header-inner">
         <h1 class="app-title">VZH 2026 — Herní karty</h1>
+        <div class="header-actions">
+          <button class="btn btn-ghost btn-sm" data-action="open-names">Jména</button>
+        </div>
       </div>
     </header>
     <div class="form-header">
@@ -466,6 +565,13 @@ document.addEventListener('click', function (e) {
       handleExport();
       break;
 
+    case 'open-names':
+      handleOpenNames();
+      break;
+
+    case 'close-names':
+      document.getElementById('names-dialog').close();
+      break;
   }
 });
 

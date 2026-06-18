@@ -412,6 +412,82 @@ dialog::backdrop { background: rgba(0,0,0,.5); }
 .theme-btn:hover { box-shadow: 3px 3px 0 #000; }
 .theme-btn--active { background: var(--color-primary); border-color: #000; color: #fff; box-shadow: 2px 2px 0 #000; }
 
+/* ===== Names Dialog ===== */
+#names-dialog {
+  max-width: 580px;
+  width: calc(100% - var(--space-lg) * 2);
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: 3px solid #000;
+  box-shadow: 6px 6px 0 #000;
+  background: #fff;
+  color: #000;
+}
+
+.names-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md);
+  border-bottom: 3px solid #000;
+  flex-shrink: 0;
+}
+
+.names-dialog-title {
+  font-size: 1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.names-dialog-body {
+  overflow-y: auto;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.names-group-title {
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding-bottom: var(--space-xs);
+  border-bottom: 2px solid #000;
+  margin-bottom: var(--space-xs);
+}
+
+.names-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.name-entry {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.name-entry-name {
+  font-weight: 800;
+  font-size: 0.92rem;
+}
+
+.name-entry-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  border: 1px solid #000;
+  padding: 1px 6px;
+  background: var(--color-surface-alt);
+  white-space: nowrap;
+}
+
 /* ===== Desktop ===== */
 @media (min-width: 640px) {
   .checkboxes-group { flex-direction: row; gap: var(--space-lg); }
