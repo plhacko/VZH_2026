@@ -420,6 +420,35 @@ body {
 .cena-btn--active.cena-btn--3 { background: #ffedd5; border-color: #fdba74; color: #9a3412; }
 .cena-btn--active.cena-btn--X { background: #fee2e2; border-color: #fca5a5; color: #991b1b; }
 
+.misto-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding-left: 32px;
+  flex-wrap: wrap;
+}
+
+.misto-btn {
+  padding: 2px 8px;
+  min-height: 28px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+  white-space: nowrap;
+}
+
+.misto-btn:hover { border-color: #9ca3af; color: var(--color-text); }
+
+.misto-btn--active.misto-btn--kolbiste { background: #dcfce7; border-color: #86efac; color: #166534; }
+.misto-btn--active.misto-btn--telmari  { background: #fce7f3; border-color: #f9a8d4; color: #9d174d; }
+.misto-btn--active.misto-btn--brod     { background: #dbeafe; border-color: #93c5fd; color: #1e40af; }
+.misto-btn--active.misto-btn--vez      { background: #ede9fe; border-color: #c4b5fd; color: #4c1d95; }
+
 /* ===== Ukoly in card tile ===== */
 .ukol-list {
   list-style: none;
@@ -456,6 +485,22 @@ body {
 .ukol-cena--2 { background: #fef9c3; color: #854d0e; }
 .ukol-cena--3 { background: #ffedd5; color: #9a3412; }
 .ukol-cena--X { background: #fee2e2; color: #991b1b; }
+
+.ukol-misto {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.ukol-misto--kolbiste { background: #dcfce7; color: #166534; }
+.ukol-misto--telmari  { background: #fce7f3; color: #9d174d; }
+.ukol-misto--brod     { background: #dbeafe; color: #1e40af; }
+.ukol-misto--vez      { background: #ede9fe; color: #4c1d95; }
 
 /* ===== Form Footer ===== */
 .form-footer {

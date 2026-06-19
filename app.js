@@ -39,6 +39,15 @@ function escapeHtml(str) {
 
 const CENA_LABELS = { '1': 'lehká', '2': 'střední', '3': 'těžká', 'X': 'nepřeskočitelná' };
 
+const MISTO_KEYS   = ['kolbiste', 'telmari', 'brod', 'vez'];
+const MISTO_LABELS = { 'kolbiste': 'Kolbiště', 'telmari': 'Telmáři', 'brod': 'Brod', 'vez': 'Věž' };
+const MISTO_FULL   = {
+  'kolbiste': 'Kolbiště (tábořiště)',
+  'telmari':  'Tábor Telmarínů (palouček před chatou za kadibudkami)',
+  'brod':     'Berunský brod (jez)',
+  'vez':      'Hlásná věž (posed)',
+};
+
 const NARNIA_NAMES = {
   'Postavy': [
     { name: 'Aslan',             tag: 'lev, pán Narnie' },
@@ -169,7 +178,10 @@ function renderCardTile(card) {
       <ul class="ukol-list">
         ${card.ukoly.map(u => {
           const cena = u.cena || '1';
-          return `<li class="ukol-list-item"><span class="ukol-cena ukol-cena--${cena}" title="${CENA_LABELS[cena] || ''}">${cena}</span>${escapeHtml(u.name)}</li>`;
+          const mistoHtml = u.misto
+            ? `<span class="ukol-misto ukol-misto--${u.misto}" title="${MISTO_FULL[u.misto] || ''}">${MISTO_LABELS[u.misto] || ''}</span>`
+            : '';
+          return `<li class="ukol-list-item"><span class="ukol-cena ukol-cena--${cena}" title="${CENA_LABELS[cena] || ''}">${cena}</span>${mistoHtml}${escapeHtml(u.name)}</li>`;
         }).join('')}
       </ul>
     </div>`;
@@ -215,6 +227,12 @@ function renderUkolRow(ukol, index, total) {
       data-action="set-cena" data-ukol-index="${index}" data-cena="${v}"
       title="${CENA_LABELS[v]}">${v}</button>`
   ).join('');
+  const misto = ukol.misto || '';
+  const mistoButtons = MISTO_KEYS.map(v =>
+    `<button type="button" class="misto-btn${misto === v ? ` misto-btn--active misto-btn--${v}` : ''}"
+      data-action="set-misto" data-ukol-index="${index}" data-misto="${v}"
+      title="${MISTO_FULL[v]}">${MISTO_LABELS[v]}</button>`
+  ).join('');
   return `
     <div class="ukol-row" data-ukol-index="${index}">
       <div class="ukol-row-top">
@@ -239,6 +257,10 @@ function renderUkolRow(ukol, index, total) {
       <div class="cena-group">
         <span class="cena-label">Cena přeskočení:</span>
         ${cenaButtons}
+      </div>
+      <div class="misto-group">
+        <span class="cena-label">Místo:</span>
+        ${mistoButtons}
       </div>
     </div>`;
 }
@@ -357,7 +379,7 @@ function handleAddUkol() {
   syncUkolyFromDOM();
   const ukoly = getFormUkoly();
   if (ukoly.length >= 5) return;
-  ukoly.push({ id: generateId(), name: '', cena: '1' });
+  ukoly.push({ id: generateId(), name: '', cena: '1', misto: '' });
   refreshUkolyList();
   // focus the new input
   const inputs = document.querySelectorAll('.ukol-input');
@@ -444,7 +466,7 @@ function handleFormSubmit(e) {
       utocna,
       obsazujici,
       obranna,
-      ukoly: ukoly.map(u => ({ id: u.id || generateId(), name: u.name.trim() })),
+      ukoly: ukoly.map(u => ({ id: u.id || generateId(), name: u.name.trim(), cena: u.cena || '1', misto: u.misto || '' })),
       createdAt: now,
       updatedAt: now,
     });
@@ -552,6 +574,16 @@ document.addEventListener('click', function (e) {
       syncUkolyFromDOM();
       if (ukolIndex !== null && window._formUkoly[ukolIndex]) {
         window._formUkoly[ukolIndex].cena = target.dataset.cena;
+      }
+      refreshUkolyList();
+      break;
+
+    case 'set-misto':
+      syncUkolyFromDOM();
+      if (ukolIndex !== null && window._formUkoly[ukolIndex]) {
+        const newMisto = target.dataset.misto;
+        window._formUkoly[ukolIndex].misto =
+          window._formUkoly[ukolIndex].misto === newMisto ? '' : newMisto;
       }
       refreshUkolyList();
       break;
