@@ -2,7 +2,7 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>VZH 2026 — Herní karty</title>
   <link rel="stylesheet" href="theme-4-tucny.css" />
   <style>
@@ -35,13 +35,13 @@
       style="max-width:340px;width:100%;cursor:zoom-in;border:3px solid #000;box-shadow:4px 4px 0 #000;display:inline-block;" />
   </div>
 
-  <dialog id="mapa-dialog" style="padding:0;border:3px solid #000;box-shadow:8px 8px 0 #000;background:#fff;max-width:95vw;max-height:95vh;overflow:hidden;display:flex;flex-direction:column;">
+  <dialog id="mapa-dialog" style="padding:0;border:3px solid #000;box-shadow:8px 8px 0 #000;background:#fff;max-width:95vw;max-height:95vh;display:flex;flex-direction:column;">
     <div style="display:flex;align-items:center;gap:0.5rem;padding:0.5rem;border-bottom:3px solid #000;background:#fff;flex-shrink:0;">
-      <button id="mapa-zoom-out" style="font-size:1.2rem;font-weight:900;width:2rem;height:2rem;border:2px solid #000;background:#fff;cursor:pointer;line-height:1;">−</button>
+      <button id="mapa-zoom-out" style="font-size:1.2rem;font-weight:900;width:2.75rem;height:2.75rem;border:2px solid #000;background:#fff;cursor:pointer;line-height:1;">−</button>
       <span id="mapa-zoom-label" style="font-weight:900;min-width:3rem;text-align:center;font-size:0.85rem;">100%</span>
-      <button id="mapa-zoom-in"  style="font-size:1.2rem;font-weight:900;width:2rem;height:2rem;border:2px solid #000;background:#fff;cursor:pointer;line-height:1;">+</button>
+      <button id="mapa-zoom-in"  style="font-size:1.2rem;font-weight:900;width:2.75rem;height:2.75rem;border:2px solid #000;background:#fff;cursor:pointer;line-height:1;">+</button>
       <span style="flex:1"></span>
-      <button id="mapa-close" style="font-size:1rem;font-weight:900;width:2rem;height:2rem;border:2px solid #000;background:#fff;cursor:pointer;line-height:1;">✕</button>
+      <button id="mapa-close" style="font-size:1rem;font-weight:900;width:2.75rem;height:2.75rem;border:2px solid #000;background:#fff;cursor:pointer;line-height:1;">✕</button>
     </div>
     <div id="mapa-scroll" style="overflow:auto;flex:1;display:flex;align-items:flex-start;justify-content:flex-start;">
       <img id="mapa-full" src="MapaTaboriste.png" alt="Mapa tábořiště" style="display:block;transform-origin:top left;" />

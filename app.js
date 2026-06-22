@@ -203,7 +203,8 @@ function renderListView() {
         <h1 class="app-title">VZH 2026 — Herní karty</h1>
         <div class="header-actions">
           ${cards.length > 0
-            ? `<button class="btn btn-ghost btn-sm" data-action="export">Exportovat JSON</button>`
+            ? `<button class="btn btn-ghost btn-sm" data-action="export">Exportovat JSON</button>
+               <button class="btn btn-ghost btn-sm" data-action="email-export">Odeslat emailem</button>`
             : ''}
           <button class="btn btn-primary btn-sm" data-action="new-card">+ Nová karta</button>
         </div>
@@ -502,6 +503,15 @@ function handleCancelDelete() {
 }
 
 // ===== Export =====
+function handleEmailExport() {
+  const json = JSON.stringify(cards, null, 2);
+  const subject = encodeURIComponent('VZH 2026 — Herní karty');
+  const body = encodeURIComponent(
+    `Dobrý den,\n\nposílám export herních karet z VZH 2026 (${cards.length} ${cards.length === 1 ? 'karta' : cards.length <= 4 ? 'karty' : 'karet'}).\n\n---\n\n${json}`
+  );
+  window.location.href = `mailto:plhacko@gmail.com?subject=${subject}&body=${body}`;
+}
+
 function handleExport() {
   const json = JSON.stringify(cards, null, 2);
   const blob = new Blob([json], { type: 'application/json' });
@@ -592,6 +602,10 @@ document.addEventListener('click', function (e) {
 
     case 'export':
       handleExport();
+      break;
+
+    case 'email-export':
+      handleEmailExport();
       break;
 
   }
