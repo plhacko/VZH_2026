@@ -29,6 +29,21 @@
   </dialog>
 
   <script src="app.js"></script>
-  <img src="MapaTaboriste.png" alt="Mapa tábořiště" style="width:100%;display:block;margin-top:2rem;" />
+
+  <div style="margin-top:2rem;padding:0 1rem 2rem;text-align:center;">
+    <img id="mapa-thumb" src="MapaTaboriste.png" alt="Mapa tábořiště"
+      style="max-width:340px;width:100%;cursor:zoom-in;border:3px solid #000;box-shadow:4px 4px 0 #000;display:inline-block;" />
+  </div>
+
+  <dialog id="mapa-dialog" style="padding:0;border:3px solid #000;box-shadow:8px 8px 0 #000;max-width:95vw;max-height:95vh;background:#fff;">
+    <img src="MapaTaboriste.png" alt="Mapa tábořiště" style="display:block;max-width:90vw;max-height:90vh;cursor:zoom-out;" />
+  </dialog>
+
+  <script>
+    const thumb = document.getElementById('mapa-thumb');
+    const dialog = document.getElementById('mapa-dialog');
+    thumb.addEventListener('click', () => dialog.showModal());
+    dialog.addEventListener('click', () => dialog.close());
+  </script>
 </body>
 </html>
