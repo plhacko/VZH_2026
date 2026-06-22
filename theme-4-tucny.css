@@ -511,6 +511,8 @@ dialog::backdrop { background: rgba(0,0,0,.5); }
 @media (max-width: 480px) {
   #app { padding-left: var(--space-sm); padding-right: var(--space-sm); }
   .form-card { padding: var(--space-md); }
+  .header-actions { flex-wrap: wrap; }
+  .header-actions .btn-primary { flex-basis: 100%; }
 }
 
 /* ===== Desktop ===== */
