@@ -13,6 +13,7 @@
       line-height: 1.5;
       vertical-align: top;
     }
+    #mapa-dialog[open] { display: flex; flex-direction: column; }
   </style>
 </head>
 <body>
@@ -35,7 +36,7 @@
       style="max-width:340px;width:100%;cursor:zoom-in;border:3px solid #000;box-shadow:4px 4px 0 #000;display:inline-block;" />
   </div>
 
-  <dialog id="mapa-dialog" style="padding:0;border:3px solid #000;box-shadow:8px 8px 0 #000;background:#fff;max-width:95vw;max-height:95vh;display:flex;flex-direction:column;">
+  <dialog id="mapa-dialog" style="padding:0;border:3px solid #000;box-shadow:8px 8px 0 #000;background:#fff;max-width:95vw;max-height:95vh;">
     <div style="display:flex;align-items:center;gap:0.5rem;padding:0.5rem;border-bottom:3px solid #000;background:#fff;flex-shrink:0;">
       <button id="mapa-zoom-out" style="font-size:1.2rem;font-weight:900;width:2.75rem;height:2.75rem;border:2px solid #000;background:#fff;cursor:pointer;line-height:1;">−</button>
       <span id="mapa-zoom-label" style="font-weight:900;min-width:3rem;text-align:center;font-size:0.85rem;">100%</span>
