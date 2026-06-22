@@ -512,6 +512,7 @@ dialog::backdrop { background: rgba(0,0,0,.5); }
   #app { padding-left: var(--space-sm); padding-right: var(--space-sm); }
   .form-card { padding: var(--space-md); }
   .header-actions { flex-direction: column; align-items: flex-start; }
+  .app-header { position: static; }
 }
 
 /* ===== Desktop ===== */
