@@ -293,8 +293,9 @@ body {
 .ukol-row-top .form-input { flex: 1; }
 .ukol-row-num { font-size: 0.85rem; color: var(--color-text-muted); font-weight: 800; min-width: 24px; flex-shrink: 0; }
 
-.cena-group { display: flex; align-items: center; gap: var(--space-xs); padding-left: 32px; }
-.cena-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--color-text-muted); margin-right: var(--space-xs); white-space: nowrap; }
+.cena-group { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs); }
+.misto-group { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs); }
+.cena-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--color-text-muted); margin-right: var(--space-xs); white-space: nowrap; flex-basis: 100%; }
 
 .cena-btn {
   min-width: 44px;
