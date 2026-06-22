@@ -40,7 +40,7 @@ function escapeHtml(str) {
 const CENA_LABELS = { '1': 'lehká', '2': 'střední', '3': 'těžká', 'X': 'nepřeskočitelná' };
 
 const MISTO_KEYS   = ['kolbiste', 'telmari', 'brod', 'vez'];
-const MISTO_LABELS = { 'kolbiste': 'Kolbiště', 'telmari': 'Telmáři', 'brod': 'Brod', 'vez': 'Věž' };
+const MISTO_LABELS = { 'kolbiste': 'Kolbiště', 'telmari': 'Tábor Telmarínů', 'brod': 'Berunský Most', 'vez': 'U Lampy' };
 const MISTO_FULL   = {
   'kolbiste': 'Kolbiště (tábořiště)',
   'telmari':  'Tábor Telmarínů (palouček před chatou za kadibudkami)',
@@ -119,28 +119,26 @@ const NARNIA_NAMES = {
   ],
 };
 
-function handleOpenNames() {
-  const dialog = document.getElementById('names-dialog');
-  dialog.innerHTML = `
-    <div class="names-dialog-header">
-      <h2 class="names-dialog-title">Narnijská jména</h2>
-      <button class="btn btn-ghost btn-sm" data-action="close-names">✕</button>
-    </div>
-    <div class="names-dialog-body">
-      ${Object.entries(NARNIA_NAMES).map(([group, entries]) => `
-        <div class="names-group">
-          <div class="names-group-title">${group}</div>
-          <div class="names-list">
-            ${entries.map(e => `
-              <div class="name-entry">
-                <span class="name-entry-name">${e.name}</span>
-                <span class="name-entry-tag">${e.tag}</span>
-              </div>`).join('')}
-          </div>
-        </div>`).join('')}
-    </div>`;
-  dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); }, { once: true });
-  dialog.showModal();
+function renderNamesSection() {
+  return `
+    <section class="names-section">
+      <div class="section-header" style="padding-bottom:0">
+        <span class="section-title">Narnijská jména</span>
+      </div>
+      <div class="names-groups">
+        ${Object.entries(NARNIA_NAMES).map(([group, entries]) => `
+          <div class="names-group">
+            <div class="names-group-title">${group}</div>
+            <div class="names-list">
+              ${entries.map(e => `
+                <div class="name-entry">
+                  <span class="name-entry-name">${e.name}</span>
+                  <span class="name-entry-tag">${e.tag}</span>
+                </div>`).join('')}
+            </div>
+          </div>`).join('')}
+      </div>
+    </section>`;
 }
 
 
@@ -204,7 +202,6 @@ function renderListView() {
       <div class="app-header-inner">
         <h1 class="app-title">VZH 2026 — Herní karty</h1>
         <div class="header-actions">
-          <button class="btn btn-ghost btn-sm" data-action="open-names">Jména</button>
           ${cards.length > 0
             ? `<button class="btn btn-ghost btn-sm" data-action="export">Exportovat JSON</button>`
             : ''}
@@ -215,7 +212,8 @@ function renderListView() {
     <div class="section-header">
       <span class="section-title">${cards.length === 0 ? '' : `${cards.length} ${cards.length === 1 ? 'karta' : cards.length <= 4 ? 'karty' : 'karet'}`}</span>
     </div>
-    ${listContent}`;
+    ${listContent}
+    ${renderNamesSection()}`;
 }
 
 // ===== Rendering — Form View =====
@@ -278,9 +276,7 @@ function renderFormView(card) {
     <header class="app-header">
       <div class="app-header-inner">
         <h1 class="app-title">VZH 2026 — Herní karty</h1>
-        <div class="header-actions">
-          <button class="btn btn-ghost btn-sm" data-action="open-names">Jména</button>
-        </div>
+        <div class="header-actions"></div>
       </div>
     </header>
     <div class="form-header">
@@ -339,7 +335,8 @@ function renderFormView(card) {
       <div class="form-footer">
         <button type="submit" class="btn btn-primary" data-action="save-card">Uložit kartu</button>
       </div>
-    </form>`;
+    </form>
+    ${renderNamesSection()}`;
 
   document.querySelectorAll('textarea.form-input').forEach(autoGrow);
 
@@ -597,13 +594,6 @@ document.addEventListener('click', function (e) {
       handleExport();
       break;
 
-    case 'open-names':
-      handleOpenNames();
-      break;
-
-    case 'close-names':
-      document.getElementById('names-dialog').close();
-      break;
   }
 });
 

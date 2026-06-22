@@ -412,43 +412,26 @@ dialog::backdrop { background: rgba(0,0,0,.5); }
 .theme-btn:hover { box-shadow: 3px 3px 0 #000; }
 .theme-btn--active { background: var(--color-primary); border-color: #000; color: #fff; box-shadow: 2px 2px 0 #000; }
 
-/* ===== Names Dialog ===== */
-#names-dialog {
-  max-width: 580px;
-  width: calc(100% - var(--space-lg) * 2);
-  max-height: 80vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  border: 3px solid #000;
-  box-shadow: 6px 6px 0 #000;
-  background: #fff;
-  color: #000;
+/* ===== Narnijská jména (inline) ===== */
+.names-section {
+  margin-top: var(--space-xl);
+  border-top: 3px solid #000;
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-xl);
 }
 
-.names-dialog-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-md);
-  border-bottom: 3px solid #000;
-  flex-shrink: 0;
-}
-
-.names-dialog-title {
-  font-size: 1rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.names-dialog-body {
-  overflow-y: auto;
-  padding: var(--space-md);
-  display: flex;
-  flex-direction: column;
+.names-groups {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .names-groups { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 960px) {
+  .names-groups { grid-template-columns: repeat(3, 1fr); }
 }
 
 .names-group-title {
