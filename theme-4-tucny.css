@@ -484,7 +484,8 @@ dialog::backdrop { background: rgba(0,0,0,.5); }
   font-weight: 800;
   cursor: pointer;
   transition: box-shadow 0.1s;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
   box-shadow: 2px 2px 0 #000;
 }
 
@@ -505,6 +506,12 @@ dialog::backdrop { background: rgba(0,0,0,.5); }
 .ukol-misto--telmari  { background: #f9a8d4; color: #000; }
 .ukol-misto--brod     { background: #90caf9; color: #000; }
 .ukol-misto--vez      { background: #c4b5fd; color: #000; }
+
+/* ===== Mobile (narrow) ===== */
+@media (max-width: 480px) {
+  #app { padding-left: var(--space-sm); padding-right: var(--space-sm); }
+  .form-card { padding: var(--space-md); }
+}
 
 /* ===== Desktop ===== */
 @media (min-width: 640px) {
