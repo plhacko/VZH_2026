@@ -35,15 +35,40 @@
       style="max-width:340px;width:100%;cursor:zoom-in;border:3px solid #000;box-shadow:4px 4px 0 #000;display:inline-block;" />
   </div>
 
-  <dialog id="mapa-dialog" style="padding:0;border:3px solid #000;box-shadow:8px 8px 0 #000;max-width:95vw;max-height:95vh;background:#fff;">
-    <img src="MapaTaboriste.png" alt="Mapa tábořiště" style="display:block;max-width:90vw;max-height:90vh;cursor:zoom-out;" />
+  <dialog id="mapa-dialog" style="padding:0;border:3px solid #000;box-shadow:8px 8px 0 #000;background:#fff;max-width:95vw;max-height:95vh;overflow:hidden;display:flex;flex-direction:column;">
+    <div style="display:flex;align-items:center;gap:0.5rem;padding:0.5rem;border-bottom:3px solid #000;background:#fff;flex-shrink:0;">
+      <button id="mapa-zoom-out" style="font-size:1.2rem;font-weight:900;width:2rem;height:2rem;border:2px solid #000;background:#fff;cursor:pointer;line-height:1;">−</button>
+      <span id="mapa-zoom-label" style="font-weight:900;min-width:3rem;text-align:center;font-size:0.85rem;">100%</span>
+      <button id="mapa-zoom-in"  style="font-size:1.2rem;font-weight:900;width:2rem;height:2rem;border:2px solid #000;background:#fff;cursor:pointer;line-height:1;">+</button>
+      <span style="flex:1"></span>
+      <button id="mapa-close" style="font-size:1rem;font-weight:900;width:2rem;height:2rem;border:2px solid #000;background:#fff;cursor:pointer;line-height:1;">✕</button>
+    </div>
+    <div id="mapa-scroll" style="overflow:auto;flex:1;display:flex;align-items:flex-start;justify-content:flex-start;">
+      <img id="mapa-full" src="MapaTaboriste.png" alt="Mapa tábořiště" style="display:block;transform-origin:top left;" />
+    </div>
   </dialog>
 
   <script>
-    const thumb = document.getElementById('mapa-thumb');
-    const dialog = document.getElementById('mapa-dialog');
-    thumb.addEventListener('click', () => dialog.showModal());
-    dialog.addEventListener('click', () => dialog.close());
+    const thumb      = document.getElementById('mapa-thumb');
+    const dialog     = document.getElementById('mapa-dialog');
+    const img        = document.getElementById('mapa-full');
+    const scroll     = document.getElementById('mapa-scroll');
+    const label      = document.getElementById('mapa-zoom-label');
+    const STEPS      = [25, 33, 50, 67, 75, 100, 125, 150, 200, 300, 400];
+    let zoomIdx      = 5; // 100%
+
+    function applyZoom() {
+      const pct = STEPS[zoomIdx];
+      img.style.width = pct + 'vw';
+      img.style.height = 'auto';
+      label.textContent = pct + '%';
+    }
+
+    thumb.addEventListener('click', () => { zoomIdx = 5; applyZoom(); dialog.showModal(); });
+    document.getElementById('mapa-close').addEventListener('click', e => { e.stopPropagation(); dialog.close(); });
+    document.getElementById('mapa-zoom-in').addEventListener('click',  e => { e.stopPropagation(); zoomIdx = Math.min(zoomIdx + 1, STEPS.length - 1); applyZoom(); });
+    document.getElementById('mapa-zoom-out').addEventListener('click', e => { e.stopPropagation(); zoomIdx = Math.max(zoomIdx - 1, 0); applyZoom(); });
+    dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
   </script>
 </body>
 </html>
