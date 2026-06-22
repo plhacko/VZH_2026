@@ -488,6 +488,40 @@ dialog::backdrop { background: rgba(0,0,0,.5); }
   white-space: nowrap;
 }
 
+/* ===== Místo Buttons ===== */
+.misto-btn {
+  padding: 0 var(--space-sm);
+  min-height: 32px;
+  border: 2px solid #000;
+  border-radius: 0;
+  background: #fff;
+  color: #555;
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: box-shadow 0.1s;
+  white-space: nowrap;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.misto-btn:hover { box-shadow: 3px 3px 0 #000; color: #000; border-color: #000; }
+
+.misto-btn--active.misto-btn--kolbiste { background: #a5d6a7; border-color: #000; color: #000; }
+.misto-btn--active.misto-btn--telmari  { background: #f9a8d4; border-color: #000; color: #000; }
+.misto-btn--active.misto-btn--brod     { background: #90caf9; border-color: #000; color: #000; }
+.misto-btn--active.misto-btn--vez      { background: #c4b5fd; border-color: #000; color: #000; }
+
+.ukol-misto {
+  border-radius: 0;
+  border: 1px solid #000;
+  font-weight: 800;
+}
+
+.ukol-misto--kolbiste { background: #a5d6a7; color: #000; }
+.ukol-misto--telmari  { background: #f9a8d4; color: #000; }
+.ukol-misto--brod     { background: #90caf9; color: #000; }
+.ukol-misto--vez      { background: #c4b5fd; color: #000; }
+
 /* ===== Desktop ===== */
 @media (min-width: 640px) {
   .checkboxes-group { flex-direction: row; gap: var(--space-lg); }
