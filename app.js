@@ -203,8 +203,10 @@ function renderListView() {
         <h1 class="app-title">VZH 2026 — Herní karty</h1>
         <div class="header-actions">
           ${cards.length > 0
-            ? `<button class="btn btn-ghost btn-sm" data-action="export">Exportovat JSON</button>
-               <button class="btn btn-ghost btn-sm" data-action="email-export">Odeslat emailem</button>`
+            ? `<div class="header-export-actions">
+                 <button class="btn btn-ghost btn-sm" data-action="export">Exportovat JSON</button>
+                 <button class="btn btn-ghost btn-sm" data-action="email-export">Odeslat emailem</button>
+               </div>`
             : ''}
           <button class="btn btn-primary btn-sm" data-action="new-card">+ Nová karta</button>
         </div>

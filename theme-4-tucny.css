@@ -85,6 +85,11 @@ body {
   align-items: center;
 }
 
+.header-export-actions {
+  display: flex;
+  gap: var(--space-sm);
+}
+
 /* ===== Buttons ===== */
 .btn {
   display: inline-flex;
