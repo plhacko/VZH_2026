@@ -40,12 +40,12 @@ function escapeHtml(str) {
 const CENA_LABELS = { '1': 'lehká', '2': 'střední', '3': 'těžká', 'X': 'nepřeskočitelná' };
 
 const MISTO_KEYS   = ['kolbiste', 'telmari', 'brod', 'vez'];
-const MISTO_LABELS = { 'kolbiste': 'Kolbiště', 'telmari': 'Tábor Telmarínů', 'brod': 'Berunský Most', 'vez': 'U Lampy' };
+const MISTO_LABELS = { 'kolbiste': 'Kolbiště', 'telmari': 'Tábor Telmarínů', 'brod': 'Berunský Most', 'vez': 'Cair Paravel' };
 const MISTO_FULL   = {
   'kolbiste': 'Kolbiště (tábořiště)',
   'telmari':  'Tábor Telmarínů (palouček před chatou za kadibudkami)',
   'brod':     'Berunský brod (jez)',
-  'vez':      'Hlásná věž (posed)',
+  'vez':      'Cair Paravel (posed)',
 };
 
 const NARNIA_NAMES = {
