@@ -234,12 +234,6 @@ function renderUkolRow(ukol, index, total) {
       data-action="set-misto" data-ukol-index="${index}" data-misto="${v}"
       title="${MISTO_FULL[v]}">${MISTO_LABELS[v]}</button>`
   ).join('');
-  const splnitelna = ukol.splnitelna || 'vsichni';
-  const splnitelnaButtons = ['vsichni', '1', '2'].map(v =>
-    `<button type="button" class="cena-btn${splnitelna === v ? ` cena-btn--active cena-btn--${v}` : ''}"
-      data-action="set-splnitelna" data-ukol-index="${index}" data-splnitelna="${v}"
-    >${v === 'vsichni' ? 'Všemi' : v}</button>`
-  ).join('');
   return `
     <div class="ukol-row" data-ukol-index="${index}">
       <div class="ukol-row-top">
@@ -268,10 +262,6 @@ function renderUkolRow(ukol, index, total) {
       <div class="misto-group">
         <span class="cena-label">Místo:</span>
         ${mistoButtons}
-      </div>
-      <div class="cena-group">
-        <span class="cena-label">Karta je splnitelná:</span>
-        ${splnitelnaButtons}
       </div>
     </div>`;
 }
@@ -465,7 +455,7 @@ function handleFormSubmit(e) {
         utocna,
         obsazujici,
         obranna,
-        ukoly: ukoly.map(u => ({ ...u, name: u.name.trim(), splnitelna: u.splnitelna || 'vsichni' })),
+        ukoly: ukoly.map(u => ({ ...u, name: u.name.trim() })),
         updatedAt: now,
       };
     }
@@ -476,7 +466,7 @@ function handleFormSubmit(e) {
       utocna,
       obsazujici,
       obranna,
-      ukoly: ukoly.map(u => ({ id: u.id || generateId(), name: u.name.trim(), cena: u.cena || '1', misto: u.misto || '', splnitelna: u.splnitelna || 'vsichni' })),
+      ukoly: ukoly.map(u => ({ id: u.id || generateId(), name: u.name.trim(), cena: u.cena || '1', misto: u.misto || '' })),
       createdAt: now,
       updatedAt: now,
     });
@@ -603,14 +593,6 @@ document.addEventListener('click', function (e) {
         const newMisto = target.dataset.misto;
         window._formUkoly[ukolIndex].misto =
           window._formUkoly[ukolIndex].misto === newMisto ? '' : newMisto;
-      }
-      refreshUkolyList();
-      break;
-
-    case 'set-splnitelna':
-      syncUkolyFromDOM();
-      if (ukolIndex !== null && window._formUkoly[ukolIndex]) {
-        window._formUkoly[ukolIndex].splnitelna = target.dataset.splnitelna;
       }
       refreshUkolyList();
       break;
