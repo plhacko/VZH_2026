@@ -161,7 +161,10 @@ function renderCardTile(card) {
   return `
     <div class="card-tile">
       <div class="card-tile-top">
-        <div class="card-tile-name">${escapeHtml(card.name)}</div>
+        <div class="card-tile-name-group">
+          <div class="card-tile-name">${escapeHtml(card.name)}</div>
+          ${card.poznamka ? `<div class="card-tile-poznamka">${escapeHtml(card.poznamka)}</div>` : ''}
+        </div>
         <div class="card-tile-actions">
           <button class="btn btn-ghost btn-icon" data-action="edit-card" data-card-id="${card.id}" title="Upravit kartu" aria-label="Upravit kartu ${escapeHtml(card.name)}">✏️</button>
           <button class="btn btn-ghost btn-icon" data-action="delete-card" data-card-id="${card.id}" title="Smazat kartu" aria-label="Smazat kartu ${escapeHtml(card.name)}">🗑️</button>
@@ -270,6 +273,7 @@ function renderUkolRow(ukol, index, total) {
 function renderFormView(card) {
   const isEdit = card !== null;
   const name = isEdit ? card.name : '';
+  const poznamka = isEdit ? (card.poznamka || '') : '';
   const utocna = isEdit ? card.utocna : false;
   const obsazujici = isEdit ? card.obsazujici : false;
   const obranna = isEdit ? card.obranna : false;
@@ -300,6 +304,19 @@ function renderFormView(card) {
           rows="1"
         >${escapeHtml(name)}</textarea>
         <span class="form-error" id="error-name">Název karty nesmí být prázdný.</span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="field-poznamka">Poznámka</label>
+        <textarea
+          class="form-input"
+          id="field-poznamka"
+          name="poznamka"
+          placeholder="Volitelná poznámka ke kartě"
+          maxlength="500"
+          autocomplete="off"
+          rows="2"
+        >${escapeHtml(poznamka)}</textarea>
       </div>
 
       <div>
@@ -433,7 +450,9 @@ function handleFormSubmit(e) {
   const obsazujiciInput = document.getElementById('field-obsazujici');
   const obrannaInput = document.getElementById('field-obranna');
 
+  const poznamkaInput = document.getElementById('field-poznamka');
   const name = nameInput ? nameInput.value : '';
+  const poznamka = poznamkaInput ? poznamkaInput.value.trim() : '';
   const utocna = utocnaInput ? utocnaInput.checked : false;
   const obsazujici = obsazujiciInput ? obsazujiciInput.checked : false;
   const obranna = obrannaInput ? obrannaInput.checked : false;
@@ -453,6 +472,7 @@ function handleFormSubmit(e) {
       cards[idx] = {
         ...cards[idx],
         name: name.trim(),
+        poznamka,
         utocna,
         obsazujici,
         obranna,
@@ -464,6 +484,7 @@ function handleFormSubmit(e) {
     cards.push({
       id: generateId(),
       name: name.trim(),
+      poznamka,
       utocna,
       obsazujici,
       obranna,

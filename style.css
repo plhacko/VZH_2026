@@ -204,13 +204,26 @@ body {
   font-size: 1rem;
   font-weight: 700;
   word-break: break-word;
-  flex: 1;
 }
 
 .card-tile-actions {
   display: flex;
   gap: var(--space-xs);
   flex-shrink: 0;
+}
+
+.card-tile-name-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  flex: 1;
+  min-width: 0;
+}
+
+.card-tile-poznamka {
+  font-size: .82rem;
+  color: var(--color-text-muted);
+  word-break: break-word;
 }
 
 .card-tile-meta {
