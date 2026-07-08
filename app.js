@@ -208,6 +208,7 @@ function renderListView() {
                  <button class="btn btn-ghost btn-sm" data-action="email-export">Odeslat emailem</button>
                </div>`
             : ''}
+          <button class="btn btn-ghost btn-sm" data-action="import">Importovat JSON</button>
           <button class="btn btn-primary btn-sm" data-action="new-card">+ Nová karta</button>
         </div>
       </div>
@@ -514,6 +515,30 @@ function handleEmailExport() {
   window.location.href = `mailto:plhacko@gmail.com?subject=${subject}&body=${body}`;
 }
 
+function handleImport(file) {
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    let imported;
+    try {
+      imported = JSON.parse(e.target.result);
+    } catch {
+      alert('Soubor není platný JSON.');
+      return;
+    }
+    if (!Array.isArray(imported) || imported.some(c => !c.id || !c.name)) {
+      alert('Soubor neobsahuje platná data karet.');
+      return;
+    }
+    if (cards.length > 0 && !confirm(`Importovat ${imported.length} ${imported.length === 1 ? 'kartu' : imported.length <= 4 ? 'karty' : 'karet'}? Stávající karty (${cards.length}) budou nahrazeny.`)) {
+      return;
+    }
+    cards = imported;
+    saveCards();
+    renderListView();
+  };
+  reader.readAsText(file);
+}
+
 function handleExport() {
   const json = JSON.stringify(cards, null, 2);
   const blob = new Blob([json], { type: 'application/json' });
@@ -610,6 +635,10 @@ document.addEventListener('click', function (e) {
       handleEmailExport();
       break;
 
+    case 'import':
+      document.getElementById('import-file-input').click();
+      break;
+
   }
 });
 
@@ -626,6 +655,10 @@ document.getElementById('confirm-dialog').addEventListener('click', function (e)
 function init() {
   cards = loadCards();
   renderListView();
+  document.getElementById('import-file-input').addEventListener('change', function () {
+    if (this.files[0]) handleImport(this.files[0]);
+    this.value = '';
+  });
 }
 
 document.addEventListener('DOMContentLoaded', init);

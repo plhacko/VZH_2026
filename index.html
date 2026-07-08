@@ -71,5 +71,6 @@
     document.getElementById('mapa-zoom-out').addEventListener('click', e => { e.stopPropagation(); zoomIdx = Math.max(zoomIdx - 1, 0); applyZoom(); });
     dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
   </script>
+  <input type="file" id="import-file-input" accept=".json,application/json" style="display:none">
 </body>
 </html>
