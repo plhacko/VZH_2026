@@ -159,7 +159,7 @@ function renderCardTile(card) {
   const hasBadges = card.utocna || card.obsazujici || card.obranna;
 
   return `
-    <div class="card-tile">
+    <div class="card-tile" data-card-id="${card.id}">
       <div class="card-tile-top">
         <div class="card-tile-name-group">
           <div class="card-tile-name">${escapeHtml(card.name)}</div>
@@ -270,7 +270,13 @@ function renderUkolRow(ukol, index, total) {
     </div>`;
 }
 
+function scrollToCard(id) {
+  const el = document.querySelector(`.card-tile[data-card-id="${id}"]`);
+  if (el) el.scrollIntoView({ behavior: 'instant', block: 'center' });
+}
+
 function renderFormView(card) {
+  window.scrollTo({ top: 0, behavior: 'instant' });
   const isEdit = card !== null;
   const name = isEdit ? card.name : '';
   const poznamka = isEdit ? (card.poznamka || '') : '';
@@ -494,9 +500,11 @@ function handleFormSubmit(e) {
     });
   }
 
+  const savedId = editingCardId || cards[cards.length - 1].id;
   saveCards();
   editingCardId = null;
   renderListView();
+  scrollToCard(savedId);
 }
 
 // ===== Delete =====
@@ -582,7 +590,13 @@ document.addEventListener('input', function (e) {
 
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Enter' && e.target.tagName === 'TEXTAREA' && e.target.classList.contains('form-input')) {
-    e.preventDefault();
+    if (e.ctrlKey) {
+      e.preventDefault();
+      const form = document.getElementById('card-form');
+      if (form) form.requestSubmit();
+    } else {
+      e.preventDefault();
+    }
   }
 });
 
@@ -643,10 +657,13 @@ document.addEventListener('click', function (e) {
       refreshUkolyList();
       break;
 
-    case 'back-to-list':
+    case 'back-to-list': {
+      const targetId = editingCardId;
       editingCardId = null;
       renderListView();
+      if (targetId) scrollToCard(targetId);
       break;
+    }
 
     case 'export':
       handleExport();
