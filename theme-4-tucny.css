@@ -83,6 +83,24 @@ body {
   gap: var(--space-sm);
   flex-shrink: 0;
   align-items: center;
+  width: 100%;
+}
+
+.card-count-badge {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0 var(--space-sm);
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: auto;
+  box-shadow: var(--shadow-sm);
 }
 
 .header-export-actions {
@@ -196,8 +214,22 @@ body {
   gap: var(--space-sm);
 }
 
-.card-tile-name { font-size: 1rem; font-weight: 800; word-break: break-word; flex: 1; color: #000; }
+.card-tile-name { font-size: 1rem; font-weight: 800; word-break: break-word; color: #000; }
 .card-tile-actions { display: flex; gap: var(--space-xs); flex-shrink: 0; }
+
+.card-tile-name-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  flex: 1;
+  min-width: 0;
+}
+
+.card-tile-poznamka {
+  font-size: .82rem;
+  color: var(--color-text-muted);
+  word-break: break-word;
+}
 
 .card-tile-meta { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-xs); }
 

@@ -204,6 +204,7 @@ function renderListView() {
     <header class="app-header">
       <div class="app-header-inner">
         <h1 class="app-title">VZH 2026 — Herní karty</h1>
+        <span class="card-count-badge">${cards.length}</span>
         <div class="header-actions">
           ${cards.length > 0
             ? `<div class="header-export-actions">
