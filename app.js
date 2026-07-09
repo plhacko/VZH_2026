@@ -4,6 +4,7 @@
 let cards = [];
 let editingCardId = null;
 let pendingDeleteId = null;
+let pendingImportData = null;
 
 // ===== Storage =====
 function loadCards() {
@@ -545,6 +546,10 @@ function handleEmailExport() {
   window.location.href = `mailto:plhacko@gmail.com?subject=${subject}&body=${body}`;
 }
 
+function cardCountLabel(n) {
+  return n === 1 ? 'kartu' : n <= 4 ? 'karty' : 'karet';
+}
+
 function handleImport(file) {
   const reader = new FileReader();
   reader.onload = function (e) {
@@ -559,14 +564,45 @@ function handleImport(file) {
       alert('Soubor neobsahuje platná data karet.');
       return;
     }
-    if (cards.length > 0 && !confirm(`Importovat ${imported.length} ${imported.length === 1 ? 'kartu' : imported.length <= 4 ? 'karty' : 'karet'}? Stávající karty (${cards.length}) budou nahrazeny.`)) {
+    if (cards.length === 0) {
+      cards = imported;
+      saveCards();
+      renderListView();
       return;
     }
-    cards = imported;
-    saveCards();
-    renderListView();
+    pendingImportData = imported;
+    const newCount = imported.filter(c => !cards.some(e => e.id === c.id)).length;
+    const msg = document.getElementById('import-dialog-message');
+    if (msg) msg.textContent = `Importovat ${imported.length} ${cardCountLabel(imported.length)} (${newCount} nových)? Přidat je ke stávajícím kartám, nebo nahradit všechny stávající karty (${cards.length})?`;
+    const dialog = document.getElementById('import-dialog');
+    if (dialog) dialog.showModal();
   };
   reader.readAsText(file);
+}
+
+function handleAdditiveImport() {
+  if (!pendingImportData) return;
+  const existingIds = new Set(cards.map(c => c.id));
+  const newCards = pendingImportData.filter(c => !existingIds.has(c.id));
+  cards = [...cards, ...newCards];
+  pendingImportData = null;
+  saveCards();
+  document.getElementById('import-dialog').close();
+  renderListView();
+}
+
+function handleReplaceImport() {
+  if (!pendingImportData) return;
+  cards = pendingImportData;
+  pendingImportData = null;
+  saveCards();
+  document.getElementById('import-dialog').close();
+  renderListView();
+}
+
+function handleCancelImport() {
+  pendingImportData = null;
+  document.getElementById('import-dialog').close();
 }
 
 function handleExport() {
@@ -632,6 +668,18 @@ document.addEventListener('click', function (e) {
       handleCancelDelete();
       break;
 
+    case 'additive-import':
+      handleAdditiveImport();
+      break;
+
+    case 'replace-import':
+      handleReplaceImport();
+      break;
+
+    case 'cancel-import':
+      handleCancelImport();
+      break;
+
     case 'add-ukol':
       handleAddUkol();
       break;
@@ -688,6 +736,9 @@ document.addEventListener('submit', function (e) {
 // close dialog on backdrop click
 document.getElementById('confirm-dialog').addEventListener('click', function (e) {
   if (e.target === this) handleCancelDelete();
+});
+document.getElementById('import-dialog').addEventListener('click', function (e) {
+  if (e.target === this) handleCancelImport();
 });
 
 // ===== Init =====

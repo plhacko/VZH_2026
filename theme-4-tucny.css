@@ -409,13 +409,17 @@ dialog {
   width: calc(100% - var(--space-lg) * 2);
   background: #fff;
   color: #000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 dialog::backdrop { background: rgba(0,0,0,.5); }
 
 .dialog-content { padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-lg); }
 .dialog-content p { font-size: 0.95rem; line-height: 1.5; font-weight: 600; }
-.dialog-actions { display: flex; justify-content: flex-end; gap: var(--space-sm); }
+.dialog-actions { display: flex; justify-content: center; gap: var(--space-sm); }
 
 /* ===== Theme Picker ===== */
 .theme-picker { display: flex; align-items: center; gap: 3px; flex-shrink: 0; }
