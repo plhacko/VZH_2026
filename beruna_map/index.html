@@ -104,29 +104,43 @@ function noise(c, r, s) {
   return Math.abs(Math.sin(n * 127.1 + 5.7) * 43758.54) % 1;
 }
 
-// River: col 5-30, gently meanders northward toward east sea
-function riverRow(col) {
-  if (col < 5 || col > 30) return -99;
-  const t    = (col - 5) / 25;
-  const base = 16 - t * 5;
-  return Math.round(base + Math.sin(col * 0.8) * 1.2);
-}
-function isBridgeHex(col, row) { return col === 16 && row === 14; }
-function isRiverHex(col, row) {
-  if (isBridgeHex(col, row)) return false;
-  return col >= 5 && col <= 30 && row === riverRow(col);
-}
+// River: parity-aware connected walk from col 8 to col 30.
+// Flat-top offset grid adjacency rule across columns:
+//   even col → odd col+1 : valid moves are stay OR row-1 (north only)
+//   odd  col → even col+1: valid moves are stay OR row+1 (south only)
+// This guarantees every consecutive pair shares a hex edge.
+const RIVER_PATH = (function () {
+  const START = 8, END = 30, START_ROW = 16;
+  const path = {};
+  let row = START_ROW;
+  path[START] = row;
+  for (let col = START + 1; col <= END; col++) {
+    const t      = (col - START) / (END - START);
+    const target = Math.round((16 - t * 5) + Math.sin(col * 0.8) * 1.2);
+    if ((col - 1) % 2 === 0) {
+      // previous col was EVEN → transitioning to ODD: can only go north (row-1) or stay
+      if (target < row) row--;
+    } else {
+      // previous col was ODD → transitioning to EVEN: can only go south (row+1) or stay
+      if (target > row) row++;
+    }
+    path[col] = row;
+  }
+  return path;
+}());
+
+function isRiverHex(col, row) { return RIVER_PATH[col] === row; }
 
 const POIS = [
-  { col: 16, row: 14, name: 'Berunský most'   },
+  { col: 19, row: 14, name: 'Berunský most'   },
   { col: 14, row: 18, name: 'Město Beruna'    },
   { col: 10, row: 22, name: 'Taneční louka'   },
-  { col: 22, row: 13, name: 'Aslanův pahorek' },
+  { col: 24, row: 11, name: 'Aslanův pahorek' },
   { col: 28, row:  4, name: 'Cair Paravel'    },
   { col: 18, row:  8, name: 'Kolbiště'        },
   { col: 26, row:  6, name: 'Soví les'        },
   { col: 16, row: 26, name: 'Mirazův tábor'   },
-  { col:  4, row: 15, name: 'Brod'            },
+  { col: 10, row: 17, name: 'Brod'            },
 ];
 const POI_SET = new Set(POIS.map(p => p.col + ',' + p.row));
 
@@ -136,11 +150,9 @@ const FILL = {
   sea:       'white',
   mountains: 'white',
   river:     '#2a2a2a',
-  bridge:    'white',
 };
 
 function terrain(col, row) {
-  if (isBridgeHex(col, row))        return 'bridge';
   if (isRiverHex(col, row))         return 'river';
   if (POI_SET.has(col + ',' + row)) return 'fields';
 
@@ -187,17 +199,6 @@ function drawSeaIcon(g, cx, cy) {
   }
 }
 
-function drawBridge(cx, cy) {
-  const g  = el('g', { 'stroke-linecap': 'round', stroke: '#000' }, svg);
-  const rw = 1.6, rl = HH * 0.42;
-  el('line', { x1: cx - rw, y1: cy - rl, x2: cx - rw, y2: cy + rl, 'stroke-width': '0.95' }, g);
-  el('line', { x1: cx + rw, y1: cy - rl, x2: cx + rw, y2: cy + rl, 'stroke-width': '0.95' }, g);
-  for (let i = 0; i <= 6; i++) {
-    const py = cy - rl + i * (2 * rl / 6);
-    el('line', { x1: cx - rw, y1: py, x2: cx + rw, y2: py, 'stroke-width': '0.55' }, g);
-  }
-}
-
 function drawCompass(cx, cy) {
   const r = 7;
   const g = el('g', {}, svg);
@@ -232,17 +233,11 @@ function generate() {
     }
   }
 
-  const [bx, by] = hexCenter(16, 14);
-  drawBridge(bx, by);
-
   const gPoi = el('g', { id: 'pois' }, svg);
   for (const p of POIS) {
-    const isBridge = isBridgeHex(p.col, p.row);
     const [cx, cy] = hexCenter(p.col, p.row);
-    if (!isBridge) {
-      el('circle', { cx, cy, r: 3.0,  fill: '#000'  }, gPoi);
-      el('circle', { cx, cy, r: 1.55, fill: 'white' }, gPoi);
-    }
+    el('circle', { cx, cy, r: 3.0,  fill: '#000'  }, gPoi);
+    el('circle', { cx, cy, r: 1.55, fill: 'white' }, gPoi);
     const labelBelow = p.row < 3;
     const labelLeft  = p.col >= 30;
     const ly         = cy + (labelBelow ? 7 : -5);
