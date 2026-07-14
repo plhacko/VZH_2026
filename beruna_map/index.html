@@ -63,25 +63,7 @@
 <svg id="map" xmlns="http://www.w3.org/2000/svg"
      width="594mm" height="630mm"
      viewBox="0 0 594 630">
-<defs>
-  <!-- Forest: 5x6mm line-only pine tree (dense) -->
-  <pattern id="pat-forest" x="0" y="0" width="5" height="6" patternUnits="userSpaceOnUse">
-    <rect width="5" height="6" fill="#b8b8b8"/>
-    <line x1="2.5" y1="0.4"  x2="2.5" y2="5.6"  stroke="#000" stroke-width="0.30"/>
-    <line x1="2.5" y1="1.1"  x2="1.7" y2="2.0"  stroke="#000" stroke-width="0.26"/>
-    <line x1="2.5" y1="1.1"  x2="3.3" y2="2.0"  stroke="#000" stroke-width="0.26"/>
-    <line x1="1.3" y1="2.0"  x2="2.0" y2="2.0"  stroke="#000" stroke-width="0.22"/>
-    <line x1="3.0" y1="2.0"  x2="3.7" y2="2.0"  stroke="#000" stroke-width="0.22"/>
-    <line x1="2.5" y1="2.5"  x2="1.4" y2="3.5"  stroke="#000" stroke-width="0.26"/>
-    <line x1="2.5" y1="2.5"  x2="3.6" y2="3.5"  stroke="#000" stroke-width="0.26"/>
-    <line x1="1.0" y1="3.5"  x2="1.7" y2="3.5"  stroke="#000" stroke-width="0.22"/>
-    <line x1="3.3" y1="3.5"  x2="4.0" y2="3.5"  stroke="#000" stroke-width="0.22"/>
-    <line x1="2.5" y1="3.8"  x2="1.3" y2="4.8"  stroke="#000" stroke-width="0.26"/>
-    <line x1="2.5" y1="3.8"  x2="3.7" y2="4.8"  stroke="#000" stroke-width="0.26"/>
-    <line x1="0.9" y1="4.8"  x2="1.6" y2="4.8"  stroke="#000" stroke-width="0.22"/>
-    <line x1="3.4" y1="4.8"  x2="4.1" y2="4.8"  stroke="#000" stroke-width="0.22"/>
-  </pattern>
-</defs>
+<defs></defs>
 </svg>
 </div>
 
@@ -105,8 +87,10 @@ const CFG = {
   borderNoise:   0.35,  // second border-tile probability (lower = thicker)
   mtnNoise:      0.965, // interior mountain threshold (raise = rarer)
   forestNoise:   0.970, // interior forest patch threshold
-  seaInletNoise: 0.82,  // coastal sea-inlet threshold (cols 27-30)
 };
+
+// Tiles forced to land regardless of noise (north/NW of Cair Paravel to keep it accessible)
+const CP_LAND = new Set(['29,10','29,9','28,11','28,10','27,10']);
 
 function el(tag, attrs, parent) {
   const e = document.createElementNS(NS, tag);
@@ -141,7 +125,7 @@ function noise(c, r, s) {
 //   odd  col → even col+1: valid moves are stay OR row+1 (south only)
 // This guarantees every consecutive pair shares a hex edge.
 const RIVER_PATH = (function () {
-  const START = 8, END = 30, START_ROW = 16;
+  const START = 8, END = 29, START_ROW = 16;
   const path = {};
   let row = START_ROW;
   path[START] = row;
@@ -167,7 +151,7 @@ const POIS = [
   { col: 18, row: 18, name: 'Město Beruna'    },
   { col: 10, row: 22, name: 'Taneční louka'   },
   { col: 24, row: 11, name: 'Aslanův pahorek' },
-  { col: 30, row: 11, name: 'Cair Paravel'    },
+  { col: 29, row: 11, name: 'Cair Paravel'    },
   { col: 17, row: 11, name: 'Kolbiště'        },
   { col: 26, row:  6, name: 'Soví les'        },
   { col: 17, row: 20, name: 'Mirazův tábor'   },
@@ -186,7 +170,7 @@ const POI_SET = new Set(POIS.map(p => p.col + ',' + p.row));
 
 const FILL = {
   fields:    'white',
-  forest:    'url(#pat-forest)',
+  forest:    '#b8b8b8',
   sea:       '#e4e4e4',
   mountains: '#d0d0d0',
   river:     '#2a2a2a',
@@ -196,8 +180,12 @@ function terrain(col, row) {
   if (isRiverHex(col, row))         return 'river';
   if (POI_SET.has(col + ',' + row)) return 'fields';
 
+  if (CP_LAND.has(col + ',' + row)) return 'fields'; // land north/NW of Cair Paravel
+
   if (col >= 31) return 'sea';
-  if (col === 30 && noise(col, row, 6) > CFG.borderNoise) return 'sea';
+  if (col === 30 && noise(col, row, 11) > 0.18) return 'sea'; // ~82% sea — ragged near shore
+  if (col === 29 && noise(col, row, 12) > 0.52) return 'sea'; // ~48% sea — rugged inlets
+  if (col >= 27   && noise(col, row,  7) > 0.78) return 'sea'; // ~22% sea — deep inlet tips
 
   if (col === 0) return 'forest';
   if (col === 1 && noise(col, row, 2) > CFG.borderNoise) return 'forest';
@@ -207,8 +195,6 @@ function terrain(col, row) {
 
   if (row === 29) return 'mountains';
   if (row === 28 && noise(col, row, 4) > CFG.borderNoise) return 'mountains';
-
-  if (col >= 27 && noise(col, row, 7) > CFG.seaInletNoise) return 'sea';
   if (noise(col, row, 8) > CFG.mtnNoise)    return 'mountains';
   if (noise(col, row, 9) > CFG.forestNoise) return 'forest';
 
@@ -226,6 +212,35 @@ function drawMountainIcon(g, cx, cy) {
     points: `${cx-7},${by} ${cx-2},${cy-4} ${cx+3},${by}`,
     fill: 'white', stroke: '#000', 'stroke-width': '0.42', 'stroke-linejoin': 'round',
   }, g);
+}
+
+// Exact same tree shape as the old pat-forest pattern, tiled at the same absolute 5x6mm
+// grid positions (patternUnits="userSpaceOnUse" origin), clipped to the hex boundary.
+// Vector lines in the PDF — no rasterisation.
+function drawTree(parent, tx, ty) {
+  const ln = (x1, y1, x2, y2, sw) => el('line', {
+    x1: (tx+x1-2.5).toFixed(2), y1: (ty+y1-3).toFixed(2),
+    x2: (tx+x2-2.5).toFixed(2), y2: (ty+y2-3).toFixed(2),
+    stroke: '#000', 'stroke-width': sw,
+  }, parent);
+  ln(2.5,0.4, 2.5,5.6,'0.30'); ln(2.5,1.1, 1.7,2.0,'0.26'); ln(2.5,1.1, 3.3,2.0,'0.26');
+  ln(1.3,2.0, 2.0,2.0,'0.22'); ln(3.0,2.0, 3.7,2.0,'0.22');
+  ln(2.5,2.5, 1.4,3.5,'0.26'); ln(2.5,2.5, 3.6,3.5,'0.26');
+  ln(1.0,3.5, 1.7,3.5,'0.22'); ln(3.3,3.5, 4.0,3.5,'0.22');
+  ln(2.5,3.8, 1.3,4.8,'0.26'); ln(2.5,3.8, 3.7,4.8,'0.26');
+  ln(0.9,4.8, 1.6,4.8,'0.22'); ln(3.4,4.8, 4.1,4.8,'0.22');
+}
+function drawForestIcon(g, cx, cy, col, row) {
+  const defs   = svg.querySelector('defs');
+  const clipId = 'fc' + col + '-' + row;
+  const cp     = el('clipPath', { id: clipId }, defs);
+  el('polygon', { points: hexPoints(cx, cy) }, cp);
+  const fg = el('g', { 'clip-path': 'url(#' + clipId + ')' }, g);
+  const xStart = 2.5 + Math.floor((cx - HW / 2 - 2.5) / 5) * 5;
+  const yStart = 3.0 + Math.floor((cy - HH / 2 - 3.0) / 6) * 6;
+  for (let tx = xStart; tx <= cx + HW / 2 + 5; tx += 5)
+    for (let ty = yStart; ty <= cy + HH / 2 + 6; ty += 6)
+      drawTree(fg, tx, ty);
 }
 
 // Three horizontal wave lines, two upward bumps each — classic board game water glyph
@@ -270,6 +285,7 @@ function generate() {
       }, gHex);
       if (t === 'mountains') drawMountainIcon(gHex, cx, cy);
       if (t === 'sea')       drawSeaIcon(gHex, cx, cy);
+      if (t === 'forest')    drawForestIcon(gHex, cx, cy, col, row);
     }
   }
 
