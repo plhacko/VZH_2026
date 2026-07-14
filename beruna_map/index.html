@@ -8,19 +8,45 @@
   body {
     background: #d8d8d8;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 10px;
+    gap: 16px;
   }
+  #panel {
+    width: 180px;
+    min-width: 180px;
+    background: white;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+    padding: 14px 16px;
+    border-radius: 3px;
+    align-self: flex-start;
+    font-family: sans-serif;
+    font-size: 13px;
+    color: #222;
+  }
+  #panel h2 {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 10px;
+  }
+  #tile-counts { width: 100%; border-collapse: collapse; }
+  #tile-counts td { padding: 5px 0; }
+  #tile-counts tr + tr td { border-top: 1px solid #eee; }
+  #tile-counts td:last-child { text-align: right; font-weight: bold; }
   #map-wrapper { background: white; box-shadow: 0 4px 24px rgba(0,0,0,0.35); display: inline-block; }
-  /* Scale SVG to fit viewport — constrain by whichever dimension is binding */
   svg {
     display: block;
-    width: min(calc(100vw - 20px), calc((100vh - 20px) * 594 / 630));
+    width: min(calc(100vw - 226px), calc((100vh - 20px) * 594 / 630));
     height: auto;
   }
   @media print {
+    #panel { display: none; }
     body { background: white; padding: 0; display: block; min-height: unset; }
     #map-wrapper { box-shadow: none; margin: 0; }
     @page { size: A4 landscape; margin: 0; }
@@ -29,6 +55,10 @@
 </style>
 </head>
 <body>
+<div id="panel">
+  <h2>Typy pol&#237;</h2>
+  <table id="tile-counts"><tbody></tbody></table>
+</div>
 <div id="map-wrapper">
 <svg id="map" xmlns="http://www.w3.org/2000/svg"
      width="594mm" height="630mm"
@@ -36,6 +66,7 @@
 <defs>
   <!-- Forest: 5x6mm line-only pine tree (dense) -->
   <pattern id="pat-forest" x="0" y="0" width="5" height="6" patternUnits="userSpaceOnUse">
+    <rect width="5" height="6" fill="#b8b8b8"/>
     <line x1="2.5" y1="0.4"  x2="2.5" y2="5.6"  stroke="#000" stroke-width="0.30"/>
     <line x1="2.5" y1="1.1"  x2="1.7" y2="2.0"  stroke="#000" stroke-width="0.26"/>
     <line x1="2.5" y1="1.1"  x2="3.3" y2="2.0"  stroke="#000" stroke-width="0.26"/>
@@ -154,8 +185,8 @@ const POI_SET = new Set(POIS.map(p => p.col + ',' + p.row));
 const FILL = {
   fields:    'white',
   forest:    'url(#pat-forest)',
-  sea:       'white',
-  mountains: 'white',
+  sea:       '#e4e4e4',
+  mountains: '#d0d0d0',
   river:     '#2a2a2a',
 };
 
@@ -271,7 +302,42 @@ function generate() {
   drawCompass(563, 608);
 }
 
+function buildPanel() {
+  const counts = {};
+  for (let col = 0; col < COLS; col++) {
+    for (let row = 0; row < ROWS; row++) {
+      const t = terrain(col, row);
+      counts[t] = (counts[t] || 0) + 1;
+    }
+  }
+  counts.poi = POIS.length;
+
+  const ORDER  = ['fields', 'poi', 'forest', 'mountains', 'sea', 'river'];
+  const LABELS = {
+    fields:    'Planiny',
+    poi:       'Zaj&#237;mav&#225; m&#237;sta',
+    forest:    'Les',
+    mountains: 'Hory',
+    sea:       'Mo&#345;e',
+    river:     '&#344;eka',
+  };
+
+  const tbody = document.querySelector('#tile-counts tbody');
+  for (const key of ORDER) {
+    if (counts[key] == null) continue;
+    const tr  = document.createElement('tr');
+    const tdL = document.createElement('td');
+    const tdN = document.createElement('td');
+    tdL.innerHTML = LABELS[key];
+    tdN.textContent = counts[key];
+    tr.appendChild(tdL);
+    tr.appendChild(tdN);
+    tbody.appendChild(tr);
+  }
+}
+
 generate();
+buildPanel();
 </script>
 </body>
 </html>
