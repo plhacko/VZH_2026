@@ -164,21 +164,23 @@ function isRiverHex(col, row) { return RIVER_PATH[col] === row; }
 
 const POIS = [
   { col: 19, row: 14, name: 'Berunský most'   },
-  { col: 14, row: 18, name: 'Město Beruna'    },
+  { col: 18, row: 18, name: 'Město Beruna'    },
   { col: 10, row: 22, name: 'Taneční louka'   },
   { col: 24, row: 11, name: 'Aslanův pahorek' },
-  { col: 28, row:  4, name: 'Cair Paravel'    },
-  { col: 18, row:  8, name: 'Kolbiště'        },
+  { col: 30, row: 11, name: 'Cair Paravel'    },
+  { col: 17, row: 11, name: 'Kolbiště'        },
   { col: 26, row:  6, name: 'Soví les'        },
-  { col: 16, row: 26, name: 'Mirazův tábor'   },
+  { col: 17, row: 20, name: 'Mirazův tábor'   },
   { col: 10, row: 17, name: 'Brod'            },
   // top-left: old Narnian northwest
   { col:  6, row:  7, name: 'Dryádský háj'   },
   { col:  5, row:  2, name: 'Severní věž'    },
   // bottom-right: Telmarine southeast
-  { col: 27, row: 22, name: 'Telmarin'        },
+  { col: 21, row: 24, name: 'Telmarin'        },
   { col: 29, row: 18, name: 'Jižní přístav'  },
   { col: 25, row: 25, name: 'Jižní planina'  },
+  // western Narnia
+  { col:  3, row: 12, name: 'Lucerna'         },
 ];
 const POI_SET = new Set(POIS.map(p => p.col + ',' + p.row));
 
