@@ -2,112 +2,77 @@
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
-<title>Bitva u Beruny — Hexová mapa</title>
+<title>Bitva u Beruny</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: #555;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 24px;
-    font-family: Georgia, serif;
-  }
-  #instructions {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 14px 22px;
-    margin-bottom: 20px;
-    max-width: 660px;
-    font-size: 13px;
-    line-height: 1.7;
-    color: #222;
-  }
-  #instructions h2 { font-size: 17px; margin-bottom: 6px; }
-  #instructions p + p { margin-top: 6px; }
-  kbd {
-    background: #eee; border: 1px solid #bbb; border-radius: 3px;
-    padding: 1px 5px; font-size: 11px; font-family: monospace;
-  }
-  #map-wrapper {
-    background: white;
-    box-shadow: 0 6px 30px rgba(0,0,0,0.6);
-  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d8d8d8; display: flex; justify-content: center; padding: 20px; }
+  #map-wrapper { background: white; box-shadow: 0 4px 24px rgba(0,0,0,0.35); display: inline-block; }
   @media print {
     body { background: white; padding: 0; display: block; }
-    #instructions { display: none; }
     #map-wrapper { box-shadow: none; margin: 0; }
-    @page { size: A4 portrait; margin: 0; }
+    @page { size: A4 landscape; margin: 0; }
     svg { display: block; }
   }
 </style>
 </head>
 <body>
-
-<div id="instructions">
-  <h2>Bitva u Beruny — Hexová mapa</h2>
-  <p>
-    <strong>Tisk:</strong> Stiskněte <kbd>Ctrl+P</kbd> → Papír: <em>A4</em> → Orientace: <em>Na výšku</em>
-    → Okraje: <em>Žádné</em> → Měřítko: <em>100 %</em> (nevybírejte „přizpůsobit stránce"). Vytisknou se
-    <strong>6 listů</strong>. Vystřihněte podél přerušovaných vodítek a sestavte mapu: 2 listy do šířky,
-    3 listy do výšky. Sever je nahoře.
-  </p>
-  <p>
-    <strong>Cíl hry:</strong> Hráči obsazují hexagony a snaží se propojit šest označených
-    <em>Míst zájmu</em>. Berunský most <strong>①</strong> je klíčový bod — kdo kontroluje přechod,
-    ovládá bitvu.
-  </p>
-</div>
-
 <div id="map-wrapper">
-  <svg id="map" xmlns="http://www.w3.org/2000/svg"
-       width="420mm" height="891mm"
-       viewBox="0 0 420 891"
-       style="display:block; font-family: Georgia, serif;">
-    <defs>
-
-      <!-- Forest: three-tier line-only pine tree, 5x6 mm tile (dense, compact) -->
-      <pattern id="pat-forest" x="0" y="0" width="5" height="6"
-               patternUnits="userSpaceOnUse">
-        <!-- spine -->
-        <line x1="2.5" y1="0.4"  x2="2.5" y2="5.6"  stroke="#000" stroke-width="0.30"/>
-        <!-- tier 1: top, narrowest -->
-        <line x1="2.5" y1="1.1"  x2="1.7" y2="2.0"  stroke="#000" stroke-width="0.26"/>
-        <line x1="2.5" y1="1.1"  x2="3.3" y2="2.0"  stroke="#000" stroke-width="0.26"/>
-        <line x1="1.3" y1="2.0"  x2="2.0" y2="2.0"  stroke="#000" stroke-width="0.22"/>
-        <line x1="3.0" y1="2.0"  x2="3.7" y2="2.0"  stroke="#000" stroke-width="0.22"/>
-        <!-- tier 2: middle -->
-        <line x1="2.5" y1="2.5"  x2="1.4" y2="3.5"  stroke="#000" stroke-width="0.26"/>
-        <line x1="2.5" y1="2.5"  x2="3.6" y2="3.5"  stroke="#000" stroke-width="0.26"/>
-        <line x1="1.0" y1="3.5"  x2="1.7" y2="3.5"  stroke="#000" stroke-width="0.22"/>
-        <line x1="3.3" y1="3.5"  x2="4.0" y2="3.5"  stroke="#000" stroke-width="0.22"/>
-        <!-- tier 3: base, only slightly wider than tier 2 -->
-        <line x1="2.5" y1="3.8"  x2="1.3" y2="4.8"  stroke="#000" stroke-width="0.26"/>
-        <line x1="2.5" y1="3.8"  x2="3.7" y2="4.8"  stroke="#000" stroke-width="0.26"/>
-        <line x1="0.9" y1="4.8"  x2="1.6" y2="4.8"  stroke="#000" stroke-width="0.22"/>
-        <line x1="3.4" y1="4.8"  x2="4.1" y2="4.8"  stroke="#000" stroke-width="0.22"/>
-      </pattern>
-
-    </defs>
-  </svg>
+<svg id="map" xmlns="http://www.w3.org/2000/svg"
+     width="594mm" height="630mm"
+     viewBox="0 0 594 630">
+<defs>
+  <!-- Forest: 5x6mm line-only pine tree (dense) -->
+  <pattern id="pat-forest" x="0" y="0" width="5" height="6" patternUnits="userSpaceOnUse">
+    <line x1="2.5" y1="0.4"  x2="2.5" y2="5.6"  stroke="#000" stroke-width="0.30"/>
+    <line x1="2.5" y1="1.1"  x2="1.7" y2="2.0"  stroke="#000" stroke-width="0.26"/>
+    <line x1="2.5" y1="1.1"  x2="3.3" y2="2.0"  stroke="#000" stroke-width="0.26"/>
+    <line x1="1.3" y1="2.0"  x2="2.0" y2="2.0"  stroke="#000" stroke-width="0.22"/>
+    <line x1="3.0" y1="2.0"  x2="3.7" y2="2.0"  stroke="#000" stroke-width="0.22"/>
+    <line x1="2.5" y1="2.5"  x2="1.4" y2="3.5"  stroke="#000" stroke-width="0.26"/>
+    <line x1="2.5" y1="2.5"  x2="3.6" y2="3.5"  stroke="#000" stroke-width="0.26"/>
+    <line x1="1.0" y1="3.5"  x2="1.7" y2="3.5"  stroke="#000" stroke-width="0.22"/>
+    <line x1="3.3" y1="3.5"  x2="4.0" y2="3.5"  stroke="#000" stroke-width="0.22"/>
+    <line x1="2.5" y1="3.8"  x2="1.3" y2="4.8"  stroke="#000" stroke-width="0.26"/>
+    <line x1="2.5" y1="3.8"  x2="3.7" y2="4.8"  stroke="#000" stroke-width="0.26"/>
+    <line x1="0.9" y1="4.8"  x2="1.6" y2="4.8"  stroke="#000" stroke-width="0.22"/>
+    <line x1="3.4" y1="4.8"  x2="4.1" y2="4.8"  stroke="#000" stroke-width="0.22"/>
+  </pattern>
+  <!-- Sea: 6x4mm wavy horizontal lines -->
+  <pattern id="pat-sea" x="0" y="0" width="6" height="4" patternUnits="userSpaceOnUse">
+    <path d="M0,1 C1.5,0.4 4.5,1.6 6,1"  stroke="#000" stroke-width="0.28" fill="none"/>
+    <path d="M0,3 C1.5,2.4 4.5,3.6 6,3"  stroke="#000" stroke-width="0.28" fill="none"/>
+  </pattern>
+  <!-- Mountains: 8x6mm two-peak silhouette -->
+  <pattern id="pat-mountains" x="0" y="0" width="8" height="6" patternUnits="userSpaceOnUse">
+    <polyline points="0,5.5 2,1 4,5.5"   stroke="#000" stroke-width="0.30" fill="none" stroke-linejoin="miter"/>
+    <polyline points="4,5.5 6,1.5 8,5.5" stroke="#000" stroke-width="0.30" fill="none" stroke-linejoin="miter"/>
+  </pattern>
+</defs>
+</svg>
 </div>
 
 <script>
-// ─── PARAMETERS ──────────────────────────────────────────────────────────────
-const S        = 20 / Math.sqrt(3); // circumradius so flat-to-flat = 20 mm
-const HH       = S * Math.sqrt(3);  // flat-to-flat = 20 mm
-const HW       = 2 * S;             // point-to-point ~23.09 mm
-const COL_STEP = 1.5 * S;           // ~17.32 mm
+const NS  = 'http://www.w3.org/2000/svg';
+const svg = document.getElementById('map');
+
+// Hex constants
+const S        = 20 / Math.sqrt(3);
+const HH       = S * Math.sqrt(3);
+const HW       = 2 * S;
+const COL_STEP = 1.5 * S;
 const ROW_STEP = HH;
 const MARGIN   = 5;
-const COLS     = 23;
-const ROWS     = 44;
+const COLS     = 33;
+const ROWS     = 30;
 const STROKE   = 0.22;
 
-// ─── SVG HELPERS ─────────────────────────────────────────────────────────────
-const svg = document.getElementById('map');
-const NS  = 'http://www.w3.org/2000/svg';
+// Rarity config (adjust to tune terrain frequency)
+const CFG = {
+  borderNoise:   0.35,  // second border-tile probability (lower = thicker)
+  mtnNoise:      0.93,  // interior mountain threshold (raise = rarer)
+  forestNoise:   0.94,  // interior forest patch threshold
+  seaInletNoise: 0.82,  // coastal sea-inlet threshold (cols 27-30)
+};
 
 function el(tag, attrs, parent) {
   const e = document.createElementNS(NS, tag);
@@ -115,293 +80,166 @@ function el(tag, attrs, parent) {
   if (parent) parent.appendChild(e);
   return e;
 }
-
 function txt(parent, str, attrs) {
   const t = el('text', attrs, parent);
   t.textContent = str;
   return t;
 }
-
-// ─── HEX GEOMETRY ────────────────────────────────────────────────────────────
-// Flat-top offset grid. Odd columns shift down HH/2.
 function hexCenter(col, row) {
   const x = MARGIN + HW / 2 + col * COL_STEP;
   const y = MARGIN + HH / 2 + row * ROW_STEP + (col % 2 === 1 ? HH / 2 : 0);
   return [x, y];
 }
-
 function hexPoints(cx, cy) {
   return Array.from({ length: 6 }, (_, i) => {
     const a = (Math.PI / 3) * i;
     return `${(cx + S * Math.cos(a)).toFixed(2)},${(cy + S * Math.sin(a)).toFixed(2)}`;
   }).join(' ');
 }
-
-// ─── PSEUDO-NOISE ────────────────────────────────────────────────────────────
 function noise(c, r, s) {
   const n = c * 47.3 + r * 31.9 + (s || 1) * 73.1;
   return Math.abs(Math.sin(n * 127.1 + 5.7) * 43758.54) % 1;
 }
 
-// ─── RIVER ───────────────────────────────────────────────────────────────────
-// Straight diagonal: col 4 row ~19, col 18 row ~16. No meander for stable rounding.
+// River: col 5-30, gently meanders northward toward east sea
 function riverRow(col) {
-  return 15 + (22 - col) * (5 / 22);
+  if (col < 5 || col > 30) return -99;
+  const t    = (col - 5) / 25;
+  const base = 16 - t * 5;
+  return Math.round(base + Math.sin(col * 0.8) * 1.2);
 }
-
-function isBridgeHex(col, row) {
-  return col === 12 && row === 17;
-}
-
-// River only in cols 4-18, exactly 1 hex thick
+function isBridgeHex(col, row) { return col === 16 && row === 14; }
 function isRiverHex(col, row) {
-  if (col < 4 || col > 18) return false;
   if (isBridgeHex(col, row)) return false;
-  return row === Math.round(riverRow(col));
+  return col >= 5 && col <= 30 && row === riverRow(col);
 }
 
-// ─── PLACES OF INTEREST ──────────────────────────────────────────────────────
 const POIS = [
-  { id: 1, col: 12, row: 17, name: 'Berunský most'   },
-  { id: 2, col: 11, row: 22, name: 'Město Beruna'    },
-  { id: 3, col: 17, row:  8, name: 'Aslanův pahorek' },
-  { id: 4, col: 10, row:  6, name: 'Taneční louka'   },
-  { id: 5, col: 14, row: 36, name: 'Mirazův tábor'   },
-  { id: 6, col:  4, row: 19, name: 'Brod Shribble'   },
+  { col: 16, row: 14, name: 'Berunský most'   },
+  { col: 14, row: 18, name: 'Město Beruna'    },
+  { col: 10, row: 22, name: 'Taneční louka'   },
+  { col: 22, row: 13, name: 'Aslanův pahorek' },
+  { col: 28, row:  4, name: 'Cair Paravel'    },
+  { col: 18, row:  8, name: 'Kolbiště'        },
+  { col: 26, row:  6, name: 'Soví les'        },
+  { col: 16, row: 26, name: 'Mirazův tábor'   },
+  { col:  4, row: 15, name: 'Brod'            },
 ];
-
-// ─── TERRAIN ─────────────────────────────────────────────────────────────────
-function terrain(col, row) {
-  if (isBridgeHex(col, row)) return 'bridge';
-  if (isRiverHex(col, row))  return 'river';
-
-  const rrInt = Math.round(riverRow(col));
-
-  if (row < rrInt) {
-    // Forced clearing at Dancing Lawn
-    if (col >= 9 && col <= 11 && row >= 5 && row <= 7) return 'plains';
-    const fc = 0.80 - (row / Math.max(1, rrInt - 1)) * 0.35;
-    if (noise(col, row, 3) < fc) return 'forest';
-    return 'plains';
-  }
-
-  // South of river
-  if (col >= 16 && row < rrInt + 9 && noise(col, row, 4) > 0.42) return 'forest';
-  if (noise(col, row, 5) > 0.91) return 'forest';
-  return 'plains';
-}
+const POI_SET = new Set(POIS.map(p => p.col + ',' + p.row));
 
 const FILL = {
-  plains: 'white',
-  forest: 'url(#pat-forest)',
-  river:  '#000',
-  bridge: 'white',
+  fields:    'white',
+  forest:    'url(#pat-forest)',
+  sea:       'url(#pat-sea)',
+  mountains: 'url(#pat-mountains)',
+  river:     '#2a2a2a',
+  bridge:    'white',
 };
 
-// ─── GENERATE ────────────────────────────────────────────────────────────────
-function generate() {
-  el('rect', { x: 0, y: 0, width: 420, height: 891, fill: 'white' }, svg);
+function terrain(col, row) {
+  if (isBridgeHex(col, row))        return 'bridge';
+  if (isRiverHex(col, row))         return 'river';
+  if (POI_SET.has(col + ',' + row)) return 'fields';
 
-  // Terrain hexes
-  const gTerrain = el('g', { id: 'terrain' }, svg);
-  for (let c = 0; c < COLS; c++) {
-    for (let r = 0; r < ROWS; r++) {
-      const [cx, cy] = hexCenter(c, r);
-      const t = terrain(c, r);
-      el('polygon', {
-        points: hexPoints(cx, cy),
-        fill:   FILL[t] ?? 'white',
-        stroke: '#000',
-        'stroke-width': STROKE,
-      }, gTerrain);
-    }
-  }
+  if (col >= 31) return 'sea';
+  if (col === 30 && noise(col, row, 6) > CFG.borderNoise) return 'sea';
 
-  // Bridge graphic on top of the bridge hex
-  drawBridge();
+  if (col === 0) return 'forest';
+  if (col === 1 && noise(col, row, 2) > CFG.borderNoise) return 'forest';
 
-  // River name, angled along river
-  const gRL = el('g', {
-    id: 'river-label', transform: 'rotate(-12, 190, 370)',
-    fill: '#000', opacity: '0.42', 'font-style': 'italic', 'font-size': '4.2',
-  }, svg);
-  txt(gRL, 'VELKÁ ŘEKA NARNIE', { x: 190, y: 372, 'text-anchor': 'middle' });
+  if (row === 0) return 'forest';
+  if (row === 1 && noise(col, row, 1) > CFG.borderNoise) return 'forest';
 
-  // POI markers
-  const gPOI = el('g', { id: 'pois' }, svg);
-  const R = 3.8;
+  if (row === 29) return 'mountains';
+  if (row === 28 && noise(col, row, 4) > CFG.borderNoise) return 'mountains';
 
-  for (const p of POIS) {
-    const [cx, cy] = hexCenter(p.col, p.row);
-    const lblY = cy + R + 6.8;
+  if (col >= 27 && noise(col, row, 7) > CFG.seaInletNoise) return 'sea';
+  if (noise(col, row, 8) > CFG.mtnNoise)    return 'mountains';
+  if (noise(col, row, 9) > CFG.forestNoise) return 'forest';
 
-    el('rect', {
-      x: cx - 26, y: lblY - 4.2, width: 52, height: 5,
-      fill: 'white', rx: 0.6,
-    }, gPOI);
-    txt(gPOI, p.name, {
-      x: cx, y: lblY,
-      'text-anchor': 'middle', 'font-size': '3.3', 'letter-spacing': '0.05',
-    });
-
-    el('circle', { cx, cy, r: R + 1.3, fill: 'white' }, gPOI);
-    el('circle', { cx, cy, r: R + 1.1, fill: 'none', stroke: '#000', 'stroke-width': '1' }, gPOI);
-    el('circle', { cx, cy, r: R, fill: '#000' }, gPOI);
-    txt(gPOI, p.id, {
-      x: cx, y: cy + 1.5,
-      'text-anchor': 'middle', 'font-size': '4.8', 'font-weight': 'bold', fill: 'white',
-    });
-  }
-
-  // Map title
-  el('rect', { x: 5, y: 3, width: 155, height: 10,
-               fill: 'white', stroke: '#000', 'stroke-width': '0.45' }, svg);
-  txt(svg, 'BITVA U BERUNY — NARNIE', {
-    x: 82.5, y: 10.5,
-    'text-anchor': 'middle', 'font-size': '5.8', 'font-weight': 'bold', 'letter-spacing': '0.4',
-  });
-
-  // Page cut guides
-  const gGuides = el('g', {
-    id: 'guides', stroke: '#888', 'stroke-width': '0.28',
-    'stroke-dasharray': '4,3', fill: 'none',
-  }, svg);
-  el('line', { x1: 210, y1: 0,   x2: 210, y2: 891 }, gGuides);
-  el('line', { x1: 0,   y1: 297, x2: 420, y2: 297 }, gGuides);
-  el('line', { x1: 0,   y1: 594, x2: 420, y2: 594 }, gGuides);
-
-  const pgLabels = [
-    [7,295,'1'],[215,295,'2'],
-    [7,592,'3'],[215,592,'4'],
-    [7,888,'5'],[215,888,'6'],
-  ];
-  for (const [x, y, n] of pgLabels) {
-    txt(svg, `str. ${n}`, {
-      x, y, 'font-size': '3.5', fill: '#aaa', 'font-family': 'sans-serif',
-    });
-  }
-
-  drawCompass(22, 845);
-  drawLegend(70, 826);
+  return 'fields';
 }
 
-// ─── BRIDGE GRAPHIC ──────────────────────────────────────────────────────────
-function drawBridge() {
-  const [cx, cy] = hexCenter(12, 17);
-  const g  = el('g', { id: 'bridge', 'stroke-linecap': 'round', stroke: '#000' }, svg);
-  const rw = 1.6;
-  const rl = HH * 0.42;  // half-length ~8.4 mm
-
-  // Two vertical rails
-  el('line', { x1: cx-rw, y1: cy-rl, x2: cx-rw, y2: cy+rl, 'stroke-width': '0.95' }, g);
-  el('line', { x1: cx+rw, y1: cy-rl, x2: cx+rw, y2: cy+rl, 'stroke-width': '0.95' }, g);
-
-  // 7 cross-planks
+function drawBridge(cx, cy) {
+  const g  = el('g', { 'stroke-linecap': 'round', stroke: '#000' }, svg);
+  const rw = 1.6, rl = HH * 0.42;
+  el('line', { x1: cx - rw, y1: cy - rl, x2: cx - rw, y2: cy + rl, 'stroke-width': '0.95' }, g);
+  el('line', { x1: cx + rw, y1: cy - rl, x2: cx + rw, y2: cy + rl, 'stroke-width': '0.95' }, g);
   for (let i = 0; i <= 6; i++) {
     const py = cy - rl + i * (2 * rl / 6);
-    el('line', { x1: cx-rw, y1: py, x2: cx+rw, y2: py, 'stroke-width': '0.55' }, g);
+    el('line', { x1: cx - rw, y1: py, x2: cx + rw, y2: py, 'stroke-width': '0.55' }, g);
   }
 }
 
-// ─── COMPASS ROSE ────────────────────────────────────────────────────────────
 function drawCompass(cx, cy) {
-  const g = el('g', { id: 'compass' }, svg);
-  const R = 9.5;
-
-  el('rect', {
-    x: cx-R-5, y: cy-R-8, width: (R+5)*2, height: R*2+14,
-    fill: 'white', stroke: '#000', 'stroke-width': '0.4',
-  }, g);
-
-  const ap = (dx, dy, px, py) =>
-    `${cx+dx},${cy+dy} ${cx+px},${cy+py} ${cx-px},${cy+py}`;
-
-  el('polygon', { points: ap(0,-R, 3,1),  fill: '#000' }, g);
-  el('polygon', { points: ap(0, R, 3,-1), fill: 'white', stroke: '#000', 'stroke-width': '0.45' }, g);
-  el('polygon', { points: `${cx+R},${cy} ${cx-1},${cy-3} ${cx-1},${cy+3}`,
-                  fill: 'white', stroke: '#000', 'stroke-width': '0.45' }, g);
-  el('polygon', { points: `${cx-R},${cy} ${cx+1},${cy-3} ${cx+1},${cy+3}`,
-                  fill: 'white', stroke: '#000', 'stroke-width': '0.45' }, g);
-  el('circle',  { cx, cy, r: 2.2, fill: 'white', stroke: '#000', 'stroke-width': '0.45' }, g);
-
-  txt(g, 'S', {
-    x: cx, y: cy-R-1.5, 'text-anchor': 'middle', 'font-size': '6', 'font-weight': 'bold',
-  });
-  txt(g, 'KOMPAS', {
-    x: cx, y: cy+R+5.5, 'text-anchor': 'middle',
-    'font-size': '3', fill: '#555', 'font-family': 'sans-serif',
-  });
+  const r = 7;
+  const g = el('g', {}, svg);
+  el('circle', { cx, cy, r: r + 2.5, fill: 'white', stroke: '#999', 'stroke-width': '0.4' }, g);
+  el('line',   { x1: cx, y1: cy - r, x2: cx, y2: cy + r, stroke: '#000', 'stroke-width': '0.4' }, g);
+  el('line',   { x1: cx - r, y1: cy, x2: cx + r, y2: cy, stroke: '#000', 'stroke-width': '0.4' }, g);
+  el('polygon', { points: `${cx},${cy - r} ${cx - 2},${cy} ${cx + 2},${cy}`, fill: '#000' }, g);
+  const la = { 'font-family': 'sans-serif', 'font-size': '4', 'text-anchor': 'middle',
+               fill: '#000', 'font-weight': 'bold' };
+  txt(g, 'S', { ...la, x: cx,         y: cy - r - 2 });
+  txt(g, 'J', { ...la, x: cx,         y: cy + r + 5 });
+  txt(g, 'Z', { ...la, x: cx - r - 4, y: cy + 1.5   });
+  txt(g, 'V', { ...la, x: cx + r + 4, y: cy + 1.5   });
 }
 
-// ─── LEGEND ──────────────────────────────────────────────────────────────────
-function drawLegend(x, y) {
-  const W = 340, H = 54;
-  const g = el('g', { id: 'legend' }, svg);
+function generate() {
+  el('rect', { x: 0, y: 0, width: 594, height: 630, fill: 'white' }, svg);
 
-  el('rect', { x, y, width: W, height: H,
-               fill: 'white', stroke: '#000', 'stroke-width': '0.5' }, g);
-  txt(g, 'LEGENDA', {
-    x: x + W/2, y: y + 6.5,
-    'text-anchor': 'middle', 'font-size': '5.5', 'font-weight': 'bold', 'letter-spacing': '1',
-  });
-
-  const SW = 14, SH = 5.5;
-  const c1 = x + 4, c2 = x + 4 + W/2;
-  const r1 = y + 10, r2 = y + 23;
-
-  const items = [
-    { ix: c1, iy: r1, fill: 'url(#pat-forest)', label: 'Les'              },
-    { ix: c1, iy: r2, fill: '#000',             label: 'Řeka'             },
-    { ix: c2, iy: r1, fill: 'white', bridge: true, label: 'Most'          },
-    { ix: c2, iy: r2, fill: 'white',            label: 'Otevřené pláně'  },
-  ];
-
-  for (const item of items) {
-    el('rect', { x: item.ix, y: item.iy, width: SW, height: SH,
-                 fill: item.fill, stroke: '#000', 'stroke-width': '0.3' }, g);
-
-    if (item.bridge) {
-      const mx = item.ix + SW/2, my = item.iy + SH/2;
-      const rw = 1.0, rl = SH * 0.38;
-      el('line', { x1:mx-rw, y1:my-rl, x2:mx-rw, y2:my+rl, stroke:'#000','stroke-width':'0.6' }, g);
-      el('line', { x1:mx+rw, y1:my-rl, x2:mx+rw, y2:my+rl, stroke:'#000','stroke-width':'0.6' }, g);
-      for (let p = 0; p <= 3; p++) {
-        const py = my - rl + p * (2*rl/3);
-        el('line', { x1:mx-rw, y1:py, x2:mx+rw, y2:py, stroke:'#000','stroke-width':'0.35' }, g);
-      }
+  const gHex = el('g', { id: 'hexes' }, svg);
+  for (let col = 0; col < COLS; col++) {
+    for (let row = 0; row < ROWS; row++) {
+      const t = terrain(col, row);
+      const [cx, cy] = hexCenter(col, row);
+      el('polygon', {
+        points:         hexPoints(cx, cy),
+        fill:           FILL[t],
+        stroke:         '#888',
+        'stroke-width': STROKE,
+      }, gHex);
     }
+  }
 
-    txt(g, item.label, {
-      x: item.ix + SW + 2.5, y: item.iy + SH - 0.8,
-      'font-size': '3.5', fill: '#000',
+  const [bx, by] = hexCenter(16, 14);
+  drawBridge(bx, by);
+
+  const gPoi = el('g', { id: 'pois' }, svg);
+  for (const p of POIS) {
+    const isBridge = isBridgeHex(p.col, p.row);
+    const [cx, cy] = hexCenter(p.col, p.row);
+    if (!isBridge) {
+      el('circle', { cx, cy, r: 3.0,  fill: '#000'  }, gPoi);
+      el('circle', { cx, cy, r: 1.55, fill: 'white' }, gPoi);
+    }
+    const labelBelow = p.row < 3;
+    const labelLeft  = p.col >= 30;
+    const ly         = cy + (labelBelow ? 7 : -5);
+    const anchor     = labelLeft ? 'end' : (p.col < 3 ? 'start' : 'middle');
+    const lx         = labelLeft ? cx - 1 : cx;
+    txt(gPoi, p.name, {
+      x: lx, y: ly,
+      'font-family':  'serif',
+      'font-size':    '3.6',
+      'font-weight':  'bold',
+      'text-anchor':  anchor,
+      fill:           '#111',
+      stroke:         'white',
+      'stroke-width': '1.8',
+      'paint-order':  'stroke fill',
     });
   }
 
-  // Separator
-  el('line', { x1: x+2, y1: y+37, x2: x+W-2, y2: y+37,
-               stroke: '#ccc', 'stroke-width': '0.3' }, g);
+  const gG = el('g', { stroke: '#bbb', 'stroke-width': '0.35', 'stroke-dasharray': '4 2.5' }, svg);
+  el('line', { x1: 297, y1: 0,   x2: 297, y2: 630 }, gG);
+  el('line', { x1: 0,   y1: 210, x2: 594, y2: 210 }, gG);
+  el('line', { x1: 0,   y1: 420, x2: 594, y2: 420 }, gG);
 
-  // POI indicator
-  const poiCx = x + 10, poiCy = y + 46;
-  el('circle', { cx: poiCx, cy: poiCy, r: 4.5, fill: 'white',
-                 stroke: '#000', 'stroke-width': '0.4' }, g);
-  el('circle', { cx: poiCx, cy: poiCy, r: 3.6, fill: '#000' }, g);
-  txt(g, '#', {
-    x: poiCx, y: poiCy+1.4, 'text-anchor': 'middle',
-    'font-size': '4.2', 'font-weight': 'bold', fill: 'white',
-  });
-  txt(g, 'Místo zájmu — propoj všechna šestá pro výhru', {
-    x: poiCx+7, y: poiCy+1.5, 'font-size': '3.5', fill: '#000',
-  });
-
-  // Scale
-  txt(g, '1 hex ≈ 200 metrů', {
-    x: x+W-3, y: y+H-2.5, 'text-anchor': 'end',
-    'font-size': '3', fill: '#666', 'font-style': 'italic', 'font-family': 'sans-serif',
-  });
+  drawCompass(563, 608);
 }
 
-// ── Run ──
 generate();
 </script>
 </body>
