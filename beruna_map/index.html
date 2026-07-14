@@ -5,13 +5,26 @@
 <title>Bitva u Beruny</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #d8d8d8; display: flex; justify-content: center; padding: 20px; }
+  body {
+    background: #d8d8d8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 10px;
+  }
   #map-wrapper { background: white; box-shadow: 0 4px 24px rgba(0,0,0,0.35); display: inline-block; }
+  /* Scale SVG to fit viewport — constrain by whichever dimension is binding */
+  svg {
+    display: block;
+    width: min(calc(100vw - 20px), calc((100vh - 20px) * 594 / 630));
+    height: auto;
+  }
   @media print {
-    body { background: white; padding: 0; display: block; }
+    body { background: white; padding: 0; display: block; min-height: unset; }
     #map-wrapper { box-shadow: none; margin: 0; }
     @page { size: A4 landscape; margin: 0; }
-    svg { display: block; }
+    svg { display: block; width: 594mm !important; height: 630mm !important; }
   }
 </style>
 </head>
@@ -36,16 +49,6 @@
     <line x1="2.5" y1="3.8"  x2="3.7" y2="4.8"  stroke="#000" stroke-width="0.26"/>
     <line x1="0.9" y1="4.8"  x2="1.6" y2="4.8"  stroke="#000" stroke-width="0.22"/>
     <line x1="3.4" y1="4.8"  x2="4.1" y2="4.8"  stroke="#000" stroke-width="0.22"/>
-  </pattern>
-  <!-- Sea: 6x4mm wavy horizontal lines -->
-  <pattern id="pat-sea" x="0" y="0" width="6" height="4" patternUnits="userSpaceOnUse">
-    <path d="M0,1 C1.5,0.4 4.5,1.6 6,1"  stroke="#000" stroke-width="0.28" fill="none"/>
-    <path d="M0,3 C1.5,2.4 4.5,3.6 6,3"  stroke="#000" stroke-width="0.28" fill="none"/>
-  </pattern>
-  <!-- Mountains: 8x6mm two-peak silhouette -->
-  <pattern id="pat-mountains" x="0" y="0" width="8" height="6" patternUnits="userSpaceOnUse">
-    <polyline points="0,5.5 2,1 4,5.5"   stroke="#000" stroke-width="0.30" fill="none" stroke-linejoin="miter"/>
-    <polyline points="4,5.5 6,1.5 8,5.5" stroke="#000" stroke-width="0.30" fill="none" stroke-linejoin="miter"/>
   </pattern>
 </defs>
 </svg>
@@ -130,8 +133,8 @@ const POI_SET = new Set(POIS.map(p => p.col + ',' + p.row));
 const FILL = {
   fields:    'white',
   forest:    'url(#pat-forest)',
-  sea:       'url(#pat-sea)',
-  mountains: 'url(#pat-mountains)',
+  sea:       'white',
+  mountains: 'white',
   river:     '#2a2a2a',
   bridge:    'white',
 };
@@ -158,6 +161,30 @@ function terrain(col, row) {
   if (noise(col, row, 9) > CFG.forestNoise) return 'forest';
 
   return 'fields';
+}
+
+// Two overlapping triangle peaks — taller peak behind, shorter in front (white fill creates depth)
+function drawMountainIcon(g, cx, cy) {
+  const by = cy + 4;
+  el('polygon', {
+    points: `${cx-3},${by} ${cx+2},${cy-7} ${cx+7},${by}`,
+    fill: 'white', stroke: '#000', 'stroke-width': '0.42', 'stroke-linejoin': 'round',
+  }, g);
+  el('polygon', {
+    points: `${cx-7},${by} ${cx-2},${cy-4} ${cx+3},${by}`,
+    fill: 'white', stroke: '#000', 'stroke-width': '0.42', 'stroke-linejoin': 'round',
+  }, g);
+}
+
+// Three horizontal wave lines, two upward bumps each — classic board game water glyph
+function drawSeaIcon(g, cx, cy) {
+  for (let i = -1; i <= 1; i++) {
+    const wy = cy + i * 3.5;
+    el('path', {
+      d: `M${cx-6},${wy} Q${cx-3},${wy-2.5} ${cx},${wy} Q${cx+3},${wy-2.5} ${cx+6},${wy}`,
+      fill: 'none', stroke: '#000', 'stroke-width': '0.32',
+    }, g);
+  }
 }
 
 function drawBridge(cx, cy) {
@@ -200,6 +227,8 @@ function generate() {
         stroke:         '#888',
         'stroke-width': STROKE,
       }, gHex);
+      if (t === 'mountains') drawMountainIcon(gHex, cx, cy);
+      if (t === 'sea')       drawSeaIcon(gHex, cx, cy);
     }
   }
 
