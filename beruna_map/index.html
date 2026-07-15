@@ -32,7 +32,7 @@
     font-size: 13px;
     color: #222;
   }
-  #panel h2, #rules-panel h2 {
+  #panel h2, #rules-panel h2, #sea-panel h2 {
     font-size: 11px;
     font-weight: bold;
     letter-spacing: 0.08em;
@@ -63,6 +63,14 @@
   .rule-table { width: 100%; border-collapse: collapse; font-size: 10px; margin-top: 3px; }
   .rule-table td { padding: 1px 3px; }
   .rule-table tr:first-child td { color: #999; font-size: 9px; }
+  #sea-panel {
+    width: 180px; min-width: 180px; background: white;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.35); padding: 14px 16px;
+    border-radius: 3px; font-family: sans-serif; font-size: 12px; color: #222;
+  }
+  .sea-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .sea-cell { text-align: center; }
+  .sea-lbl  { font-size: 9px; color: #777; margin-top: 3px; line-height: 1.3; }
   #map-wrapper { background: white; box-shadow: 0 4px 24px rgba(0,0,0,0.35); display: inline-block; }
   #map {
     display: block;
@@ -282,6 +290,71 @@ function drawForestIcon(g, cx, cy, col, row) {
       drawTree(fg, tx, ty);
 }
 
+// ── Sea cross/star patterns ──────────────────────────────
+let SEA_PATTERN = 1;
+// [gx, gy, stagger]  (coords in same mm units as main hex)
+const SEA_GRID = [null,
+  [3.5, 3.0, false], // 1  + crosses
+  [3.5, 3.0, false], // 2  × marks
+  [5.0, 4.0, true],  // 3  6-arm *
+  [5.5, 5.0, true],  // 4  8-point ✦
+  [3.5, 3.0, true],  // 5  · dots
+  [4.5, 3.5, true],  // 6  — h-dashes
+  [4.0, 3.5, true],  // 7  / diag dashes
+  [4.0, 3.5, false], // 8  +/× noise mix
+  [8.0, 7.0, false], // 9  ✚ sparse large
+  [4.5, 4.0, true],  // 10 ✦+· stars & dots
+];
+const SEA_NAMES = ['','+ kříže','× křížky','✶ hvězdy 6','✦ hvězdy 8','· tečky',
+                   '— linky','/ šikmé','+/× mix','✚ řídké','✦· hvězdy+tečky'];
+
+function seaCell(g, px, py, pid, n, sc) {
+  const sw = sc * 0.28;
+  const r  = sc;
+  function ln(x1, y1, x2, y2, w) {
+    const e = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    e.setAttribute('x1', x1.toFixed(2)); e.setAttribute('y1', y1.toFixed(2));
+    e.setAttribute('x2', x2.toFixed(2)); e.setAttribute('y2', y2.toFixed(2));
+    e.setAttribute('stroke', 'white');
+    e.setAttribute('stroke-width', (w || sw).toFixed(2));
+    e.setAttribute('stroke-linecap', 'round');
+    g.appendChild(e);
+  }
+  const d = r * 0.72;
+  switch (pid) {
+    case 1:  ln(px-r,py,px+r,py); ln(px,py-r,px,py+r); break;
+    case 2:  ln(px-d,py-d,px+d,py+d); ln(px+d,py-d,px-d,py+d); break;
+    case 3:  for(let i=0;i<3;i++){const a=i*Math.PI/3,c=Math.cos(a)*r,s=Math.sin(a)*r; ln(px-c,py-s,px+c,py+s);} break;
+    case 4:  ln(px-r,py,px+r,py); ln(px,py-r,px,py+r); ln(px-d,py-d,px+d,py+d); ln(px+d,py-d,px-d,py+d); break;
+    case 5:  ln(px,py,px,py,sw*2.5); break;
+    case 6:  ln(px-r*1.3,py,px+r*1.3,py); break;
+    case 7:  ln(px-r*.85,py+r*.85,px+r*.85,py-r*.85); break;
+    case 8:  if(n>.5){ln(px-r,py,px+r,py);ln(px,py-r,px,py+r);}
+             else{ln(px-d,py-d,px+d,py+d);ln(px+d,py-d,px-d,py+d);} break;
+    case 9:  { const R=r*1.8; ln(px-R,py,px+R,py,sw*1.3); ln(px,py-R,px,py+R,sw*1.3); break; }
+    case 10: if(n>.4){ln(px-r,py,px+r,py);ln(px,py-r,px,py+r);ln(px-d,py-d,px+d,py+d);ln(px+d,py-d,px-d,py+d);}
+             else{ln(px,py,px,py,sw*2.5);} break;
+  }
+}
+
+function drawSeaPattern(g, cx, cy, col, row) {
+  const pid = SEA_PATTERN;
+  const [gx, gy, stagger] = SEA_GRID[pid];
+  const defs = svg.querySelector('defs');
+  const clipId = 'sp' + col + '-' + row;
+  const cp = el('clipPath', { id: clipId }, defs);
+  el('polygon', { points: hexPoints(cx, cy) }, cp);
+  const fg = el('g', { 'clip-path': 'url(#' + clipId + ')' }, g);
+  const xS = gx * Math.floor((cx - HW/2 - gx) / gx);
+  const yS = gy * Math.floor((cy - HH/2 - gy) / gy);
+  let ri = 0;
+  for (let ty = yS; ty <= cy + HH/2 + gy; ty += gy, ri++) {
+    const xo = (stagger && ri % 2) ? gx/2 : 0;
+    for (let tx = xS + xo; tx <= cx + HW/2 + gx; tx += gx)
+      seaCell(fg, tx, ty, pid, noise(tx * .3, ty * .3), 1.0);
+  }
+}
+
 // single curling wave centered in the hex
 function drawSeaIcon(g, cx, cy) {
   const P = { fill: 'none', stroke: 'white', 'stroke-width': '0.48',
@@ -328,7 +401,7 @@ function generate() {
         'stroke-width': STROKE,
       }, gHex);
       if (t === 'mountains') drawMountainIcon(gHex, cx, cy);
-      if (t === 'sea')       drawSeaIcon(gHex, cx, cy);
+      if (t === 'sea')       drawSeaPattern(gHex, cx, cy, col, row);
       if (t === 'forest')    drawForestIcon(gHex, cx, cy, col, row);
     }
   }
@@ -585,9 +658,74 @@ function buildRules() {
   }
 }
 
+function buildSeaPanel() {
+  const ns = 'http://www.w3.org/2000/svg';
+  const Sp = 13, HHp = Sp * Math.sqrt(3), HWp = 2 * Sp;
+  const W = Math.ceil(HWp + 4), H = Math.ceil(HHp + 4);
+  const pcx = W / 2, pcy = H / 2;
+  const sc = Sp / S;
+  const hpts = Array.from({length:6},(_,i)=>{
+    const a=Math.PI/3*i;
+    return `${(pcx+Sp*Math.cos(a)).toFixed(1)},${(pcy+Sp*Math.sin(a)).toFixed(1)}`;
+  }).join(' ');
+
+  const panel = document.createElement('div');
+  panel.id = 'sea-panel';
+  const h = document.createElement('h2');
+  h.textContent = 'Vzor moře';
+  panel.appendChild(h);
+  const grid = document.createElement('div');
+  grid.className = 'sea-grid';
+  panel.appendChild(grid);
+
+  for (let pid = 1; pid <= 10; pid++) {
+    const cell = document.createElement('div');
+    cell.className = 'sea-cell';
+
+    const psvg = document.createElementNS(ns, 'svg');
+    psvg.setAttribute('width', W); psvg.setAttribute('height', H);
+    psvg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+    const defs = document.createElementNS(ns, 'defs');
+    const cp = document.createElementNS(ns, 'clipPath');
+    cp.setAttribute('id', `spc${pid}`);
+    const cpP = document.createElementNS(ns, 'polygon');
+    cpP.setAttribute('points', hpts); cp.appendChild(cpP); defs.appendChild(cp);
+    psvg.appendChild(defs);
+
+    const bg = document.createElementNS(ns, 'polygon');
+    bg.setAttribute('points', hpts); bg.setAttribute('fill', '#2a2a2a');
+    bg.setAttribute('stroke', '#888'); bg.setAttribute('stroke-width', '0.5');
+    psvg.appendChild(bg);
+
+    const pg = document.createElementNS(ns, 'g');
+    pg.setAttribute('clip-path', `url(#spc${pid})`);
+    psvg.appendChild(pg);
+
+    const [gx, gy, stagger] = SEA_GRID[pid];
+    const gxp = gx * sc, gyp = gy * sc;
+    let ri = 0;
+    for (let ty = pcy - HHp/2 - gyp; ty <= pcy + HHp/2 + gyp; ty += gyp, ri++) {
+      const xo = (stagger && ri % 2) ? gxp/2 : 0;
+      for (let tx = pcx - HWp/2 - gxp + xo; tx <= pcx + HWp/2 + gxp; tx += gxp)
+        seaCell(pg, tx, ty, pid, noise(tx, ty), sc);
+    }
+
+    cell.appendChild(psvg);
+    const lbl = document.createElement('div');
+    lbl.className = 'sea-lbl';
+    lbl.textContent = pid + ' ' + SEA_NAMES[pid];
+    cell.appendChild(lbl);
+    grid.appendChild(cell);
+  }
+
+  document.getElementById('sidebar').appendChild(panel);
+}
+
 generate();
 buildPanel();
 buildRules();
+buildSeaPanel();
 </script>
 </body>
 </html>
