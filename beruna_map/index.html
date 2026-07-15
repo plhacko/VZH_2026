@@ -142,6 +142,15 @@ function hexPoints(cx, cy) {
     return `${(cx + S * Math.cos(a)).toFixed(2)},${(cy + S * Math.sin(a)).toFixed(2)}`;
   }).join(' ');
 }
+function starPoints(cx, cy, R, r) {
+  const pts = [];
+  for (let i = 0; i < 10; i++) {
+    const a = Math.PI * i / 5 - Math.PI / 2;
+    const rad = i % 2 === 0 ? R : r;
+    pts.push(`${(cx + rad * Math.cos(a)).toFixed(2)},${(cy + rad * Math.sin(a)).toFixed(2)}`);
+  }
+  return pts.join(' ');
+}
 function noise(c, r, s) {
   const n = c * 47.3 + r * 31.9 + (s || 1) * 73.1;
   return Math.abs(Math.sin(n * 127.1 + 5.7) * 43758.54) % 1;
@@ -328,8 +337,7 @@ function generate() {
   const gPoi = el('g', { id: 'pois' }, svg);
   for (const p of POIS) {
     const [cx, cy] = hexCenter(p.col, p.row);
-    el('circle', { cx, cy, r: 3.0,  fill: '#000'  }, gPoi);
-    el('circle', { cx, cy, r: 1.55, fill: 'white' }, gPoi);
+    el('polygon', { points: starPoints(cx, cy, 3.0, 1.2), fill: '#000' }, gPoi);
     const labelBelow = p.row < 3;
     const labelLeft  = p.col >= 30;
     const ly         = cy + (labelBelow ? 7 : -5);
@@ -420,6 +428,15 @@ function buildRules() {
   }
   const HH7 = S7 * Math.sqrt(3);
   const HW7 = 2 * S7;
+  function starPts(cx, cy, R, r) {
+    const pts = [];
+    for (let i = 0; i < 10; i++) {
+      const a = Math.PI * i / 5 - Math.PI / 2;
+      const rad = i % 2 === 0 ? R : r;
+      pts.push(`${(cx + rad * Math.cos(a)).toFixed(2)},${(cy + rad * Math.sin(a)).toFixed(2)}`);
+    }
+    return pts.join(' ');
+  }
 
   const rules = [
     {
@@ -477,7 +494,7 @@ function buildRules() {
         for (const h of hexes) {
           pe(s, 'polygon', { points: hp4(h.x, h.y),
             fill: h.poi ? 'white' : '#88e', stroke: h.poi ? '#888' : '#44c', 'stroke-width': 0.7 });
-          if (h.poi) pe(s, 'circle', { cx: h.x, cy: h.y, r: 1.8, fill: '#555' });
+          if (h.poi) pe(s, 'polygon', { points: starPts(h.x, h.y, 2.2, 0.85), fill: '#555' });
         }
         return s;
       }
@@ -534,13 +551,13 @@ function buildRules() {
       name: 'Špeh',
       text: '2 body, musí se dotýkat alespoň 2 jiných barev, a nesmí být v obklíčení.',
       svg() {
-        // green – blue spy – red, vertical column, all face-connected
-        const s = msvg(20, 40);
-        const x = 10;
-        const [yG, ySpy, yR] = [20 - HH7, 20, 20 + HH7];
-        pe(s, 'polygon', { points: hexPts(x, yG),   fill: '#8e8', stroke: '#4c4', 'stroke-width': 0.8 });
-        pe(s, 'polygon', { points: hexPts(x, ySpy), fill: '#88e', stroke: '#44c', 'stroke-width': 0.8 });
-        pe(s, 'polygon', { points: hexPts(x, yR),   fill: '#e88', stroke: '#c44', 'stroke-width': 0.8 });
+        const s = msvg(30, 30);
+        const bx = 9, by = 21;
+        const gx = bx,          gy = by - HH7;
+        const rx = bx + S7*1.5, ry = by - HH7/2;
+        pe(s, 'polygon', { points: hexPts(gx, gy), fill: '#8e8', stroke: '#4c4', 'stroke-width': 0.8 });
+        pe(s, 'polygon', { points: hexPts(rx, ry), fill: '#e88', stroke: '#c44', 'stroke-width': 0.8 });
+        pe(s, 'polygon', { points: hexPts(bx, by), fill: '#88e', stroke: '#44c', 'stroke-width': 0.8 });
         return s;
       }
     },
