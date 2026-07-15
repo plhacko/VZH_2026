@@ -229,8 +229,7 @@ function terrain(col, row) {
 
   if (col >= 31) return 'sea';
   if (col === 30 && noise(col, row, 11) > 0.18) return 'sea'; // ~82% sea — ragged near shore
-  if (col === 29 && noise(col, row, 12) > 0.52) return 'sea'; // ~48% sea — rugged inlets
-  if (col >= 27   && noise(col, row,  7) > 0.78) return 'sea'; // ~22% sea — deep inlet tips
+  if (col === 29 && noise(col, row, 12) > 0.72) return 'sea'; // ~28% sea — sparse coastal strip
 
   if (col === 0) return 'forest';
   if (col === 1 && noise(col, row, 2) > CFG.borderNoise) return 'forest';
