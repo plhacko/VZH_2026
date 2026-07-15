@@ -337,7 +337,8 @@ function generate() {
   const gPoi = el('g', { id: 'pois' }, svg);
   for (const p of POIS) {
     const [cx, cy] = hexCenter(p.col, p.row);
-    el('polygon', { points: starPoints(cx, cy, 3.0, 1.2), fill: '#000' }, gPoi);
+    const poiStroke = isRiverHex(p.col, p.row) ? 'white' : 'black';
+    el('polygon', { points: starPoints(cx, cy, 3.0, 1.2), fill: '#000', stroke: poiStroke, 'stroke-width': '0.6', 'stroke-linejoin': 'round' }, gPoi);
     const labelBelow = p.row < 3;
     const labelLeft  = p.col >= 30;
     const ly         = cy + (labelBelow ? 7 : -5);
@@ -494,7 +495,7 @@ function buildRules() {
         for (const h of hexes) {
           pe(s, 'polygon', { points: hp4(h.x, h.y),
             fill: h.poi ? 'white' : '#88e', stroke: h.poi ? '#888' : '#44c', 'stroke-width': 0.7 });
-          if (h.poi) pe(s, 'polygon', { points: starPts(h.x, h.y, 2.2, 0.85), fill: '#555' });
+          if (h.poi) pe(s, 'polygon', { points: starPts(h.x, h.y, 2.2, 0.85), fill: '#555', stroke: 'white', 'stroke-width': '0.4', 'stroke-linejoin': 'round' });
         }
         return s;
       }
