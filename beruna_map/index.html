@@ -282,21 +282,38 @@ function drawForestIcon(g, cx, cy, col, row) {
       drawTree(fg, tx, ty);
 }
 
-// 3 rows × 2 curl-under arches, staggered — nautical cartography style
+// large curling wave + 3 rows of scallops
 function drawSeaIcon(g, cx, cy) {
-  function archRow(x0, y) {
-    const W = 6.5, H = 2.8, D = 1.1;
-    let d = `M${x0},${y}`;
-    for (let i = 0; i < 2; i++) {
+  const P = { fill: 'none', stroke: 'white', 'stroke-width': '0.48',
+              'stroke-linecap': 'round', 'stroke-linejoin': 'round' };
+
+  // Big wave: body sweeps up from left, crest curls right then hooks back left, descends
+  const wb = cy - 2;
+  el('path', { d:
+    `M ${cx-8.5},${wb}` +
+    // body rising toward peak
+    ` C ${cx-7},${cy-6} ${cx-2},${cy-9} ${cx+1},${cy-8}` +
+    // push up toward curl tip (right and up)
+    ` C ${cx+3},${cy-7} ${cx+5},${cy-9.5} ${cx+4},${cy-9.5}` +
+    // curl hooks back left (the tube)
+    ` C ${cx+3},${cy-9.5} ${cx+1.5},${cy-8.5} ${cx+3},${cy-7.5}` +
+    // descent to right
+    ` C ${cx+5.5},${cy-5.5} ${cx+8},${cy-3.5} ${cx+8.5},${wb}`,
+    ...P }, g);
+
+  // 3 rows of symmetric scallop arches (Q = quadratic bezier, perfect dome)
+  function scallops(y, x0, n, W, H) {
+    let d = `M ${x0},${y}`;
+    for (let i = 0; i < n; i++) {
       const x = x0 + i * W;
-      d += ` C${x+W*0.14},${y-H} ${x+W*0.50},${y-H} ${x+W*0.60},${y-H*0.18}`;
-      d += ` C${x+W*0.70},${y+D} ${x+W*0.90},${y+D*0.55} ${x+W},${y}`;
+      d += ` Q ${x+W/2},${y-H} ${x+W},${y}`;
     }
-    el('path', { d, fill: 'none', stroke: 'white', 'stroke-width': '0.40' }, g);
+    el('path', { d, ...P }, g);
   }
-  archRow(cx - 6.5, cy - 4);
-  archRow(cx - 9.5, cy);
-  archRow(cx - 6.5, cy + 4);
+
+  scallops(cy+1.5, cx-7.5, 3, 5.0, 2.3);
+  scallops(cy+5,   cx-7.5, 3, 5.0, 2.0);
+  scallops(cy+8,   cx-6,   3, 4.0, 1.7);
 }
 
 function drawCompass(cx, cy) {
