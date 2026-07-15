@@ -15,6 +15,12 @@
     padding: 10px;
     gap: 16px;
   }
+  #sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-self: flex-start;
+  }
   #panel {
     width: 180px;
     min-width: 180px;
@@ -22,12 +28,11 @@
     box-shadow: 0 4px 24px rgba(0,0,0,0.35);
     padding: 14px 16px;
     border-radius: 3px;
-    align-self: flex-start;
     font-family: sans-serif;
     font-size: 13px;
     color: #222;
   }
-  #panel h2 {
+  #panel h2, #rules-panel h2 {
     font-size: 11px;
     font-weight: bold;
     letter-spacing: 0.08em;
@@ -39,25 +44,48 @@
   #tile-counts td { padding: 5px 0; }
   #tile-counts tr + tr td { border-top: 1px solid #eee; }
   #tile-counts td:last-child { text-align: right; font-weight: bold; }
+  #rules-panel {
+    width: 180px;
+    min-width: 180px;
+    background: white;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+    padding: 14px 16px;
+    border-radius: 3px;
+    font-family: sans-serif;
+    font-size: 12px;
+    color: #222;
+  }
+  .rule { display: flex; align-items: flex-start; gap: 8px; padding: 7px 0; }
+  .rule + .rule { border-top: 1px solid #eee; }
+  .rule svg { flex-shrink: 0; }
+  .rule-text strong { display: block; font-size: 11px; margin-bottom: 2px; }
+  .rule-text p { margin: 0; font-size: 10.5px; line-height: 1.4; color: #444; }
+  .rule-table { width: 100%; border-collapse: collapse; font-size: 10px; margin-top: 3px; }
+  .rule-table td { padding: 1px 3px; }
+  .rule-table tr:first-child td { color: #999; font-size: 9px; }
   #map-wrapper { background: white; box-shadow: 0 4px 24px rgba(0,0,0,0.35); display: inline-block; }
-  svg {
+  #map {
     display: block;
     width: min(calc(100vw - 226px), calc((100vh - 20px) * 594 / 630));
     height: auto;
   }
+  .rule svg { display: block; overflow: hidden; }
   @media print {
-    #panel { display: none; }
+    #sidebar { display: none; }
     body { background: white; padding: 0; display: block; min-height: unset; }
     #map-wrapper { box-shadow: none; margin: 0; }
     @page { size: A4 landscape; margin: 0; }
-    svg { display: block; width: 594mm !important; height: 630mm !important; }
+    #map { display: block; width: 594mm !important; height: 630mm !important; }
   }
 </style>
 </head>
 <body>
-<div id="panel">
-  <h2>Typy pol&#237;</h2>
-  <table id="tile-counts"><tbody></tbody></table>
+<div id="sidebar">
+  <div id="panel">
+    <h2>Typy pol&#237;</h2>
+    <table id="tile-counts"><tbody></tbody></table>
+  </div>
+  <div id="rules-panel"></div>
 </div>
 <div id="map-wrapper">
 <svg id="map" xmlns="http://www.w3.org/2000/svg"
@@ -171,7 +199,7 @@ const POI_SET = new Set(POIS.map(p => p.col + ',' + p.row));
 const FILL = {
   fields:    'white',
   forest:    '#b8b8b8',
-  sea:       '#e4e4e4',
+  sea:       '#2a2a2a',
   mountains: '#d0d0d0',
   river:     '#2a2a2a',
 };
@@ -201,17 +229,19 @@ function terrain(col, row) {
   return 'fields';
 }
 
-// Two overlapping triangle peaks — taller peak behind, shorter in front (white fill creates depth)
+// Two overlapping peaks (grey body, white snow cap) — taller behind, shorter in front
 function drawMountainIcon(g, cx, cy) {
   const by = cy + 4;
-  el('polygon', {
-    points: `${cx-3},${by} ${cx+2},${cy-7} ${cx+7},${by}`,
-    fill: 'white', stroke: '#000', 'stroke-width': '0.42', 'stroke-linejoin': 'round',
-  }, g);
-  el('polygon', {
-    points: `${cx-7},${by} ${cx-2},${cy-4} ${cx+3},${by}`,
-    fill: 'white', stroke: '#000', 'stroke-width': '0.42', 'stroke-linejoin': 'round',
-  }, g);
+  const SK = { stroke: '#000', 'stroke-width': '0.42', 'stroke-linejoin': 'round' };
+  const CS = { stroke: '#999', 'stroke-width': '0.22', 'stroke-linejoin': 'round' };
+  // Back (taller) peak
+  el('polygon', { points: `${cx-3},${by} ${cx+2},${cy-7} ${cx+7},${by}`, fill: '#e8e8e8', ...SK }, g);
+  // Front (shorter) peak
+  el('polygon', { points: `${cx-7},${by} ${cx-2},${cy-4} ${cx+3},${by}`, fill: '#e8e8e8', ...SK }, g);
+  // Snow cap on back peak (top 2.5 mm — sides at t=2.5/11 along each edge)
+  el('polygon', { points: `${cx+2},${cy-7} ${cx+0.9},${cy-4.5} ${cx+3.1},${cy-4.5}`, fill: 'white', ...CS }, g);
+  // Snow cap on front peak (top 2 mm — sides at t=2/8 along each edge)
+  el('polygon', { points: `${cx-2},${cy-4} ${cx-3.25},${cy-2} ${cx-0.75},${cy-2}`, fill: 'white', ...CS }, g);
 }
 
 // Exact same tree shape as the old pat-forest pattern, tiled at the same absolute 5x6mm
@@ -243,15 +273,21 @@ function drawForestIcon(g, cx, cy, col, row) {
       drawTree(fg, tx, ty);
 }
 
-// Three horizontal wave lines, two upward bumps each — classic board game water glyph
+// 3 rows × 2 curl-under arches, staggered — nautical cartography style
 function drawSeaIcon(g, cx, cy) {
-  for (let i = -1; i <= 1; i++) {
-    const wy = cy + i * 3.5;
-    el('path', {
-      d: `M${cx-6},${wy} Q${cx-3},${wy-2.5} ${cx},${wy} Q${cx+3},${wy-2.5} ${cx+6},${wy}`,
-      fill: 'none', stroke: '#000', 'stroke-width': '0.32',
-    }, g);
+  function archRow(x0, y) {
+    const W = 6.5, H = 2.8, D = 1.1;
+    let d = `M${x0},${y}`;
+    for (let i = 0; i < 2; i++) {
+      const x = x0 + i * W;
+      d += ` C${x+W*0.14},${y-H} ${x+W*0.50},${y-H} ${x+W*0.60},${y-H*0.18}`;
+      d += ` C${x+W*0.70},${y+D} ${x+W*0.90},${y+D*0.55} ${x+W},${y}`;
+    }
+    el('path', { d, fill: 'none', stroke: 'white', 'stroke-width': '0.40' }, g);
   }
+  archRow(cx - 6.5, cy - 4);
+  archRow(cx - 9.5, cy);
+  archRow(cx - 6.5, cy + 4);
 }
 
 function drawCompass(cx, cy) {
@@ -354,8 +390,187 @@ function buildPanel() {
   }
 }
 
+
+function buildRules() {
+  const panel = document.getElementById('rules-panel');
+  const h = document.createElement('h2');
+  h.textContent = 'Pravidla bodování';
+  panel.appendChild(h);
+
+  function msvg(w, h) {
+    const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    s.setAttribute('width', w); s.setAttribute('height', h);
+    s.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    return s;
+  }
+  function pe(parent, tag, attrs) {
+    const e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+    parent.appendChild(e); return e;
+  }
+
+  const S7 = 7;
+  function hexPts(cx, cy) {
+    const pts = [];
+    for (let i = 0; i < 6; i++) {
+      const a = Math.PI / 3 * i;
+      pts.push(`${(cx + S7 * Math.cos(a)).toFixed(1)},${(cy + S7 * Math.sin(a)).toFixed(1)}`);
+    }
+    return pts.join(' ');
+  }
+  const HH7 = S7 * Math.sqrt(3);
+  const HW7 = 2 * S7;
+
+  const rules = [
+    {
+      name: 'Voják',
+      text: 'Každý voják 1 bod.',
+      svg() {
+        const s = msvg(22, 18);
+        pe(s, 'polygon', { points: hexPts(11, 9), fill: '#88e', stroke: '#44c', 'stroke-width': 0.8 });
+        return s;
+      }
+    },
+    {
+      name: 'Formace',
+      text: '7 políček v kruhu.',
+      svg() {
+        const s = msvg(44, 40);
+        const cx = 22, cy = 20;
+        const nb = [
+          [cx, cy - HH7], [cx, cy + HH7],
+          [cx + HW7 * 0.75, cy - HH7 / 2], [cx + HW7 * 0.75, cy + HH7 / 2],
+          [cx - HW7 * 0.75, cy - HH7 / 2], [cx - HW7 * 0.75, cy + HH7 / 2],
+        ];
+        for (const [nx, ny] of nb)
+          pe(s, 'polygon', { points: hexPts(nx, ny), fill: '#88e', stroke: '#44c', 'stroke-width': 0.7 });
+        pe(s, 'polygon', { points: hexPts(cx, cy), fill: '#88e', stroke: '#44c', 'stroke-width': 0.7 });
+        return s;
+      }
+    },
+    {
+      name: 'Cesta',
+      text: 'Body za propojenou síť míst:',
+      table: [['Místa', 'Body'], ['2', '10'], ['3', '20'], ['4', '30'], ['5+', '…']],
+      svg() {
+        // 7 hexes face-connected: path bends right at the middle POI for flavour
+        const s = msvg(20, 46);
+        const S4 = 4, HH4 = S4 * Math.sqrt(3), HS4 = S4 * 1.5;
+        function hp4(hx, hy) {
+          const pts = [];
+          for (let i = 0; i < 6; i++) {
+            const a = Math.PI / 3 * i;
+            pts.push(`${(hx + S4 * Math.cos(a)).toFixed(1)},${(hy + S4 * Math.sin(a)).toFixed(1)}`);
+          }
+          return pts.join(' ');
+        }
+        const x0 = 5, y0 = 4;
+        const hexes = [
+          { x: x0,         y: y0,              poi: true  },  // top POI
+          { x: x0,         y: y0 + HH4,        poi: false },  // D
+          { x: x0 + HS4,   y: y0 + 1.5 * HH4,  poi: false },  // DR — bends right
+          { x: x0 + HS4,   y: y0 + 2.5 * HH4,  poi: true  },  // middle POI (offset right)
+          { x: x0,         y: y0 + 3   * HH4,  poi: false },  // DL — back left
+          { x: x0,         y: y0 + 4   * HH4,  poi: false },  // D
+          { x: x0,         y: y0 + 5   * HH4,  poi: true  },  // bottom POI
+        ];
+        for (const h of hexes) {
+          pe(s, 'polygon', { points: hp4(h.x, h.y),
+            fill: h.poi ? 'white' : '#88e', stroke: h.poi ? '#888' : '#44c', 'stroke-width': 0.7 });
+          if (h.poi) pe(s, 'circle', { cx: h.x, cy: h.y, r: 1.8, fill: '#555' });
+        }
+        return s;
+      }
+    },
+    {
+      name: 'Obklíčení',
+      text: '5 bodů za každou obklíčenou jednotku.',
+      svg() {
+        // 3 red enemy hexes (triangle), surrounded by 8 blue own-unit hexes + 1 mountain terrain.
+        const s = msvg(44, 44);
+        const S5 = 5, HH5 = S5 * Math.sqrt(3), HS5 = S5 * 1.5;
+        function hp5(hx, hy) {
+          const pts = [];
+          for (let i = 0; i < 6; i++) {
+            const a = Math.PI / 3 * i;
+            pts.push(`${(hx + S5 * Math.cos(a)).toFixed(1)},${(hy + S5 * Math.sin(a)).toFixed(1)}`);
+          }
+          return pts.join(' ');
+        }
+        // A=bottom-left, B=right, C=top-left (tight triangle, centred ~22,22)
+        const ax = 19.5, ay = 26;
+        const bx = ax + HS5,  by  = ay - HH5 / 2;
+        const ccx = ax,       ccy = ay - HH5;
+        function miniMtn(mx, my) {
+          const b = my + 1.6;
+          const tri = (pts, fill) => pe(s, 'polygon', { points: pts, fill, stroke: '#777', 'stroke-width': 0.25, 'stroke-linejoin': 'round' });
+          tri(`${mx-1.2},${b} ${mx+0.8},${my-2.8} ${mx+2.8},${b}`, '#d8d8d8');
+          tri(`${mx-2.8},${b} ${mx-0.8},${my-1.6} ${mx+1.2},${b}`, '#d8d8d8');
+          tri(`${mx+0.8},${my-2.8} ${mx+0.3},${my-1.8} ${mx+1.3},${my-1.8}`, 'white');
+          tri(`${mx-0.8},${my-1.6} ${mx-1.3},${my-0.8} ${mx-0.3},${my-0.8}`, 'white');
+        }
+        const ring = [
+          { x: bx,        y: ay + HH5/2,   t: false },  // A lower-right / B bottom
+          { x: ax,        y: ay + HH5,     t: false },  // A bottom
+          { x: ax - HS5,  y: ay + HH5/2,   t: false },  // A lower-left
+          { x: ax - HS5,  y: by,           t: false },  // A upper-left / C lower-left
+          { x: bx,        y: ccy - HH5/2,  t: false },  // B top / C upper-right
+          { x: bx + HS5,  y: by - HH5/2,   t: true  },  // B upper-right — mountain terrain
+          { x: bx + HS5,  y: by + HH5/2,   t: false },  // B lower-right
+          { x: ccx,       y: ccy - HH5,    t: false },  // C top
+          { x: ccx - HS5, y: ccy - HH5/2,  t: false },  // C upper-left
+        ];
+        for (const r of ring) {
+          pe(s, 'polygon', { points: hp5(r.x, r.y),
+            fill: r.t ? '#e0e0e0' : '#88e', stroke: r.t ? '#bbb' : '#44c', 'stroke-width': 0.7 });
+          if (r.t) miniMtn(r.x, r.y);
+        }
+        for (const [ex, ey, fill, strk] of [[ax, ay, '#e88', '#c44'], [bx, by, '#e88', '#c44'], [ccx, ccy, '#8e8', '#4c4']])
+          pe(s, 'polygon', { points: hp5(ex, ey), fill, stroke: strk, 'stroke-width': 0.7 });
+        return s;
+      }
+    },
+    {
+      name: 'Špeh',
+      text: '2 body, musí se dotýkat alespoň 2 jiných barev.',
+      svg() {
+        // green – blue spy – red, vertical column, all face-connected
+        const s = msvg(20, 40);
+        const x = 10;
+        const [yG, ySpy, yR] = [20 - HH7, 20, 20 + HH7];
+        pe(s, 'polygon', { points: hexPts(x, yG),   fill: '#8e8', stroke: '#4c4', 'stroke-width': 0.8 });
+        pe(s, 'polygon', { points: hexPts(x, ySpy), fill: '#88e', stroke: '#44c', 'stroke-width': 0.8 });
+        pe(s, 'polygon', { points: hexPts(x, yR),   fill: '#e88', stroke: '#c44', 'stroke-width': 0.8 });
+        return s;
+      }
+    },
+  ];
+
+  for (const rule of rules) {
+    const row = document.createElement('div');
+    row.className = 'rule';
+    row.appendChild(rule.svg());
+    const txt = document.createElement('div');
+    txt.className = 'rule-text';
+    txt.innerHTML = `<strong>${rule.name}</strong><p>${rule.text}</p>`;
+    if (rule.table) {
+      const tbl = document.createElement('table');
+      tbl.className = 'rule-table';
+      for (const [a, b] of rule.table) {
+        const tr = tbl.insertRow();
+        tr.insertCell().textContent = a;
+        tr.insertCell().textContent = b;
+      }
+      txt.appendChild(tbl);
+    }
+    row.appendChild(txt);
+    panel.appendChild(row);
+  }
+}
+
 generate();
 buildPanel();
+buildRules();
 </script>
 </body>
 </html>
