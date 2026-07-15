@@ -63,14 +63,6 @@
   .rule-table { width: 100%; border-collapse: collapse; font-size: 10px; margin-top: 3px; }
   .rule-table td { padding: 1px 3px; }
   .rule-table tr:first-child td { color: #999; font-size: 9px; }
-  #sea-panel {
-    width: 180px; min-width: 180px; background: white;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.35); padding: 14px 16px;
-    border-radius: 3px; font-family: sans-serif; font-size: 12px; color: #222;
-  }
-  .sea-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .sea-cell { text-align: center; }
-  .sea-lbl  { font-size: 9px; color: #777; margin-top: 3px; line-height: 1.3; }
   #map-wrapper { background: white; box-shadow: 0 4px 24px rgba(0,0,0,0.35); display: inline-block; }
   #map {
     display: block;
@@ -657,74 +649,10 @@ function buildRules() {
   }
 }
 
-function buildSeaPanel() {
-  const ns = 'http://www.w3.org/2000/svg';
-  const Sp = 13, HHp = Sp * Math.sqrt(3), HWp = 2 * Sp;
-  const W = Math.ceil(HWp + 4), H = Math.ceil(HHp + 4);
-  const pcx = W / 2, pcy = H / 2;
-  const sc = Sp / S;
-  const hpts = Array.from({length:6},(_,i)=>{
-    const a=Math.PI/3*i;
-    return `${(pcx+Sp*Math.cos(a)).toFixed(1)},${(pcy+Sp*Math.sin(a)).toFixed(1)}`;
-  }).join(' ');
-
-  const panel = document.createElement('div');
-  panel.id = 'sea-panel';
-  const h = document.createElement('h2');
-  h.textContent = 'Vzor moře';
-  panel.appendChild(h);
-  const grid = document.createElement('div');
-  grid.className = 'sea-grid';
-  panel.appendChild(grid);
-
-  for (let pid = 1; pid <= 10; pid++) {
-    const cell = document.createElement('div');
-    cell.className = 'sea-cell';
-
-    const psvg = document.createElementNS(ns, 'svg');
-    psvg.setAttribute('width', W); psvg.setAttribute('height', H);
-    psvg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-
-    const defs = document.createElementNS(ns, 'defs');
-    const cp = document.createElementNS(ns, 'clipPath');
-    cp.setAttribute('id', `spc${pid}`);
-    const cpP = document.createElementNS(ns, 'polygon');
-    cpP.setAttribute('points', hpts); cp.appendChild(cpP); defs.appendChild(cp);
-    psvg.appendChild(defs);
-
-    const bg = document.createElementNS(ns, 'polygon');
-    bg.setAttribute('points', hpts); bg.setAttribute('fill', '#2a2a2a');
-    bg.setAttribute('stroke', '#888'); bg.setAttribute('stroke-width', '0.5');
-    psvg.appendChild(bg);
-
-    const pg = document.createElementNS(ns, 'g');
-    pg.setAttribute('clip-path', `url(#spc${pid})`);
-    psvg.appendChild(pg);
-
-    const [gx, gy, stagger] = SEA_GRID[pid];
-    const gxp = gx * sc, gyp = gy * sc;
-    let ri = 0;
-    for (let ty = pcy - HHp/2 - gyp; ty <= pcy + HHp/2 + gyp; ty += gyp, ri++) {
-      const xo = (stagger && ri % 2) ? gxp/2 : 0;
-      for (let tx = pcx - HWp/2 - gxp + xo; tx <= pcx + HWp/2 + gxp; tx += gxp)
-        seaCell(pg, tx, ty, pid, noise(tx, ty), sc);
-    }
-
-    cell.appendChild(psvg);
-    const lbl = document.createElement('div');
-    lbl.className = 'sea-lbl';
-    lbl.textContent = pid + ' ' + SEA_NAMES[pid];
-    cell.appendChild(lbl);
-    grid.appendChild(cell);
-  }
-
-  document.getElementById('sidebar').appendChild(panel);
-}
 
 generate();
 buildPanel();
 buildRules();
-buildSeaPanel();
 </script>
 </body>
 </html>
