@@ -282,38 +282,36 @@ function drawForestIcon(g, cx, cy, col, row) {
       drawTree(fg, tx, ty);
 }
 
-// large curling wave + 3 rows of scallops
+// large curling wave (shape adapted from user SVG) + 3 scallop rows
 function drawSeaIcon(g, cx, cy) {
   const P = { fill: 'none', stroke: 'white', 'stroke-width': '0.48',
               'stroke-linecap': 'round', 'stroke-linejoin': 'round' };
 
-  // Big wave: body sweeps up from left, crest curls right then hooks back left, descends
-  const wb = cy - 2;
+  // SVG source: x 5→224 (219u), y 18→122 (104u)
+  // Target hex zone: hx cx-8→cx+8 (16mm), hy cy-8.5→cy-1 (7.5mm)
+  // sx→hx: cx - 8 + (sx-5)*0.073
+  // sy→hy: cy - 1 - (118-sy)*0.075
   el('path', { d:
-    `M ${cx-8.5},${wb}` +
-    // body rising toward peak
-    ` C ${cx-7},${cy-6} ${cx-2},${cy-9} ${cx+1},${cy-8}` +
-    // push up toward curl tip (right and up)
-    ` C ${cx+3},${cy-7} ${cx+5},${cy-9.5} ${cx+4},${cy-9.5}` +
-    // curl hooks back left (the tube)
-    ` C ${cx+3},${cy-9.5} ${cx+1.5},${cy-8.5} ${cx+3},${cy-7.5}` +
-    // descent to right
-    ` C ${cx+5.5},${cy-5.5} ${cx+8},${cy-3.5} ${cx+8.5},${wb}`,
+    `M ${cx-8},${cy-1}` +
+    ` C ${cx-5.1},${cy-0.7} ${cx-3.3},${cy-1.2} ${cx-1.7},${cy-3}` +
+    ` C ${cx+0.4},${cy-5.2} ${cx+1},${cy-7.6} ${cx+4},${cy-8.2}` +
+    ` C ${cx+5.5},${cy-8.5} ${cx+6.6},${cy-8.2} ${cx+7.3},${cy-7.6}` +
+    ` C ${cx+5.5},${cy-7.8} ${cx+4.2},${cy-6.5} ${cx+4.2},${cy-4.8}` +
+    ` C ${cx+4.2},${cy-3} ${cx+5.9},${cy-1.9} ${cx+8},${cy-1.8}`,
     ...P }, g);
 
-  // 3 rows of symmetric scallop arches (Q = quadratic bezier, perfect dome)
+  // 3 rows of symmetric scallop arches below
   function scallops(y, x0, n, W, H) {
     let d = `M ${x0},${y}`;
     for (let i = 0; i < n; i++) {
-      const x = x0 + i * W;
-      d += ` Q ${x+W/2},${y-H} ${x+W},${y}`;
+      d += ` Q ${x0 + (i + 0.5) * W},${y - H} ${x0 + (i + 1) * W},${y}`;
     }
     el('path', { d, ...P }, g);
   }
 
-  scallops(cy+1.5, cx-7.5, 3, 5.0, 2.3);
-  scallops(cy+5,   cx-7.5, 3, 5.0, 2.0);
-  scallops(cy+8,   cx-6,   3, 4.0, 1.7);
+  scallops(cy+1.5, cx-8,   3, 5.3, 2.2);
+  scallops(cy+4.5, cx-7.5, 3, 5.0, 2.0);
+  scallops(cy+8,   cx-6,   3, 4.0, 1.6);
 }
 
 function drawCompass(cx, cy) {
