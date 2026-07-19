@@ -66,7 +66,7 @@
   #map-wrapper { background: white; box-shadow: 0 4px 24px rgba(0,0,0,0.35); display: inline-block; }
   #map {
     display: block;
-    width: min(calc(100vw - 226px), calc((100vh - 20px) * 594 / 630));
+    width: min(calc(100vw - 226px), calc((100vh - 20px) * 594 / 570));
     height: auto;
   }
   .rule svg { display: block; overflow: hidden; }
@@ -75,7 +75,7 @@
     body { background: white; padding: 0; display: block; min-height: unset; }
     #map-wrapper { box-shadow: none; margin: 0; }
     @page { size: A4 landscape; margin: 0; }
-    #map { display: block; width: 594mm !important; height: 630mm !important; }
+    #map { display: block; width: 594mm !important; height: 570mm !important; }
   }
 </style>
 </head>
@@ -89,8 +89,8 @@
 </div>
 <div id="map-wrapper">
 <svg id="map" xmlns="http://www.w3.org/2000/svg"
-     width="594mm" height="630mm"
-     viewBox="0 0 594 630">
+     width="594mm" height="570mm"
+     viewBox="0 0 594 570">
 <defs></defs>
 </svg>
 </div>
@@ -100,15 +100,16 @@ const NS  = 'http://www.w3.org/2000/svg';
 const svg = document.getElementById('map');
 
 // Hex constants
-const S        = 20 / Math.sqrt(3);
-const HH       = S * Math.sqrt(3);
-const HW       = 2 * S;
-const COL_STEP = 1.5 * S;
-const ROW_STEP = HH;
-const MARGIN   = 5;
-const COLS     = 33;
-const ROWS     = 30;
-const STROKE   = 0.22;
+const MARGIN      = 5;
+const COLS        = 29;
+const ROWS        = 23;
+const S           = (594 - MARGIN) / (1.5 * COLS + 0.5); // fills canvas width
+const HH          = S * Math.sqrt(3);
+const HW          = 2 * S;
+const COL_STEP    = 1.5 * S;
+const ROW_STEP    = HH;
+const ICON_SCALE  = HH / 20;   // scale icons relative to original 20 mm hex
+const STROKE      = +(0.22 * ICON_SCALE).toFixed(3);
 
 // Rarity config (adjust to tune terrain frequency)
 const CFG = {
@@ -118,7 +119,7 @@ const CFG = {
 };
 
 // Tiles forced to land regardless of noise (north/NW of Cair Paravel to keep it accessible)
-const CP_LAND = new Set(['29,10','29,9','28,11','28,10','27,10']);
+const CP_LAND = new Set(['25,7','25,6','24,9','24,8','23,8']);
 
 function el(tag, attrs, parent) {
   const e = document.createElementNS(NS, tag);
@@ -156,19 +157,19 @@ function noise(c, r, s) {
   return Math.abs(Math.sin(n * 127.1 + 5.7) * 43758.54) % 1;
 }
 
-// River: parity-aware connected walk from col 8 to col 30.
+// River: parity-aware connected walk from col 7 to col 25.
 // Flat-top offset grid adjacency rule across columns:
 //   even col → odd col+1 : valid moves are stay OR row-1 (north only)
 //   odd  col → even col+1: valid moves are stay OR row+1 (south only)
 // This guarantees every consecutive pair shares a hex edge.
 const RIVER_PATH = (function () {
-  const START = 8, END = 29, START_ROW = 16;
+  const START = 7, END = 25, START_ROW = 12;
   const path = {};
   let row = START_ROW;
   path[START] = row;
   for (let col = START + 1; col <= END; col++) {
     const t      = (col - START) / (END - START);
-    const target = Math.round((16 - t * 5) + Math.sin(col * 0.8) * 1.2);
+    const target = Math.round((START_ROW - t * 5) + Math.sin(col * 0.8) * 1.2);
     if ((col - 1) % 2 === 0) {
       // previous col was EVEN → transitioning to ODD: can only go north (row-1) or stay
       if (target < row) row--;
@@ -184,24 +185,23 @@ const RIVER_PATH = (function () {
 function isRiverHex(col, row) { return RIVER_PATH[col] === row; }
 
 const POIS = [
-  { col: 19, row: 14, name: 'Berunský most'   },
-  { col: 18, row: 18, name: 'Město Beruna'    },
-  { col: 10, row: 22, name: 'Taneční louka'   },
-  { col: 24, row: 11, name: 'Aslanův pahorek' },
-  { col: 29, row: 11, name: 'Cair Paravel'    },
-  { col: 17, row: 11, name: 'Kolbiště'        },
-  { col: 26, row:  6, name: 'Soví les'        },
-  { col: 17, row: 20, name: 'Mirazův tábor'   },
-  { col: 10, row: 17, name: 'Brod'            },
+  { col: 17, row: 10, name: 'Berunský most'   },
+  { col: 16, row: 14, name: 'Město Beruna'    },
+  { col:  9, row: 17, name: 'Taneční louka'   },
+  { col: 21, row:  7, name: 'Aslanův pahorek' },
+  { col: 25, row:  8, name: 'Cair Paravel'    },
+  { col: 15, row:  8, name: 'Kolbiště'        },
+  { col: 23, row:  5, name: 'Soví les'        },
+  { col:  9, row: 12, name: 'Brod'            },
   // top-left: old Narnian northwest
-  { col:  6, row:  7, name: 'Dryádský háj'   },
-  { col:  5, row:  2, name: 'Severní věž'    },
+  { col:  5, row:  5, name: 'Dryádský háj'   },
+  { col:  4, row:  2, name: 'Severní věž'    },
   // bottom-right: Telmarine southeast
-  { col: 21, row: 24, name: 'Telmarin'        },
-  { col: 29, row: 18, name: 'Jižní přístav'  },
-  { col: 25, row: 25, name: 'Jižní planina'  },
+  { col: 18, row: 18, name: 'Telmarin'        },
+  { col: 25, row: 14, name: 'Jižní přístav'  },
+  { col: 22, row: 19, name: 'Jižní planina'  },
   // western Narnia
-  { col:  3, row: 12, name: 'Lucerna'         },
+  { col:  3, row:  9, name: 'Lucerna'         },
 ];
 const POI_SET = new Set(POIS.map(p => p.col + ',' + p.row));
 
@@ -219,9 +219,9 @@ function terrain(col, row) {
 
   if (CP_LAND.has(col + ',' + row)) return 'fields'; // land north/NW of Cair Paravel
 
-  if (col >= 31) return 'sea';
-  if (col === 30 && noise(col, row, 11) > 0.18) return 'sea'; // ~82% sea — ragged near shore
-  if (col === 29 && noise(col, row, 12) > 0.72) return 'sea'; // ~28% sea — sparse coastal strip
+  if (col >= 27) return 'sea';
+  if (col === 26 && noise(col, row, 11) > 0.18) return 'sea'; // ~82% sea — ragged near shore
+  if (col === 25 && noise(col, row, 12) > 0.72) return 'sea'; // ~28% sea — sparse coastal strip
 
   if (col === 0) return 'forest';
   if (col === 1 && noise(col, row, 2) > CFG.borderNoise) return 'forest';
@@ -229,8 +229,8 @@ function terrain(col, row) {
   if (row === 0) return 'forest';
   if (row === 1 && noise(col, row, 1) > CFG.borderNoise) return 'forest';
 
-  if (row === 29) return 'mountains';
-  if (row === 28 && noise(col, row, 4) > CFG.borderNoise) return 'mountains';
+  if (row === ROWS - 1) return 'mountains';
+  if (row === ROWS - 2 && noise(col, row, 4) > CFG.borderNoise) return 'mountains';
   if (noise(col, row, 8) > CFG.mtnNoise)    return 'mountains';
   if (noise(col, row, 9) > CFG.forestNoise) return 'forest';
 
@@ -239,17 +239,19 @@ function terrain(col, row) {
 
 // Two overlapping peaks (grey body, white snow cap) — taller behind, shorter in front
 function drawMountainIcon(g, cx, cy) {
-  const by = cy + 4;
-  const SK = { stroke: '#000', 'stroke-width': '0.42', 'stroke-linejoin': 'round' };
-  const CS = { stroke: '#999', 'stroke-width': '0.22', 'stroke-linejoin': 'round' };
+  const IS = ICON_SCALE;
+  const by = cy + 4 * IS;
+  const SK = { stroke: '#000', 'stroke-width': (0.42 * IS).toFixed(2), 'stroke-linejoin': 'round' };
+  const CS = { stroke: '#999', 'stroke-width': (0.22 * IS).toFixed(2), 'stroke-linejoin': 'round' };
+  const p = (dx, dy) => `${(cx + dx * IS).toFixed(2)},${(cy + dy * IS).toFixed(2)}`;
   // Back (taller) peak
-  el('polygon', { points: `${cx-3},${by} ${cx+2},${cy-7} ${cx+7},${by}`, fill: '#e8e8e8', ...SK }, g);
+  el('polygon', { points: `${p(-3,4)} ${p(2,-7)} ${p(7,4)}`, fill: '#e8e8e8', ...SK }, g);
   // Front (shorter) peak
-  el('polygon', { points: `${cx-7},${by} ${cx-2},${cy-4} ${cx+3},${by}`, fill: '#e8e8e8', ...SK }, g);
-  // Snow cap on back peak (top 2.5 mm — sides at t=2.5/11 along each edge)
-  el('polygon', { points: `${cx+2},${cy-7} ${cx+0.9},${cy-4.5} ${cx+3.1},${cy-4.5}`, fill: 'white', ...CS }, g);
-  // Snow cap on front peak (top 2 mm — sides at t=2/8 along each edge)
-  el('polygon', { points: `${cx-2},${cy-4} ${cx-3.25},${cy-2} ${cx-0.75},${cy-2}`, fill: 'white', ...CS }, g);
+  el('polygon', { points: `${p(-7,4)} ${p(-2,-4)} ${p(3,4)}`, fill: '#e8e8e8', ...SK }, g);
+  // Snow cap on back peak
+  el('polygon', { points: `${p(2,-7)} ${p(0.9,-4.5)} ${p(3.1,-4.5)}`, fill: 'white', ...CS }, g);
+  // Snow cap on front peak
+  el('polygon', { points: `${p(-2,-4)} ${p(-3.25,-2)} ${p(-0.75,-2)}`, fill: 'white', ...CS }, g);
 }
 
 // Exact same tree shape as the old pat-forest pattern, tiled at the same absolute 5x6mm
@@ -378,7 +380,7 @@ function drawCompass(cx, cy) {
 }
 
 function generate() {
-  el('rect', { x: 0, y: 0, width: 594, height: 630, fill: 'white' }, svg);
+  el('rect', { x: 0, y: 0, width: 594, height: 570, fill: 'white' }, svg);
 
   const gHex = el('g', { id: 'hexes' }, svg);
   for (let col = 0; col < COLS; col++) {
@@ -401,31 +403,32 @@ function generate() {
   for (const p of POIS) {
     const [cx, cy] = hexCenter(p.col, p.row);
     const poiStroke = isRiverHex(p.col, p.row) ? 'white' : 'black';
-    el('polygon', { points: starPoints(cx, cy, 3.0, 1.2), fill: '#000', stroke: poiStroke, 'stroke-width': '0.6', 'stroke-linejoin': 'round' }, gPoi);
+    const IS = ICON_SCALE;
+    el('polygon', { points: starPoints(cx, cy, 3.0 * IS, 1.2 * IS), fill: '#000', stroke: poiStroke, 'stroke-width': (0.6 * IS).toFixed(2), 'stroke-linejoin': 'round' }, gPoi);
     const labelBelow = p.row < 3;
-    const labelLeft  = p.col >= 30;
-    const ly         = cy + (labelBelow ? 7 : -5);
+    const labelLeft  = p.col >= COLS - 3;
+    const ly         = cy + (labelBelow ? 7 * IS : -5 * IS);
     const anchor     = labelLeft ? 'end' : (p.col < 3 ? 'start' : 'middle');
-    const lx         = labelLeft ? cx - 1 : cx;
+    const lx         = labelLeft ? cx - IS : cx;
     txt(gPoi, p.name, {
       x: lx, y: ly,
       'font-family':  'serif',
-      'font-size':    '3.6',
+      'font-size':    (3.6 * IS).toFixed(1),
       'font-weight':  'bold',
       'text-anchor':  anchor,
       fill:           '#111',
       stroke:         'white',
-      'stroke-width': '1.8',
+      'stroke-width': (1.8 * IS).toFixed(1),
       'paint-order':  'stroke fill',
     });
   }
 
   const gG = el('g', { stroke: '#bbb', 'stroke-width': '0.35', 'stroke-dasharray': '4 2.5' }, svg);
-  el('line', { x1: 297, y1: 0,   x2: 297, y2: 630 }, gG);
-  el('line', { x1: 0,   y1: 210, x2: 594, y2: 210 }, gG);
-  el('line', { x1: 0,   y1: 420, x2: 594, y2: 420 }, gG);
+  el('line', { x1: 297, y1: 0,   x2: 297, y2: 570 }, gG);
+  el('line', { x1: 0,   y1: 190, x2: 594, y2: 190 }, gG);
+  el('line', { x1: 0,   y1: 380, x2: 594, y2: 380 }, gG);
 
-  drawCompass(563, 608);
+  drawCompass(563, 555);
 }
 
 function buildPanel() {
