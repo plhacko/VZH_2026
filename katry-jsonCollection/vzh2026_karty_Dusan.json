@@ -1,0 +1,172 @@
+[
+  {
+    "id": "3f86fb98-6b7a-40b7-b38e-1cfda0b1e681",
+    "name": "Ředkvičkova ředkvička",
+    "utocna": false,
+    "obsazujici": false,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "b4f841d0-2b58-4b75-a6f7-781a284b0227",
+        "name": "Přineste 20 různých druhů rostlin",
+        "cena": "1",
+        "misto": "kolbiste"
+      }
+    ],
+    "createdAt": "2026-07-02T09:08:33.444Z",
+    "updatedAt": "2026-07-02T09:08:33.444Z"
+  },
+  {
+    "id": "2ab4d178-bc8b-48c0-9193-a267d4e4a6c3",
+    "name": "Výprava na Osamělé ostrovy",
+    "utocna": true,
+    "obsazujici": true,
+    "obranna": false,
+    "ukoly": [
+      {
+        "id": "f7925b97-dfdf-4723-83b9-6ae8dbd83dde",
+        "name": "Skupinka přebrodí řeku od mola ke konci tábořiště",
+        "cena": "2",
+        "misto": "kolbiste"
+      }
+    ],
+    "createdAt": "2026-07-02T09:11:53.763Z",
+    "updatedAt": "2026-07-02T09:12:31.973Z"
+  },
+  {
+    "id": "c3b02430-f1f1-4c07-ae00-8327d40504ac",
+    "name": "Kornéliovi konjunkce",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "e15cf192-f683-411d-a93b-8555e1cf4531",
+        "name": "Z přírodních materiálů poskládej 2 (3?) souhvězdí.",
+        "cena": "1",
+        "misto": "vez"
+      }
+    ],
+    "createdAt": "2026-07-02T09:21:27.527Z",
+    "updatedAt": "2026-07-02T09:21:27.527Z"
+  },
+  {
+    "id": "061eb8c2-a648-433d-99b2-24bb76bcf391",
+    "name": "Bakchusovy přípravy",
+    "utocna": false,
+    "obsazujici": false,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "d2e1ed26-a765-4b2e-832b-6bf885ad538d",
+        "name": "Složte báseň o alespoň 20 rýmovaných verších a rytmu (každý verš musí mít stejný počet slabik)",
+        "cena": "1",
+        "misto": "brod"
+      }
+    ],
+    "createdAt": "2026-07-02T09:28:29.396Z",
+    "updatedAt": "2026-07-02T09:28:29.396Z"
+  },
+  {
+    "id": "5c1786e7-dba4-48c9-bbd0-cc32f01cb31b",
+    "name": "Dobré zprávy z Cair Paravel",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "6cca802a-2654-4797-8490-cad0fd74f034",
+        "name": "Najděte skrytou zprávu u Cair Paravel a zapamatujte si ji.",
+        "cena": "2",
+        "misto": "vez"
+      }
+    ],
+    "createdAt": "2026-07-02T09:39:53.351Z",
+    "updatedAt": "2026-07-02T09:40:00.961Z"
+  },
+  {
+    "id": "cc2eef29-b628-4f72-919c-e53f0b96cec3",
+    "name": "Zvědi v táboře Telmarínů.",
+    "utocna": true,
+    "obsazujici": true,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "34f32481-913e-4114-a9cb-46e820fcb264",
+        "name": "Najděte a zapamatujte si skrytou zprávu v táboře Telmarínů",
+        "cena": "3",
+        "misto": "telmari"
+      }
+    ],
+    "createdAt": "2026-07-02T09:43:58.238Z",
+    "updatedAt": "2026-07-02T09:43:58.238Z"
+  },
+  {
+    "id": "bc99100a-92cc-4300-a3ac-eadbc96951c5",
+    "name": "Mrakotřasův útok",
+    "utocna": true,
+    "obsazujici": true,
+    "obranna": false,
+    "ukoly": [
+      {
+        "id": "8db128e8-e157-4bff-8d32-abb537a48ca3",
+        "name": "Dojděte z Cair Paravel do tábora Telmarínů nesouce někoho na ramenou.",
+        "cena": "2",
+        "misto": "vez"
+      }
+    ],
+    "createdAt": "2026-07-02T10:03:01.995Z",
+    "updatedAt": "2026-07-02T10:03:01.995Z"
+  },
+  {
+    "id": "b0ec2570-99a6-4490-836a-f17a4302a707",
+    "name": "Silénova cesta",
+    "utocna": false,
+    "obsazujici": false,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "70085e0b-2f8c-4499-baa8-46cd3c9695fa",
+        "name": "Člen skupiny představuje osla a musí se po čtyřech přepravit z tábora Telmarínů až k Berunskému Mostu; v průběhu mu jiný člen skupinky sedí na zádech. (celou cestu nemusí plnit obě jeden člověk.)",
+        "cena": "2",
+        "misto": "telmari"
+      }
+    ],
+    "createdAt": "2026-07-02T10:08:17.069Z",
+    "updatedAt": "2026-07-02T10:08:17.069Z"
+  },
+  {
+    "id": "43ab8243-b5b0-4782-b369-9d7652ec0f7a",
+    "name": "Výcvik házení kopí",
+    "utocna": true,
+    "obsazujici": true,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "335be0e3-ad6f-4ccd-8695-d38efb752f87",
+        "name": "Házení šišek na stromy",
+        "cena": "1",
+        "misto": "kolbiste"
+      }
+    ],
+    "createdAt": "2026-07-02T10:18:20.462Z",
+    "updatedAt": "2026-07-02T10:18:20.462Z"
+  },
+  {
+    "id": "62088349-0352-4432-975f-2f79a501c244",
+    "name": "Družina Najád",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "e8e7620e-8731-425b-88dc-c359691327f0",
+        "name": "Zazpívejte 5 písní vaší volby v potoce",
+        "cena": "1",
+        "misto": "brod"
+      }
+    ],
+    "createdAt": "2026-07-02T10:23:23.991Z",
+    "updatedAt": "2026-07-02T10:23:23.991Z"
+  }
+]
