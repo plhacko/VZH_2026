@@ -54,13 +54,13 @@
       {
         "id": "c02t2",
         "name": "Přečtěte vedoucímu jakýkoli citát postavy z libovolné knihy.",
-        "cena": 2,
+        "cena": 3,
         "misto": "vez"
       },
       {
         "id": "c02t3",
         "name": "Dejte 3 houbičky (umělé) vedoucímu.",
-        "cena": 2,
+        "cena": 3,
         "misto": "vez"
       }
     ]
@@ -204,7 +204,7 @@
       {
         "id": "c07t2",
         "name": "Řekněte vedoucímu zpaměti slova 1. sloky PTM.",
-        "cena": 2,
+        "cena": 3,
         "misto": "vez"
       },
       {
@@ -420,7 +420,7 @@
       {
         "id": "c15t2",
         "name": "Celá skupinka doběhne do Cair Paravel.",
-        "cena": 2,
+        "cena": 3,
         "misto": "vez"
       },
       {
@@ -780,7 +780,7 @@
       {
         "id": "c28t2",
         "name": "Vyjmenujte vedoucímu názvy 5 českých církví.",
-        "cena": 2,
+        "cena": 3,
         "misto": "vez"
       }
     ]
@@ -852,13 +852,13 @@
       {
         "id": "c32t1",
         "name": "Složte vlaštovku z papíru a před zraky vedoucího ji dohoďte alespoň 3 metry.",
-        "cena": 2,
+        "cena": 1,
         "misto": "telmari"
       },
       {
         "id": "c32t2",
         "name": "Složte vlaštovku z papíru a před zraky vedoucího ji dohoďte alespoň 3 metry.",
-        "cena": 2,
+        "cena": 3,
         "misto": "vez"
       },
       {
@@ -918,7 +918,7 @@
       {
         "id": "c34t1",
         "name": "Vyjmenujte vedoucímu jména alespoň 10 letošních vedoucích nebo praktikantů.",
-        "cena": 2,
+        "cena": 3,
         "misto": "vez"
       },
       {
@@ -1242,7 +1242,7 @@
       {
         "id": "c46t1",
         "name": "Udělejte 10 kotrmelců.",
-        "cena": 2,
+        "cena": 3,
         "misto": "vez"
       },
       {
@@ -1332,7 +1332,7 @@
       {
         "id": "c49t4",
         "name": "Všichni členové skupinky se dostaví do tábora Telmarínů.",
-        "cena": 2,
+        "cena": 1,
         "misto": "telmari"
       }
     ]
@@ -1416,7 +1416,7 @@
       {
         "id": "c53t3",
         "name": "Napište na papír 15 televizních seriálů a doneste je do Cair Paravel.",
-        "cena": 2,
+        "cena": 3,
         "misto": "vez"
       },
       {
@@ -1509,7 +1509,7 @@
       {
         "id": "c7ee8dae-016b-44ca-ac6c-57be15aa6a3c",
         "name": "Poraž vedoucího v lístečkách.",
-        "cena": "1",
+        "cena": 2,
         "misto": "brod"
       }
     ],
@@ -1569,7 +1569,7 @@
       {
         "id": "3db915ad-1fbd-4d4e-a8f8-26d5a1224948",
         "name": "Trefte při střelbě z luku 4x terč z krátké vzdálenosti (vzdálenost určí vedoucí na stanovišti). Každý člen družinky může vystřelit maximálně 2 šípy.",
-        "cena": "2",
+        "cena": 3,
         "misto": "vez"
       }
     ],
@@ -1611,7 +1611,7 @@
       {
         "id": "dda51092-2ab5-4e1a-aec7-567794d78b0a",
         "name": "Poražte vedoucího ve hře petanque (jeden pokus na člena družinky, petanque hru musíte přinést a vyrobit pomocí šesti kamenů a jedné šišky).",
-        "cena": "2",
+        "cena": 3,
         "misto": "vez"
       },
       {
@@ -1724,7 +1724,7 @@
       {
         "id": "2046cc01-f58a-48ac-bd4b-96d608ac0615",
         "name": "Vyjmenuj 5 souhvězdí.",
-        "cena": "1",
+        "cena": 3,
         "misto": "vez"
       },
       {
@@ -1736,7 +1736,7 @@
       {
         "id": "8b45d387-6dd9-4298-9a93-24624fd854dc",
         "name": "Trefte při střelbě z luku 5x terč z krátké vzdálenosti (vzdálenost určí vedoucí na stanovišti).",
-        "cena": "2",
+        "cena": 3,
         "misto": "vez"
       }
     ],
@@ -1753,7 +1753,7 @@
       {
         "id": "2ad953b4-9ee8-4091-b4d7-473a4cfda799",
         "name": "Poražte vedoucího ve vyčerpávání témat.",
-        "cena": "1",
+        "cena": 2,
         "misto": "brod"
       },
       {
@@ -1793,7 +1793,7 @@
       {
         "id": "6cca802a-2654-4797-8490-cad0fd74f034",
         "name": "Najděte skrytou zprávu u Cair Paravel a zapamatujte si ji.",
-        "cena": "2",
+        "cena": 3,
         "misto": "vez"
       }
     ],
@@ -1810,7 +1810,7 @@
       {
         "id": "34f32481-913e-4114-a9cb-46e820fcb264",
         "name": "Najděte a zapamatujte si skrytou zprávu v táboře Telmarínů",
-        "cena": "3",
+        "cena": 2,
         "misto": "telmari"
       }
     ],
@@ -1827,7 +1827,7 @@
       {
         "id": "70085e0b-2f8c-4499-baa8-46cd3c9695fa",
         "name": "Člen skupiny představuje osla a musí se po čtyřech přepravit z tábora Telmarínů až k Berunskému Mostu; v průběhu mu jiný člen skupinky sedí na zádech. (celou cestu nemusí plnit obě jeden člověk.)",
-        "cena": "2",
+        "cena": 3,
         "misto": "telmari"
       }
     ],
