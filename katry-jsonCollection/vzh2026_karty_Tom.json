@@ -1,21 +1,5 @@
 [
   {
-    "id": "acd670d7-e015-4a63-b987-fbeb38ca1a43",
-    "name": "Verbování do armády prince Kaspiana",
-    "utocna": true,
-    "obsazujici": false,
-    "obranna": false,
-    "ukoly": [
-      {
-        "id": "a96c647d-c7b2-42ae-929f-2d1774362d67",
-        "name": "Přiveďte cizího člověka do tábořiště.",
-        "cena": "X"
-      }
-    ],
-    "createdAt": "2026-06-18T15:40:56.550Z",
-    "updatedAt": "2026-06-23T15:23:35.273Z"
-  },
-  {
     "id": "8a1f4ce6-7e05-4920-87fe-49dd2b182344",
     "name": "Rípčípův motivační proslov",
     "utocna": true,
@@ -35,39 +19,9 @@
         "cena": "2",
         "misto": "kolbiste",
         "splnitelna": "vsichni"
-      },
-      {
-        "id": "37ca3b29-0b5b-4255-8c17-0198cabe25aa",
-        "name": "Během proslovu musí zazní oslavná báseň na Aslana o alespoň 6 verších (báseň se nepočítá do vět nutných na proslov).",
-        "cena": "2",
-        "misto": "kolbiste",
-        "splnitelna": "vsichni"
       }
     ],
     "createdAt": "2026-06-23T15:32:26.848Z",
     "updatedAt": "2026-06-23T15:44:02.880Z"
-  },
-  {
-    "id": "3895bbd3-98b6-4942-b235-1a80e36e7156",
-    "name": "Těžká zpráva prince Kaspiana",
-    "utocna": false,
-    "obsazujici": false,
-    "obranna": false,
-    "ukoly": [
-      {
-        "id": "b8129038-846c-48eb-a168-afe58c79f4ab",
-        "name": "Přineste člena družinky na Cair Paravel.",
-        "cena": "3",
-        "misto": "vez"
-      },
-      {
-        "id": "739f9885-1903-4e0a-92b4-323974ec4610",
-        "name": "Přineste člena družinky na Berunský most.",
-        "cena": "3",
-        "misto": "brod"
-      }
-    ],
-    "createdAt": "2026-06-24T07:42:43.348Z",
-    "updatedAt": "2026-06-24T07:42:43.348Z"
   }
 ]

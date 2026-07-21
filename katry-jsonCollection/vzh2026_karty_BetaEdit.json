@@ -24,48 +24,6 @@
     "poznamka": ""
   },
   {
-    "id": "ace8d6fe-e2ea-4c4c-9938-dd79a1aa2c80",
-    "name": "Bakchovy oslavy",
-    "utocna": false,
-    "obsazujici": true,
-    "obranna": false,
-    "ukoly": [
-      {
-        "id": "49e9fd20-5048-4bf0-9db9-cbf182bc3bbd",
-        "name": "Alespoň 4 členové skupiny sborově zapějí libovolnou píseň ze Zpíváku",
-        "cena": "X",
-        "misto": "brod"
-      }
-    ],
-    "createdAt": "2026-07-06T07:52:21.348Z",
-    "updatedAt": "2026-07-08T21:32:27.020Z",
-    "poznamka": ""
-  },
-  {
-    "id": "c630209c-5c71-4d42-bbe0-4505a61b7be6",
-    "name": "Mořská krasavice",
-    "utocna": true,
-    "obsazujici": true,
-    "obranna": false,
-    "ukoly": [
-      {
-        "id": "56937075-b625-4dc0-9102-204d1c119e3d",
-        "name": "Vyrobte lodičku, která přepraví náklad (šišku) na vzdálenost 5 metrů bez potopení",
-        "cena": "3",
-        "misto": "kolbiste"
-      },
-      {
-        "id": "aea46fff-218f-4610-aa20-68b203b0098b",
-        "name": "Přebroď řeku a s dalším členem skupinky na sebe přes řeku třikrát zavolejte: \"Je čerstvá!\"z jednoho břehu a \"Není čerstvá!\" ze břehu druhého (nevstupujte do vody bez dohledu vedoucího)",
-        "cena": "X",
-        "misto": "kolbiste"
-      }
-    ],
-    "createdAt": "2026-07-06T07:56:22.883Z",
-    "updatedAt": "2026-07-08T21:11:37.093Z",
-    "poznamka": ""
-  },
-  {
     "id": "436e51e2-f774-4167-a4a5-4d03cb0c9ca0",
     "name": "Čuchomechova rychlá petice",
     "utocna": true,
@@ -90,54 +48,12 @@
     "poznamka": ""
   },
   {
-    "id": "fd61a918-d14b-4b13-9d58-8ef710411f38",
-    "name": "Ošetřování raněných",
-    "utocna": false,
-    "obsazujici": false,
-    "obranna": true,
-    "ukoly": [
-      {
-        "id": "0d4c1f27-a8ce-46d5-b17a-c468f1b362eb",
-        "name": "Přeneste kapitána skupiny z Tábora Telmarínů k Berunskému brodu (kapitán se nesmí dotknout země).",
-        "cena": "3",
-        "misto": "kolbiste"
-      }
-    ],
-    "createdAt": "2026-07-06T08:17:31.140Z",
-    "updatedAt": "2026-07-08T20:38:00.954Z",
-    "poznamka": ""
-  },
-  {
-    "id": "12e58cb3-9ff4-4cd6-9e6e-32356c48e386",
-    "name": "Úkryt Švihlíka Lopatičky",
-    "utocna": true,
-    "obsazujici": false,
-    "obranna": true,
-    "ukoly": [
-      {
-        "id": "7e86efe4-4dc1-4373-8cfe-a221168903b1",
-        "name": "Zamaskujte člena skupiny tak, aby vedoucí nepoznal, o koho se jedná (na maskování použijte pouze přírodní materiály a oblečení).",
-        "cena": "2",
-        "misto": "telmari"
-      }
-    ],
-    "createdAt": "2026-07-06T08:20:32.062Z",
-    "updatedAt": "2026-07-08T20:33:46.414Z",
-    "poznamka": ""
-  },
-  {
     "id": "586d4834-e1fc-4ff6-bd8c-27d1e95e5aaa",
     "name": "Bojová taktika Profesora Kornelia",
     "utocna": false,
     "obsazujici": true,
     "obranna": false,
     "ukoly": [
-      {
-        "id": "0d7a4b31-7166-409e-be99-1a800d595579",
-        "name": "Dej mat dvěma střelci a králem.",
-        "cena": "2",
-        "misto": "kolbiste"
-      },
       {
         "id": "c7ee8dae-016b-44ca-ac6c-57be15aa6a3c",
         "name": "Poraž vedoucího v lístečkách.",
@@ -157,12 +73,6 @@
     "obranna": false,
     "ukoly": [
       {
-        "id": "bb73a4cc-3058-4b77-b598-a8b71fd8632f",
-        "name": "Léčivé silice: Najdi v okolí tábora 10 druhů bylin a pojmenuj je.",
-        "cena": "2",
-        "misto": "kolbiste"
-      },
-      {
         "id": "295624bf-e43c-46fc-9d92-8c517494e2e1",
         "name": "Pošlete jednoho člena skupiny, aby oběhl všechna místa na mapě.",
         "cena": "3",
@@ -180,12 +90,6 @@
     "obsazujici": false,
     "obranna": true,
     "ukoly": [
-      {
-        "id": "bf7f4e02-43cf-405a-9e27-3f4c2bf64431",
-        "name": "Upleťte věneček z lučního kvítí a darujte ho vedoucímu, který z něj bude mít radost.",
-        "cena": "1",
-        "misto": "telmari"
-      },
       {
         "id": "40293ffd-57c6-473d-93f5-c1750c5c244f",
         "name": "Postavte domeček pro skřítka Trumpkina, aby se v něm chtěl zabydlet (zhodnotí vedoucí).",
@@ -215,12 +119,6 @@
         "name": "Trefte při střelbě z luku 4x terč z krátké vzdálenosti (vzdálenost určí vedoucí na stanovišti). Každý člen družinky může vystřelit maximálně 2 šípy.",
         "cena": "2",
         "misto": "vez"
-      },
-      {
-        "id": "d85f0a9c-3ff8-465f-8693-7006b07adb55",
-        "name": "Tref se do 10x do stromu šiškou ze vzdálenosti alespoň 10m. Strom musíš být schopen obejmout dokola rukama.",
-        "cena": "1",
-        "misto": "brod"
       }
     ],
     "createdAt": "2026-07-06T18:26:58.176Z",
@@ -265,12 +163,6 @@
         "misto": "vez"
       },
       {
-        "id": "47cc8c6f-9db9-449d-943f-19279a0192ba",
-        "name": "Poražte vedoucího v piškvorkách (jeden pokus na člena družinky).",
-        "cena": "2",
-        "misto": "brod"
-      },
-      {
         "id": "51844bf1-4b69-4fa2-8e24-8f0e7bcf2d9e",
         "name": "Nakreslete portrét vedoucího, aby ho dva jiní vedoucí poznali.",
         "cena": "3",
@@ -280,24 +172,6 @@
     "createdAt": "2026-07-06T18:47:14.462Z",
     "updatedAt": "2026-07-08T21:39:44.992Z",
     "poznamka": ""
-  },
-  {
-    "id": "f58cb5ff-9ca5-4145-bcf3-c87a7b5677d2",
-    "name": "Přepadení",
-    "utocna": true,
-    "obsazujici": false,
-    "obranna": false,
-    "ukoly": [
-      {
-        "id": "af16c470-85cd-40eb-bd75-dddbf8bd3de2",
-        "name": "Chyťte vedoucího a přivažte ho ke stromu.",
-        "cena": "X",
-        "misto": "kolbiste"
-      }
-    ],
-    "createdAt": "2026-07-06T19:08:37.522Z",
-    "updatedAt": "2026-07-08T21:37:27.004Z",
-    "poznamka": "DOČASNĚ VYŘAZENA - nápad se mi moc líbí, ale představa 5ti skupinek svazující 5 vedoucích je silně nepraktická"
   },
   {
     "id": "264326f4-4585-4d62-ae6e-e8cd273b4801",
@@ -318,36 +192,12 @@
     "poznamka": ""
   },
   {
-    "id": "75f8c057-66f2-4184-ad85-c46813b01c06",
-    "name": "Verbování do armády Prince Kaspiana",
-    "utocna": true,
-    "obsazujici": true,
-    "obranna": true,
-    "ukoly": [
-      {
-        "id": "e9559dc7-05c8-4206-bdb1-8eb11062214f",
-        "name": "Přiveďte do tábora cizího člověka a přesvědčte ho, aby provolal slávu Narnii.",
-        "cena": "X",
-        "misto": "kolbiste"
-      }
-    ],
-    "createdAt": "2026-07-06T19:12:49.912Z",
-    "updatedAt": "2026-07-08T20:50:07.508Z",
-    "poznamka": ""
-  },
-  {
     "id": "5f2c6784-69da-4a3d-8b7d-38e7ff9b7156",
     "name": "Rozcvička u Bobří hráze",
     "utocna": false,
     "obsazujici": true,
     "obranna": true,
     "ukoly": [
-      {
-        "id": "8911beac-0b1c-45c7-85c6-2957432b139b",
-        "name": "Všichni členové skupinky si vyčistí zuby.",
-        "cena": "1",
-        "misto": "brod"
-      },
       {
         "id": "5f6035f0-57a2-49f3-a85c-46506fc69db5",
         "name": "Vyrobte funkční vodní mlýnek.",
@@ -370,52 +220,11 @@
         "name": "Vedoucího pomocí úplatků naverbujte do své armády. Nesmí být už naverbovaný jinou skupinkou.",
         "cena": "2",
         "misto": "kolbiste"
-      },
-      {
-        "id": "6927a0ff-f50d-4782-8f41-4924e6acc2a9",
-        "name": "Vyhledejte a přineste 5 hub z okolí tábora (houby nejezte).",
-        "cena": "1",
-        "misto": "kolbiste"
-      },
-      {
-        "id": "09e83088-3f0c-4a9d-be53-dbe28a568cf3",
-        "name": "Snězte 6 jablek.",
-        "cena": "3",
-        "misto": "kolbiste"
       }
     ],
     "createdAt": "2026-07-06T19:23:22.994Z",
     "updatedAt": "2026-07-08T21:54:56.472Z",
     "poznamka": ""
-  },
-  {
-    "id": "204f27a1-544a-4f05-89e3-ec80a7c3b886",
-    "name": "Verbování Fauna Voltinuse",
-    "utocna": false,
-    "obsazujici": true,
-    "obranna": true,
-    "ukoly": [
-      {
-        "id": "916ffbbe-b194-4e83-bef5-83ad44ec6371",
-        "name": "Vytvořte z libovolného materiálu flétnu, která zahraje alespoň 2 různé tóny (posoudí vedoucí). Můžete v kuchyni poprosit o pomůcky.",
-        "cena": "3",
-        "misto": "kolbiste"
-      },
-      {
-        "id": "87f50cfd-aa93-4ddb-a59c-3675d528fcc9",
-        "name": "Zpaměti zazpívejte píseň ze Zpíváku.",
-        "cena": "1",
-        "misto": "kolbiste"
-      },
-      {
-        "id": "50a560fc-f985-4cd6-bb0f-f985cea8ff83",
-        "name": "Zpaměti zarecitujte verš z Bible (i s odkazem).",
-        "cena": "1",
-        "misto": "brod"
-      }
-    ],
-    "createdAt": "2026-07-06T19:28:41.762Z",
-    "updatedAt": "2026-07-08T12:12:36.580Z"
   },
   {
     "id": "07277b56-70c3-4d23-95b1-1debb168ab34",
@@ -424,18 +233,6 @@
     "obsazujici": true,
     "obranna": true,
     "ukoly": [
-      {
-        "id": "3f84bffa-1d9f-43fa-9dea-337090ebc415",
-        "name": "Upleťte třem členům skupiny copánky.",
-        "cena": "1",
-        "misto": "kolbiste"
-      },
-      {
-        "id": "cc728160-81e9-4925-b5ad-bce5c25804ac",
-        "name": "Vytvořte provaz z oblečení alespoň 10 m dlouhý.",
-        "cena": "2",
-        "misto": "kolbiste"
-      },
       {
         "id": "a2be7aa0-43be-44b8-bfd7-f4f4707ad3eb",
         "name": "Navlečte na jednoho člena skupinky do 10 kusů oblečení (nepočítá se spodní prádlo, pásky, čepice a podobné doplňky).",
@@ -458,12 +255,6 @@
         "id": "aa146bdc-0969-49c0-868b-8e784f9d402c",
         "name": "Ukliďte stan člena skupinky, který dostal v posledním bodování stanů -, aby mohl dostat +.",
         "cena": "X",
-        "misto": "kolbiste"
-      },
-      {
-        "id": "f1eefbad-5dbb-4a06-9d08-c8cacef5edf1",
-        "name": "Ulovte alespoň 1 žížalu (živou).",
-        "cena": "3",
         "misto": "kolbiste"
       }
     ],
@@ -508,20 +299,8 @@
     "obranna": true,
     "ukoly": [
       {
-        "id": "392de042-d48d-4a68-9858-b07462646004",
-        "name": "Vyjmenujte všechny účastníky i vedoucí tábora.",
-        "cena": "3",
-        "misto": "vez"
-      },
-      {
         "id": "2ad953b4-9ee8-4091-b4d7-473a4cfda799",
         "name": "Poražte vedoucího ve vyčerpávání témat.",
-        "cena": "1",
-        "misto": "brod"
-      },
-      {
-        "id": "ac41db96-f636-4f78-9477-98d30e3f0676",
-        "name": "Zarecitujte zpaměti libovolnou báseň o minimálně 4 verších.",
         "cena": "1",
         "misto": "brod"
       },
