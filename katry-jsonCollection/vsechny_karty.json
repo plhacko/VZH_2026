@@ -1,0 +1,1862 @@
+[
+  {
+    "id": "c01",
+    "name": "Ať žije Lev!",
+    "poznamka": "",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c01t1",
+        "name": "3 členové družinky udělají každý 30 dřepů.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c01t2",
+        "name": "Zahrajte si kámen-nůžky-papír s členem jiné družinky, aby to viděl vedoucí.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c01t3",
+        "name": "2 členové družinky řeknou verš z Bible delší než 5 slov včetně odkazu (může říct každý jiný).",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c01t4",
+        "name": "Doneste spadlou soušku, která má průměr v nejširším bodě víc než 8 cm.",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c02",
+    "name": "Bitva u Beruny",
+    "poznamka": "",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T20:15:05.659Z",
+    "ukoly": [
+      {
+        "id": "c02t1",
+        "name": "Dvojice si bez dopadu na zem hodí pětkrát frisbee na vzdálenost alespoň 10 metrů.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c02t2",
+        "name": "Přečtěte vedoucímu jakýkoli citát postavy z libovolné knihy.",
+        "cena": 2,
+        "misto": "vez"
+      },
+      {
+        "id": "c02t3",
+        "name": "Dejte 3 houbičky (umělé) vedoucímu.",
+        "cena": 2,
+        "misto": "vez"
+      }
+    ]
+  },
+  {
+    "id": "c03",
+    "name": "Správa kolbiště",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T19:26:52.130Z",
+    "ukoly": [
+      {
+        "id": "c03t1",
+        "name": "Vymyslete a napište lib. 14 zvířat od K.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c03t2",
+        "name": "Trefte se šiškou do stromu z místa určeného vedoucím.",
+        "cena": 1,
+        "misto": "telmari"
+      },
+      {
+        "id": "c03t3",
+        "name": "Obmotejte toaletním papírem člena družinky a pak toaleťák vraťte do použitelného stavu.",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c04",
+    "name": "Sláva Trumpkinovi",
+    "poznamka": "",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c04t1",
+        "name": "4 členové družinky zazpívají jakoukoli píseň za zpíváku vedoucímu.",
+        "cena": 2,
+        "misto": "telmari"
+      },
+      {
+        "id": "c04t2",
+        "name": "Nanoste tolik jehličí, aby hromada byla po kolena vedoucímu.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c04t3",
+        "name": "Doneste 4 zabalené spacáky patřící členům vaší skupinky.",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c05",
+    "name": "U Bobří hráze",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c05t1",
+        "name": "Přineste dřevěný kolík vyrobený členem družinky.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c05t2",
+        "name": "Spočítejte 7×7×7×7×7×7×7.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c05t3",
+        "name": "Každý člen před vedoucím vypije hrnek vody.",
+        "cena": 1,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c06",
+    "name": "Strach pána z Lichometníku",
+    "poznamka": "",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c06t1",
+        "name": "Vymyslete a napište 30 slov od L.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c06t2",
+        "name": "Přineste houbu.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c06t3",
+        "name": "Udělejte v součtu 70 kliků.",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c07",
+    "name": "Poldštejnova nepříjemnost",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": false,
+    "obranna": true,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c07t1",
+        "name": "Složte báseň o minimálně 4 verších na téma „Mrzutý jezevec\".",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c07t2",
+        "name": "Řekněte vedoucímu zpaměti slova 1. sloky PTM.",
+        "cena": 2,
+        "misto": "vez"
+      },
+      {
+        "id": "c07t3",
+        "name": "Vyjmenujte 10 postav z knihy Princ Kaspian vedoucímu.",
+        "cena": 2,
+        "misto": "telmari"
+      }
+    ]
+  },
+  {
+    "id": "c08",
+    "name": "Smršť Jeho Lordstva",
+    "poznamka": "",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c08t1",
+        "name": "Svázáním oblečení, ručníků či šátků udělejte provaz sahající od verandy k jídelně.",
+        "cena": 3,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c08t2",
+        "name": "Vyjmenujte členy své skupinky. Musí s vámi, ale dobrovolně jít alespoň jeden člen jiné skupinky.",
+        "cena": 2,
+        "misto": "telmari"
+      }
+    ]
+  },
+  {
+    "id": "c09",
+    "name": "Dvorní zpěvák Mirazův",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c09t1",
+        "name": "Zabroukejte vedoucímu některou svou oblíbenou píseň.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c09t2",
+        "name": "Vyjmenujte všechny platné české mince. Pro každou popište obrázek na lícové straně.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c09t3",
+        "name": "Přineste 1 žlutou, 1 hnědou, 1 zelenou, 1 fialovou a 1 bílou věc.",
+        "cena": 1,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c10",
+    "name": "Čuchomechův den",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T19:29:17.611Z",
+    "ukoly": [
+      {
+        "id": "c10t1",
+        "name": "Přineste 4 různé přírodniny, které nejsou zelené ani hnědé.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c10t2",
+        "name": "Rozdělejte oheň u ohniště, který vydrží alespoň 5 minut bez zásahu hořet.",
+        "cena": 3,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c10t3",
+        "name": "Doneste dva členy skupinky od Kolbiště do tábora Telmarínů, tak aby se nedotkli země.",
+        "cena": 3,
+        "misto": "telmari"
+      }
+    ]
+  },
+  {
+    "id": "c11",
+    "name": "Poučení Trumpkinovo",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c11t1",
+        "name": "Najděte v Bibli na čas 5 veršů dle zadání vedoucího.",
+        "cena": 3,
+        "misto": "vez"
+      }
+    ]
+  },
+  {
+    "id": "c12",
+    "name": "Červení skřítci proti černým skřítkům",
+    "poznamka": "",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T19:30:41.533Z",
+    "ukoly": [
+      {
+        "id": "c12t1",
+        "name": "Zahrajte si frisbee do 3 bodů s jinou skupinkou.",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c13",
+    "name": "Rípčípův souboj",
+    "poznamka": "",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T20:14:57.007Z",
+    "ukoly": [
+      {
+        "id": "c13t1",
+        "name": "Skupinka v součtu srazí kolíkem z hry Kubb 15 kubbů na vzdálenost hřiště.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "eabaff50-5a9a-406b-8af7-ab7ad08e88e8",
+        "name": "Jeden člen družinky doběhne do tábora Telmarínů, zakřičí z plných plic: \"Sever, Narnie!\".",
+        "cena": "1",
+        "misto": "telmari"
+      },
+      {
+        "id": "c5532b92-a6bd-4365-ae2b-6fd8980c6e16",
+        "name": "Člen družinky třikrát klackem odpálí tenisový míček, který na něj hodí jiný člen družinky stojící na vzdálenost alespoň tří metrů.",
+        "cena": "1",
+        "misto": ""
+      }
+    ]
+  },
+  {
+    "id": "c14",
+    "name": "Moudrost Horského Vichra",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c14t1",
+        "name": "Vytvořte z šišek a klacíků tři souhvězdí, ukažte je vedoucímu a řekněte jejich jména.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c14t2",
+        "name": "Sepište na papír 8 znamení zvěrokruhu.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c14t3",
+        "name": "Vytvořte z jakéhokoli materiálu schéma sluneční soustavy se všemi 8 planetami a minimálně 1 trpasličí planetou.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c14t4",
+        "name": "Přineste z okolí tábora 10 bylin a určete jejich jména.",
+        "cena": 3,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c15",
+    "name": "Taktické ustupování prince Kaspiana",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": false,
+    "obranna": true,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c15t1",
+        "name": "Naučte všechny členy skupiny jejich vlastní krycí jména.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c15t2",
+        "name": "Celá skupinka doběhne do Cair Paravel.",
+        "cena": 2,
+        "misto": "vez"
+      },
+      {
+        "id": "c15t3",
+        "name": "Celá skupinka doběhne do tábora Telmarínů.",
+        "cena": 2,
+        "misto": "telmari"
+      },
+      {
+        "id": "c15t4",
+        "name": "Celá skupinka doběhne k Brodu.",
+        "cena": 2,
+        "misto": "brod"
+      }
+    ]
+  },
+  {
+    "id": "c16",
+    "name": "Zásobování armády",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": false,
+    "obranna": true,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T20:11:57.066Z",
+    "ukoly": [
+      {
+        "id": "c16t1",
+        "name": "Doneste ešus s vodou a vodu od Berunského mostu a vodu na Kolbišti uvařte.",
+        "cena": 3,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c16t2",
+        "name": "Natrhejte a přineste dva druhy jedlých plodů.",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c17",
+    "name": "Výuka důstojnické taktiky",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c17t1",
+        "name": "Zahrajte si s vedoucím šachy a seberte mu alespoň 5 kamenů.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c17t2",
+        "name": "Nacvičte dvě válečné formace a povel, kterým je provedete.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c17t3",
+        "name": "Ulovte některého z vedoucích, znehybněte ho a dopravte ho na hřiště.",
+        "cena": 3,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c18",
+    "name": "Příprava zbroje",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": false,
+    "obranna": true,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c18t1",
+        "name": "Pro každého člena skupinky sežeňte cokoli, co může sloužit jako štít.",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c19",
+    "name": "Útok na berunský břeh",
+    "poznamka": "PROZATÍM VYŘAZENO",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T19:34:54.731Z",
+    "ukoly": [
+      {
+        "id": "c19t1",
+        "name": "Vemte si do ruky štíty. Zaútočte na horu nad dívčími latrínami. Vedoucí po vás může házet tenisáky. Pokud vás vedoucí zasáhne, musíte se stáhnout za potok. Kartu jste splnili, až na místo doběhnete všichni.",
+        "cena": 3,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c20",
+    "name": "Dvorní malíř Mirazův",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T19:41:57.159Z",
+    "ukoly": [
+      {
+        "id": "c20t3",
+        "name": "Nakreslete 3 hrdiny z knihy Princ Kaspian, aby je poznal vedoucí.",
+        "cena": "3",
+        "misto": "telmari"
+      },
+      {
+        "id": "68f23c69-c73c-4af2-a3c9-d6cc35d32d55",
+        "name": "Přírodními materiály nakreslete jednomu členu družinky knír.",
+        "cena": "1",
+        "misto": "telmari"
+      },
+      {
+        "id": "30bc0fe0-c0b7-47cd-8b92-5b5e5501e705",
+        "name": "Přírodními materiály obstarejte jednomu členovi družinky paruku.",
+        "cena": "1",
+        "misto": "telmari"
+      }
+    ]
+  },
+  {
+    "id": "c21",
+    "name": "Sladká nevědomost",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c21t1",
+        "name": "Přineste ořech.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c21t2",
+        "name": "Uvažte a správně pojmenujte 5 uzlů.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c21t3",
+        "name": "Vyjmenujte 20 postav z Bible.",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c22",
+    "name": "Kornéliova moudrost",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c22t1",
+        "name": "Řekněte zjednodušenou verzi Desatera přikázání.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c22t2",
+        "name": "Řekněte vedoucímu, co se stalo v letech 1620, 1914, 1968, 1989.",
+        "cena": 2,
+        "misto": "brod"
+      },
+      {
+        "id": "c22t3",
+        "name": "Napište báseň o schématu a-b-c-a a-b-c-a.",
+        "cena": 3,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c23",
+    "name": "Stará chůva vypráví",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T19:51:00.734Z",
+    "ukoly": [
+      {
+        "id": "c23t1",
+        "name": "oqhmdrsd rhrjt udcntbhlt.",
+        "cena": 2,
+        "misto": "brod"
+      },
+      {
+        "id": "c23t2",
+        "name": "Nakreslete směrovou růžici a správně orientovanou ji doneste vedoucímu.",
+        "cena": 2,
+        "misto": "brod"
+      },
+      {
+        "id": "c23t3",
+        "name": "Napište pohádku o 30 slovech, která všechna začínají na P a ukažte ji vedoucímu.",
+        "cena": 3,
+        "misto": "brod"
+      },
+      {
+        "id": "c23t4",
+        "name": "Vyjmenujte 6 narnijských druhů bytostí (ne zvířat, ne lidí).",
+        "cena": 1,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c24",
+    "name": "Bobří budují opevněné pozice",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c24t1",
+        "name": "Postavte vež z přírodních materiálů, aby udržela míč ve výšce alespoň 1 metr.",
+        "cena": 3,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c24t2",
+        "name": "Vybalte plachtu a úhledně ji složte.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c24t3",
+        "name": "Dva členové snědí před očima vedoucího dohromady 3 jablka.",
+        "cena": 1,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c25",
+    "name": "Konfrontace",
+    "poznamka": "",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T20:15:15.796Z",
+    "ukoly": [
+      {
+        "id": "c25t1",
+        "name": "Čtyři členové družinky se dopraví od jídelny na vzdálenost 10 metrů, bez dotyku země.",
+        "cena": 3,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c25t2",
+        "name": "Získejte stejnou věc od tří vedoucích.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c25t3",
+        "name": "Poražte vedoucího v rýmování.",
+        "cena": 3,
+        "misto": "telmari"
+      }
+    ]
+  },
+  {
+    "id": "c26",
+    "name": "Šalupa Lucerna",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c26t1",
+        "name": "Vyrobte z přírodních a vlastních materiálů loďku alespoň ze tří kusů a před vedoucím ji dofoukejte, alespoň 5 metrů daleko.",
+        "cena": 3,
+        "misto": "brod"
+      },
+      {
+        "id": "c26t2",
+        "name": "Složte a zazpívejte vedoucímu píseň k oslavě Aslana o alespoň 6 verších, které se rýmují.",
+        "cena": 3,
+        "misto": "vez"
+      },
+      {
+        "id": "c26t3",
+        "name": "Přineste živého a zdravého živočicha (mimo člověka).",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c27",
+    "name": "Výcvik zvědů",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c27t1",
+        "name": "Převlečte čtyři členy skupinky, každý musí mít na sobě alespoň tři kusy oblečení ve stejné barvě. Jeden bude v červené, druhý v zelené a třetí v modré.",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c28",
+    "name": "Pod vlajkou syna Zámořského císaře",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T19:55:24.710Z",
+    "ukoly": [
+      {
+        "id": "c28t1",
+        "name": "Oblečte celou skupinku tak, aby každý člen měl nějaký viditelný kus oblečení v barvě vaší skupinky, jiné než slavnostní tričko.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c28t2",
+        "name": "Vyjmenujte vedoucímu názvy 5 českých církví.",
+        "cena": 2,
+        "misto": "vez"
+      }
+    ]
+  },
+  {
+    "id": "c30",
+    "name": "Flora země narnijské",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c30t1",
+        "name": "Napište na papír 30 českých měst.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c30t2",
+        "name": "Vyskládejte z klacků dvouverší o alespoň 8 slovech.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c30t3",
+        "name": "Doneste 50 šišek a před vedoucím je jednu po druhé spočítejte.",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c31",
+    "name": "Bylinky",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": false,
+    "obranna": true,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c31t1",
+        "name": "Uvařte alespoň čtvrt litru čaje na ohni, sirky a čaj vypůjčte v kuchyni.",
+        "cena": 3,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c31t2",
+        "name": "Přineste listy z alespoň 8 různých dřevin. Dřeviny pojmenujte.",
+        "cena": 3,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c32",
+    "name": "Lehký jako pták",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c32t1",
+        "name": "Složte vlaštovku z papíru a před zraky vedoucího ji dohoďte alespoň 3 metry.",
+        "cena": 2,
+        "misto": "telmari"
+      },
+      {
+        "id": "c32t2",
+        "name": "Složte vlaštovku z papíru a před zraky vedoucího ji dohoďte alespoň 3 metry.",
+        "cena": 2,
+        "misto": "vez"
+      },
+      {
+        "id": "c32t3",
+        "name": "Složte vlaštovku z papíru a před zraky vedoucího ji dohoďte alespoň 3 metry.",
+        "cena": 2,
+        "misto": "brod"
+      },
+      {
+        "id": "c32t4",
+        "name": "Složte vlaštovku z papíru a před zraky vedoucího ji dohoďte alespoň 3 metry.",
+        "cena": 1,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c33",
+    "name": "O poznání",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T19:58:18.068Z",
+    "ukoly": [
+      {
+        "id": "c33t1",
+        "name": "Zamaskujte jednoho člena skupinky, aby ho vedoucí nepoznal z dálky 20 metrů na 1 pokus. Maskovaného musí dovést nejméně jeden další člen. K maskování můžete použít jen oblečení a přírodní materiály.",
+        "cena": 3,
+        "misto": "telmari"
+      },
+      {
+        "id": "c33t2",
+        "name": "Pantomimicky předveďte jednoho vedoucího tak, aby ho poznal jiný vedoucí.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c33t3",
+        "name": "Doneste ešus pitné vody. Při příchodu podejte vedoucímu ruku a slušně pozdravte.",
+        "cena": 2,
+        "misto": "brod"
+      }
+    ]
+  },
+  {
+    "id": "c34",
+    "name": "Gvendolínina výuka",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": false,
+    "obranna": true,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T19:58:47.606Z",
+    "ukoly": [
+      {
+        "id": "c34t1",
+        "name": "Vyjmenujte vedoucímu jména alespoň 10 letošních vedoucích nebo praktikantů.",
+        "cena": 2,
+        "misto": "vez"
+      },
+      {
+        "id": "c34t2",
+        "name": "Vyhrajte piškvorky nad libovolným vedoucím mimo kolbiště.",
+        "cena": 2,
+        "misto": ""
+      },
+      {
+        "id": "c34t3",
+        "name": "Vyjmenujte 10 starozákonních biblických knih.",
+        "cena": 1,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c35",
+    "name": "Kouzelná čísla",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T19:59:39.543Z",
+    "ukoly": [
+      {
+        "id": "c35t1",
+        "name": "Doplňte číselnou řadu 1, 1, 2, 3, 5, 8, 13, 21…",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c35t2",
+        "name": "Dejte si závod s vedoucím. Závoďte 5× nebo dokud nevyhrajete. Závodit může libovolný počet členů skupinky.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c35t3",
+        "name": "Napište smysluplnou větu o 10 slovech, z nichž všechna budou bez diakritiky (háčky a čárky).",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c36",
+    "name": "U sta krákavých pohrabáčů",
+    "poznamka": "",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c36t1",
+        "name": "Vyhrajte partii kuliček nad vedoucím.",
+        "cena": 2,
+        "misto": "telmari"
+      },
+      {
+        "id": "c36t2",
+        "name": "Vyhrabte v lese díru, do které půjde dát celý ešus.",
+        "cena": 3,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c37",
+    "name": "Mrakotřasova ústní hygiena",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": false,
+    "obranna": true,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T20:00:27.833Z",
+    "ukoly": [
+      {
+        "id": "c37t1",
+        "name": "Přineste dvě spadlé soušky minimálně dlouhé 3 m a tlusté 4 cm.",
+        "cena": 3,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c37t2",
+        "name": "Před vedoucím si alespoň 15 minut čistěte zuby. Může i více členů najednou, pak se jejich doba čistění sčítá.",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c38",
+    "name": "Krášlení dryád",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c38t1",
+        "name": "Vyrobte věnec z pampelišek.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c38t2",
+        "name": "Jeden ze skupinky udělá 20 dřepů.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c38t3",
+        "name": "Udělejte dvěma členům skupinky copy o délce 15 cm ze tří pramenů.",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c39",
+    "name": "Nácvik jemných dovedností",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T20:01:58.755Z",
+    "ukoly": [
+      {
+        "id": "c39t1",
+        "name": "Vyrobte hudební nástroj.",
+        "cena": 3,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c39t2",
+        "name": "Složte 3 různé origami.",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c40",
+    "name": "Mirazův sluha",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T20:02:27.096Z",
+    "ukoly": [
+      {
+        "id": "c40t1",
+        "name": "Přineste 10 různých rostlin.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c40t2",
+        "name": "Přineste jablko.",
+        "cena": 2,
+        "misto": "brod"
+      },
+      {
+        "id": "c40t3",
+        "name": "Přineste 3 jedlé houby.",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c41",
+    "name": "Lucinčina chvilka kreativity",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c41t1",
+        "name": "Napište smysluplnou větu alespoň o 10 slovech se stejným počátečním písmenem.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c41t2",
+        "name": "Nakreslete postavu z Narnie tak, aby ji vedoucí poznal.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c41t3",
+        "name": "Udělejte na zemi existující slovo nebo sousloví s použitím přírodních materiálů o délce alespoň 10 písmen, tak aby ho vedoucí dokázal přečíst.",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c42",
+    "name": "Zajmutí nepřátel",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c42t1",
+        "name": "Chyťte dva vedoucí a svažte je k sobě.",
+        "cena": 3,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c43",
+    "name": "Chytání ryb u Bobří hráze",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": false,
+    "obranna": true,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c43t1",
+        "name": "Vyrobte síť z provázku o velikosti alespoň 5x5 čtverečků.",
+        "cena": 3,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c43t2",
+        "name": "Přineste 4 ešusy plné vody.",
+        "cena": 3,
+        "misto": "brod"
+      },
+      {
+        "id": "c43t3",
+        "name": "Vyrobte prut (z klacku, provázku a háčku).",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c44",
+    "name": "Napojení vojska",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": false,
+    "obranna": true,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c44t1",
+        "name": "Každý člen družiny vypije alespoň jeden hrneček čaje, šťávy nebo vody.",
+        "cena": 1,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c44t2",
+        "name": "Celá družinka si pokojně lehne na plachtu na alespoň 12 minut.",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c45",
+    "name": "Kaspianova těžká zpráva pro velitele",
+    "poznamka": "začít nést musíte vždy na jiném stanovišti než kač člena družinky nesete",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T20:05:37.885Z",
+    "ukoly": [
+      {
+        "id": "c45t1",
+        "name": "Odneste libovolného člena družinky do Cair Paravel.",
+        "cena": 3,
+        "misto": "vez"
+      },
+      {
+        "id": "c45t2",
+        "name": "Odneste libovolného člena družinky k Brodu.",
+        "cena": 3,
+        "misto": "brod"
+      },
+      {
+        "id": "c45t3",
+        "name": "Odneste libovolného člena družinky do tábora Telmarínů.",
+        "cena": 3,
+        "misto": "telmari"
+      }
+    ]
+  },
+  {
+    "id": "c46",
+    "name": "Zásah Švihlíka Lopatičky",
+    "poznamka": "",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T19:21:59.125Z",
+    "ukoly": [
+      {
+        "id": "c46t1",
+        "name": "Udělejte 10 kotrmelců.",
+        "cena": 2,
+        "misto": "vez"
+      },
+      {
+        "id": "c46t2",
+        "name": "Dva členové družinky se postaví na protější strany. První zakřičí \"Je čerstvá\" zatímco druhý zakřičí v odpověď \"Není čerstvá\" toto opakují třikrát.",
+        "cena": 2,
+        "misto": "brod"
+      },
+      {
+        "id": "c46t3",
+        "name": "Vytvořte hromadu 10 středních kamenů, celý úkol lze plnit pouze v pozici sloního chobotu (jedna ruka drží nos a zároveň takto objímá ruku druhou).",
+        "cena": 3,
+        "misto": "brod"
+      }
+    ]
+  },
+  {
+    "id": "c47",
+    "name": "Budování ochranné věže",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": false,
+    "obranna": true,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c47t1",
+        "name": "Postavte strukturu, která udrží ve výšce 1m kámen velikosti pěsti. Struktura se nesmí dotýkat zdí stromů kořenů.",
+        "cena": 3,
+        "misto": "telmari"
+      }
+    ]
+  },
+  {
+    "id": "c48",
+    "name": "Zteč probuzených stromů",
+    "poznamka": "",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T20:07:34.121Z",
+    "ukoly": [
+      {
+        "id": "c48t1",
+        "name": "Za každého člena skupinky přineste soušku vysokou minimálně 1 metr.",
+        "cena": 3,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c48t2",
+        "name": "Přineste 10 chorošů.",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c49",
+    "name": "Příprava dryád na rozhodující bitvu",
+    "poznamka": "",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c49t1",
+        "name": "Naličte rty a tváře čtyřem členům skupinky.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c49t2",
+        "name": "Vpleťte třem členům družinky do vlasů 10 listů.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c49t3",
+        "name": "Ozdobte dva členy skupinky pěti přírodními materiály.",
+        "cena": 2,
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c49t4",
+        "name": "Všichni členové skupinky se dostaví do tábora Telmarínů.",
+        "cena": 2,
+        "misto": "telmari"
+      }
+    ]
+  },
+  {
+    "id": "c50",
+    "name": "Budování valu",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": false,
+    "obranna": true,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c50t1",
+        "name": "Vybudujte 4 metry dlouhé a alespoň 10 centimetrů vysokou obrannou stavbu z přírodních materiálů.",
+        "cena": 3,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c51",
+    "name": "Verbování do Kaspianovy armády",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c51t1",
+        "name": "Přiveďte cizího člověka na Kolbiště.",
+        "cena": 3,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c52",
+    "name": "Kování zbraní",
+    "poznamka": "věci z eráru se nepočítají",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-20T20:09:15.202Z",
+    "ukoly": [
+      {
+        "id": "c52t1",
+        "name": "Přineste 20 kovových objektů.",
+        "cena": 2,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c53",
+    "name": "Hluboké vědomosti profesora Kornelia",
+    "poznamka": "",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c53t1",
+        "name": "Napište na papír 30 sportovců a doneste je do tábora Telmarínů.",
+        "cena": 2,
+        "misto": "telmari"
+      },
+      {
+        "id": "c53t2",
+        "name": "Napište na papír 30 hereček a doneste je k Brodu.",
+        "cena": 2,
+        "misto": "brod"
+      },
+      {
+        "id": "c53t3",
+        "name": "Napište na papír 15 televizních seriálů a doneste je do Cair Paravel.",
+        "cena": 2,
+        "misto": "vez"
+      },
+      {
+        "id": "c53t4",
+        "name": "Napište na papír 15 knih a ukažte je vedoucím.",
+        "cena": 1,
+        "misto": "kolbiste"
+      }
+    ]
+  },
+  {
+    "id": "c54",
+    "name": "Válečná poezie",
+    "poznamka": "",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "createdAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-07-19T00:00:00.000Z",
+    "ukoly": [
+      {
+        "id": "c54t1",
+        "name": "Zahrajte libovolnou písničku v délce alespoň tří slok na jakýkoli nástroj v počtu minimálně tří členů.",
+        "cena": 3,
+        "misto": "telmari"
+      },
+      {
+        "id": "c54t2",
+        "name": "Odříkejte báseň o minimálně 6 verších vedoucímu.",
+        "cena": 2,
+        "misto": "telmari"
+      }
+    ]
+  },
+  {
+    "id": "07f423f3-0686-49bd-812f-e2a87186ecb6",
+    "name": "Sněm Staré Narnie",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "ukoly": [
+      {
+        "id": "28c185eb-66ce-4cc6-9026-0a1c7f15bcd3",
+        "name": "Faun Mentius: Napiš oslavnou báseň o vylosovaném vedoucím minimálně o 4 verších",
+        "cena": "3",
+        "misto": "kolbiste"
+      },
+      {
+        "id": "c2a927cc-f0cb-427e-9f0e-4e6173681b42",
+        "name": "Netopýr: Zatímco visíš vzhůru nohama hrajte nekonečnou báseň na 4 rýmy s jedním dalším členem vaší družinky.",
+        "cena": "X",
+        "misto": "vez"
+      }
+    ],
+    "createdAt": "2026-07-06T07:34:28.014Z",
+    "updatedAt": "2026-07-08T21:01:18.458Z",
+    "poznamka": ""
+  },
+  {
+    "id": "436e51e2-f774-4167-a4a5-4d03cb0c9ca0",
+    "name": "Čuchomechova rychlá petice",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "e8746616-637d-43ec-9e54-56a181ff5949",
+        "name": "Napište za skupinu petici s libovolným obsahem a nechte si ji podepsat od minimálně 8 lidmi mimo vaši skupinku.",
+        "cena": "3",
+        "misto": "kolbiste"
+      },
+      {
+        "id": "68ada448-1121-4d68-ae9c-a4e5d03ee8d5",
+        "name": "Zajíc Kamil: Doběhni z Kolbiště na Cair Paravel a zpátky za 10 minut (nechte si čas vyběhnutí zapsat nějakým vedoucím).",
+        "cena": "2",
+        "misto": "kolbiste"
+      }
+    ],
+    "createdAt": "2026-07-06T08:00:23.120Z",
+    "updatedAt": "2026-07-08T20:58:23.170Z",
+    "poznamka": ""
+  },
+  {
+    "id": "586d4834-e1fc-4ff6-bd8c-27d1e95e5aaa",
+    "name": "Bojová taktika Profesora Kornelia",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "ukoly": [
+      {
+        "id": "c7ee8dae-016b-44ca-ac6c-57be15aa6a3c",
+        "name": "Poraž vedoucího v lístečkách.",
+        "cena": "1",
+        "misto": "brod"
+      }
+    ],
+    "createdAt": "2026-07-06T08:23:46.602Z",
+    "updatedAt": "2026-07-08T21:38:13.146Z",
+    "poznamka": "DOČASNĚ VYŘAZENA - nutnost mít šachovnici s sebou a představa hrát s 5 lidmi ... (název karty je ale pěkný a ponechal bych jej)"
+  },
+  {
+    "id": "1f3c6b48-311b-487a-b067-48eb8907a6b3",
+    "name": "Průzkum",
+    "utocna": true,
+    "obsazujici": true,
+    "obranna": false,
+    "ukoly": [
+      {
+        "id": "295624bf-e43c-46fc-9d92-8c517494e2e1",
+        "name": "Pošlete jednoho člena skupiny, aby oběhl všechna místa na mapě.",
+        "cena": "3",
+        "misto": "kolbiste"
+      }
+    ],
+    "createdAt": "2026-07-06T08:28:03.028Z",
+    "updatedAt": "2026-07-08T20:33:33.028Z",
+    "poznamka": ""
+  },
+  {
+    "id": "85ccb810-4606-4571-9976-8bdafb7f9482",
+    "name": "Taneční palouk",
+    "utocna": false,
+    "obsazujici": false,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "40293ffd-57c6-473d-93f5-c1750c5c244f",
+        "name": "Postavte domeček pro skřítka Trumpkina, aby se v něm chtěl zabydlet (zhodnotí vedoucí).",
+        "cena": "2",
+        "misto": "kolbiste"
+      },
+      {
+        "id": "906e42ff-3750-4c48-87bb-6ec903a53160",
+        "name": "2 členové skupinky musí po dobu 8 minut tancovat (bez zastavení).",
+        "cena": "X",
+        "misto": "telmari"
+      }
+    ],
+    "createdAt": "2026-07-06T18:22:20.474Z",
+    "updatedAt": "2026-07-08T20:56:42.987Z",
+    "poznamka": ""
+  },
+  {
+    "id": "41862f93-c7df-4c45-8748-7372b88ab327",
+    "name": "Potrefený Lichometník",
+    "utocna": false,
+    "obsazujici": false,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "3db915ad-1fbd-4d4e-a8f8-26d5a1224948",
+        "name": "Trefte při střelbě z luku 4x terč z krátké vzdálenosti (vzdálenost určí vedoucí na stanovišti). Každý člen družinky může vystřelit maximálně 2 šípy.",
+        "cena": "2",
+        "misto": "vez"
+      }
+    ],
+    "createdAt": "2026-07-06T18:26:58.176Z",
+    "updatedAt": "2026-07-08T20:55:48.160Z",
+    "poznamka": ""
+  },
+  {
+    "id": "de5318a7-8147-47ca-b4bd-aae5b3142ca4",
+    "name": "Osamělé ostrovy",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": false,
+    "ukoly": [
+      {
+        "id": "79961dce-2a0f-4d93-afcb-393e7f34d639",
+        "name": "Postavte pyramidu ze všech členů skupinky.",
+        "cena": "1",
+        "misto": "telmari"
+      },
+      {
+        "id": "fc072322-bfee-41be-ae61-2ff8e1ccdb4b",
+        "name": "Všichni členové skupinky vytvoří monstrum, které smí mít maximálně 4 nohy. Takto přejděte hřiště (od mola k jídelně).",
+        "cena": "X",
+        "misto": "kolbiste"
+      }
+    ],
+    "createdAt": "2026-07-06T18:40:20.011Z",
+    "updatedAt": "2026-07-08T21:35:44.300Z",
+    "poznamka": "Od chvíle kdy dáte vedoucímu znamení, že začínáte úkol na této kartě, musíte všichni do konce pokusu o jeho plnění mlčet."
+  },
+  {
+    "id": "4df698ed-a66a-4e47-be6b-740f44dc8e70",
+    "name": "Faun Dumnus",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "dda51092-2ab5-4e1a-aec7-567794d78b0a",
+        "name": "Poražte vedoucího ve hře petanque (jeden pokus na člena družinky, petanque hru musíte přinést a vyrobit pomocí šesti kamenů a jedné šišky).",
+        "cena": "2",
+        "misto": "vez"
+      },
+      {
+        "id": "51844bf1-4b69-4fa2-8e24-8f0e7bcf2d9e",
+        "name": "Nakreslete portrét vedoucího, aby ho dva jiní vedoucí poznali.",
+        "cena": "3",
+        "misto": "kolbiste"
+      }
+    ],
+    "createdAt": "2026-07-06T18:47:14.462Z",
+    "updatedAt": "2026-07-08T21:39:44.992Z",
+    "poznamka": ""
+  },
+  {
+    "id": "264326f4-4585-4d62-ae6e-e8cd273b4801",
+    "name": "Zámořské objevy",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "ukoly": [
+      {
+        "id": "324ccc63-e1a0-4753-85a4-0fbaf8fbb428",
+        "name": "Vybraného člena skupinky přepravte přes řeku, aniž by se namočil. (do vody nechoďte bez dohledu vedoucího)",
+        "cena": "X",
+        "misto": "kolbiste"
+      }
+    ],
+    "createdAt": "2026-07-06T19:11:46.291Z",
+    "updatedAt": "2026-07-08T20:30:08.220Z",
+    "poznamka": ""
+  },
+  {
+    "id": "5f2c6784-69da-4a3d-8b7d-38e7ff9b7156",
+    "name": "Rozcvička u Bobří hráze",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "5f6035f0-57a2-49f3-a85c-46506fc69db5",
+        "name": "Vyrobte funkční vodní mlýnek.",
+        "cena": "3",
+        "misto": "brod"
+      }
+    ],
+    "createdAt": "2026-07-06T19:21:54.511Z",
+    "updatedAt": "2026-07-08T12:13:29.459Z"
+  },
+  {
+    "id": "c5841b45-eb33-426d-bef3-ab595438abdf",
+    "name": "Rozhodná iniciativa Ježka Ředkvičky",
+    "utocna": true,
+    "obsazujici": true,
+    "obranna": false,
+    "ukoly": [
+      {
+        "id": "9a075cbf-2710-4d28-aefa-c771f4261ea2",
+        "name": "Vedoucího pomocí úplatků naverbujte do své armády. Nesmí být už naverbovaný jinou skupinkou.",
+        "cena": "2",
+        "misto": "kolbiste"
+      }
+    ],
+    "createdAt": "2026-07-06T19:23:22.994Z",
+    "updatedAt": "2026-07-08T21:54:56.472Z",
+    "poznamka": ""
+  },
+  {
+    "id": "07277b56-70c3-4d23-95b1-1debb168ab34",
+    "name": "Garderóba královny Lucie",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "a2be7aa0-43be-44b8-bfd7-f4f4707ad3eb",
+        "name": "Navlečte na jednoho člena skupinky do 10 kusů oblečení (nepočítá se spodní prádlo, pásky, čepice a podobné doplňky).",
+        "cena": "2",
+        "misto": "kolbiste"
+      }
+    ],
+    "createdAt": "2026-07-06T19:32:26.438Z",
+    "updatedAt": "2026-07-08T11:46:47.267Z",
+    "disabled": true
+  },
+  {
+    "id": "6feeb166-13da-4ca3-a2c5-4c7215deccce",
+    "name": "Verbování Krtka Tlaptafíka",
+    "utocna": false,
+    "obsazujici": true,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "aa146bdc-0969-49c0-868b-8e784f9d402c",
+        "name": "Ukliďte stan člena skupinky, který dostal v posledním bodování stanů -, aby mohl dostat +.",
+        "cena": "X",
+        "misto": "kolbiste"
+      }
+    ],
+    "createdAt": "2026-07-06T19:34:35.894Z",
+    "updatedAt": "2026-07-08T20:48:21.208Z",
+    "poznamka": ""
+  },
+  {
+    "id": "40ddde32-a1dd-4ae4-aa9b-7b545062603b",
+    "name": "Rozcvička Horského vichra",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "ukoly": [
+      {
+        "id": "2046cc01-f58a-48ac-bd4b-96d608ac0615",
+        "name": "Vyjmenuj 5 souhvězdí.",
+        "cena": "1",
+        "misto": "vez"
+      },
+      {
+        "id": "085b9475-0670-45cf-8e82-9daadf78b9bf",
+        "name": "Dva členové skupinky doběhnou jako kentaur (paže zezadu okolo pasu) do Tábora Telmarínů a zpátky.",
+        "cena": "3",
+        "misto": "kolbiste"
+      },
+      {
+        "id": "8b45d387-6dd9-4298-9a93-24624fd854dc",
+        "name": "Trefte při střelbě z luku 5x terč z krátké vzdálenosti (vzdálenost určí vedoucí na stanovišti).",
+        "cena": "2",
+        "misto": "vez"
+      }
+    ],
+    "createdAt": "2026-07-06T19:42:30.899Z",
+    "updatedAt": "2026-07-08T12:03:05.776Z"
+  },
+  {
+    "id": "8ab04562-48d7-4cd1-966b-752e8b0f9647",
+    "name": "Povídání s Čuchomechem",
+    "utocna": false,
+    "obsazujici": false,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "2ad953b4-9ee8-4091-b4d7-473a4cfda799",
+        "name": "Poražte vedoucího ve vyčerpávání témat.",
+        "cena": "1",
+        "misto": "brod"
+      },
+      {
+        "id": "7ff19865-4b90-4442-b718-4faea2d9ff0d",
+        "name": "Zeptejte se třech vedoucích, jaký je jejich oblíbený dinosaur. Odpovědi si zapište.",
+        "cena": "2",
+        "misto": "kolbiste"
+      }
+    ],
+    "createdAt": "2026-07-06T19:44:53.490Z",
+    "updatedAt": "2026-07-08T11:48:14.636Z"
+  },
+  {
+    "id": "2ab4d178-bc8b-48c0-9193-a267d4e4a6c3",
+    "name": "Výprava na Osamělé ostrovy",
+    "utocna": true,
+    "obsazujici": true,
+    "obranna": false,
+    "ukoly": [
+      {
+        "id": "f7925b97-dfdf-4723-83b9-6ae8dbd83dde",
+        "name": "Skupinka přebrodí řeku od mola ke konci tábořiště",
+        "cena": "2",
+        "misto": "kolbiste"
+      }
+    ],
+    "createdAt": "2026-07-02T09:11:53.763Z",
+    "updatedAt": "2026-07-02T09:12:31.973Z"
+  },
+  {
+    "id": "5c1786e7-dba4-48c9-bbd0-cc32f01cb31b",
+    "name": "Dobré zprávy z Cair Paravel",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "6cca802a-2654-4797-8490-cad0fd74f034",
+        "name": "Najděte skrytou zprávu u Cair Paravel a zapamatujte si ji.",
+        "cena": "2",
+        "misto": "vez"
+      }
+    ],
+    "createdAt": "2026-07-02T09:39:53.351Z",
+    "updatedAt": "2026-07-02T09:40:00.961Z"
+  },
+  {
+    "id": "cc2eef29-b628-4f72-919c-e53f0b96cec3",
+    "name": "Zvědi v táboře Telmarínů.",
+    "utocna": true,
+    "obsazujici": true,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "34f32481-913e-4114-a9cb-46e820fcb264",
+        "name": "Najděte a zapamatujte si skrytou zprávu v táboře Telmarínů",
+        "cena": "3",
+        "misto": "telmari"
+      }
+    ],
+    "createdAt": "2026-07-02T09:43:58.238Z",
+    "updatedAt": "2026-07-02T09:43:58.238Z"
+  },
+  {
+    "id": "b0ec2570-99a6-4490-836a-f17a4302a707",
+    "name": "Silénova cesta",
+    "utocna": false,
+    "obsazujici": false,
+    "obranna": true,
+    "ukoly": [
+      {
+        "id": "70085e0b-2f8c-4499-baa8-46cd3c9695fa",
+        "name": "Člen skupiny představuje osla a musí se po čtyřech přepravit z tábora Telmarínů až k Berunskému Mostu; v průběhu mu jiný člen skupinky sedí na zádech. (celou cestu nemusí plnit obě jeden člověk.)",
+        "cena": "2",
+        "misto": "telmari"
+      }
+    ],
+    "createdAt": "2026-07-02T10:08:17.069Z",
+    "updatedAt": "2026-07-02T10:08:17.069Z"
+  },
+  {
+    "id": "8a1f4ce6-7e05-4920-87fe-49dd2b182344",
+    "name": "Rípčípův motivační proslov",
+    "utocna": true,
+    "obsazujici": false,
+    "obranna": false,
+    "ukoly": [
+      {
+        "id": "41c1671f-79a4-4f62-8b3a-9828b3bf70a2",
+        "name": "Jeden člen družinky přednese nastoupené jednotce alespoň tří dlaších členů skupinky motivační proslov o alespoň šesti větách, který bude začínat slovy \"Slyšte, slyšte\" a končit \"Za Aslana na ně!!\"",
+        "cena": "X",
+        "misto": "kolbiste",
+        "splnitelna": "vsichni"
+      },
+      {
+        "id": "0501cc30-a9b9-48a4-bd53-153080c5ede3",
+        "name": "Všichni zúčastnění musí být ve stejnokroji, tedy všichni musí mít pokrývku hlavy, zcela uzavčené boty, kord (dostatečně rovný a dostatečně dlouhý klacek) a jeden neobvyklý jednotící prvek.",
+        "cena": "2",
+        "misto": "kolbiste",
+        "splnitelna": "vsichni"
+      }
+    ],
+    "createdAt": "2026-06-23T15:32:26.848Z",
+    "updatedAt": "2026-06-23T15:44:02.880Z"
+  }
+]
